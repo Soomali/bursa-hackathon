@@ -5,4 +5,6 @@ class ErrorIdConstants {
   static const String victimGetErrorId = 'victimGetErrorId';
   static const String victimPostErrorId = 'victimPostErrorId';
   static const String victimDeleteErrorId = 'victimDeleteErrorId';
+  static const String tentGetErrorId = 'tentGetErrorId';
+  static const String requestsGetErrorId = 'requestsGetErrorId';
 }

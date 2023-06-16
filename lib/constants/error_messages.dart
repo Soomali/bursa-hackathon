@@ -8,4 +8,5 @@ class ErrorMessageConstants {
   static const String victimDeleteError = 'Depremzede silinemedi';
   static const String tentGetError =
       'Çadır getirilirken bir sorunla karşılaşıldı';
+  static const String requestsGetError = 'Talepler alınırken bir hata oluştu';
 }
