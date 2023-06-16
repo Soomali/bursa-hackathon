@@ -30,7 +30,7 @@ class OnboardingPage extends StatelessWidget {
                   padding: EdgeInsets.only(
                       left: MediaQuery.of(context).size.width * .08),
                   child: OnboardingButton(
-                      label: 'Görevliyim',
+                      label: 'Depremzedeyim',
                       style: Style.inverted,
                       iconPath: 'assets/injured_person.svg',
                       onPress: () {})),
