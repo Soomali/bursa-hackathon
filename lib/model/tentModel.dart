@@ -5,11 +5,11 @@ import 'RequestModel.dart';
 
 class TentModel {
   List<VictimModel> victim_model;
-  String tent_city_id;
+  String tentCityId;
   List<RequestModel> requests;
   TentModel(
       {required this.victim_model,
-      required this.tent_city_id,
+      required this.tentCityId,
       required this.requests});
 
   factory TentModel.fromJson(Map<String, dynamic> json) {
@@ -25,7 +25,7 @@ class TentModel {
 
     return TentModel(
       victim_model: victim_model,
-      tent_city_id: json['tent_city_id'],
+      tentCityId: json['tentCityId'],
       requests: requests,
     );
   }
@@ -33,7 +33,7 @@ class TentModel {
   Map<String, dynamic> toJson() {
     return {
       'victim_model': victim_model.map((victim) => victim.toJson()).toList(),
-      'tent_city_id': tent_city_id,
+      'tentCityId': tentCityId,
       'requests': requests.map((request) => request.toJson()).toList()
     };
   }
