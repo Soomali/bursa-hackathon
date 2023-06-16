@@ -1,0 +1,1 @@
+enum ErrorHandleMode { popup, snackbar }
