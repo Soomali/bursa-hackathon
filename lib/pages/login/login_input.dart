@@ -19,12 +19,16 @@ class login_input extends StatefulWidget {
 class _login_inputState extends State<login_input> {
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      keyboardType: widget.keyboardType,
-      maxLength: widget.maxLength,
-      decoration: InputDecoration(
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-        hintText: widget.hintText,
+    return Container(
+      width: MediaQuery.of(context).size.width * 0.8,
+      height: 54,
+      child: TextFormField(
+        keyboardType: widget.keyboardType,
+        maxLength: widget.maxLength,
+        decoration: InputDecoration(
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+          hintText: widget.hintText,
+        ),
       ),
     );
   }
