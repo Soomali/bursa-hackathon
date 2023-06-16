@@ -20,8 +20,8 @@ class _RequestButtonWidgetState extends State<RequestButtonWidget> {
         children: [
           Image.asset(
             widget.iconPath,
-            width: 24,
-            height: 24,
+            width: 200,
+            height: 200,
           ),
           Text(widget.data),
         ],
