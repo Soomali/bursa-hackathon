@@ -3,4 +3,5 @@ class ErrorModel {
   String message;
 
   ErrorModel(this.id, this.message);
+
 }
