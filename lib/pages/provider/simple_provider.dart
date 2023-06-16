@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_tent_city_app/notifiers/async_change_notifier.dart';
 import 'package:smart_tent_city_app/pages/provider/data_change_notifier.dart';
 import 'package:smart_tent_city_app/pages/provider/provider_state.dart';
 
