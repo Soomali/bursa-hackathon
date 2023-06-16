@@ -15,6 +15,7 @@ class ExecutiveChangeNotifier extends DataChangeNotifier<ExecutiveModel>
         .doc(id)
         .get();
     this.data = ExecutiveModel.fromJson(doc.data() as Map<String, dynamic>);
+    notifyListeners();
   }
 
   void get(String id) => wrapAsync(
