@@ -21,7 +21,7 @@ class _LoginButtonState extends State<LoginButton> {
             borderRadius: BorderRadius.all(Radius.circular(8)),
           ),
         ),
-        child: Text(style: TextStyle(color: Colors.white), "Log In"),
+        child: Text(style: TextStyle(color: Colors.white), "Giriş Yap"),
       ),
     );
   }
