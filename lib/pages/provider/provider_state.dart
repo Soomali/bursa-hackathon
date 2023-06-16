@@ -4,7 +4,7 @@ import '../../model/error_model.dart';
 
 class ProviderState<T>{
   List<ErrorModel> errors=[];
-  AsyncChangeNotifier state;
+  AsyncChangeNotifierState state;
   T? data;
 
   ProviderState({
