@@ -1,0 +1,1 @@
+enum UserType { victim, executive }
