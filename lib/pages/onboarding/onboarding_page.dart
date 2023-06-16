@@ -20,7 +20,7 @@ class OnboardingPage extends StatelessWidget {
                     right: MediaQuery.of(context).size.width * .04),
                 child: OnboardingButton(
                     label: 'Görevliyim',
-                    iconPath: 'assets/Message_light.svg',
+                    iconPath: 'assets/help.svg',
                     onPress: () {}),
               ),
               SizedBox(
@@ -32,7 +32,7 @@ class OnboardingPage extends StatelessWidget {
                   child: OnboardingButton(
                       label: 'Görevliyim',
                       style: Style.inverted,
-                      iconPath: 'assets/Message_light.svg',
+                      iconPath: 'assets/injured_person.svg',
                       onPress: () {})),
             ],
           ),
