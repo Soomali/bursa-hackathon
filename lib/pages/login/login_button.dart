@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class LoginButton extends StatefulWidget {
-  const LoginButton({Key? key}) : super(key: key);
+  final VoidCallback onPressed;
+  const LoginButton({Key? key, required this.onPressed}) : super(key: key);
 
   @override
   State<LoginButton> createState() => _LoginButtonState();
@@ -14,7 +15,7 @@ class _LoginButtonState extends State<LoginButton> {
       width: MediaQuery.of(context).size.width * 0.8,
       height: 50,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: widget.onPressed,
         style: ElevatedButton.styleFrom(
           primary: Colors.redAccent.shade700,
           shape: RoundedRectangleBorder(

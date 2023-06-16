@@ -8,7 +8,7 @@ import 'package:smart_tent_city_app/notifiers/inventory_change_notifier/inventor
 import 'package:smart_tent_city_app/notifiers/prefs/prefs.dart';
 import 'package:smart_tent_city_app/notifiers/tent_change_notifier/tent_change_notifier.dart';
 import 'package:smart_tent_city_app/notifiers/victim_change_notifier.dart/victim_change_notifier.dart';
-import 'package:smart_tent_city_app/pages/login/login_pages/login_executive_page.dart';
+import 'package:smart_tent_city_app/pages/main_page/main_page.dart';
 import 'package:smart_tent_city_app/pages/onboarding/onboarding_page.dart';
 import 'package:smart_tent_city_app/pages/provider/auth/auth_provider.dart';
 import 'package:smart_tent_city_app/pages/provider/auth/auth_state_hoister.dart';
@@ -38,11 +38,11 @@ class SmartTent extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => TentChangeNotifier()),
         if (userType != null) Provider.value(value: userType!)
       ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: AuthProvider(
-            child: AuthStateHoister(
-                authenticatedWidget: const LoginExecutivePage(),
+      child: AuthProvider(
+        child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            home: AuthStateHoister(
+                authenticatedWidget: const MainPage(),
                 unAuthenticatedWidget: const OnboardingPage())),
       ),
     );
