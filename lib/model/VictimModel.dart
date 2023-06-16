@@ -1,6 +1,7 @@
 import 'RequestModel.dart';
 
 class VictimModel {
+  String id;
   String? phone_number;
   String tent_number;
   String tent_city_number;
@@ -13,6 +14,7 @@ class VictimModel {
   VictimModel(
       {required this.phone_number,
       required this.tent_number,
+      required this.id,
       required this.tent_city_number,
       required this.requests,
       required this.name,
@@ -20,13 +22,14 @@ class VictimModel {
       required this.birthday,
       required this.blood_type,
       required this.additional_data});
-  factory VictimModel.fromJson(Map<String, dynamic> json) {
+  factory VictimModel.fromJson(Map<String, dynamic> json, String id) {
     var requestsJson = json['requests'] as List<dynamic>;
     List<RequestModel> requests = requestsJson
         .map((requestsJson) => RequestModel.fromJson(requestsJson))
         .toList();
 
     return VictimModel(
+        id: id,
         phone_number: json['phoneNumber'],
         tent_number: json['tentNumber'],
         tent_city_number: json['tent_city'],
