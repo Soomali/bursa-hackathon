@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:smart_tent_city_app/pages/main_page/request_button_widget.dart';
 
 class MainPage extends StatelessWidget {
@@ -6,34 +6,36 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: ("Akıllı Çadır Kent"),
-      home: Scaffold(
-        body: Center(
-          child: Column(
+    return const Center(
+      child: Column(
+        children: [
+          Row(
             children: [
-              Row(
-                children: [
-                  RequestButtonWidget(
-                      iconPath: "assets/Chat_plus.svg", data: "Talep Oluştur"),
-                  SizedBox(width: 12),
-                  RequestButtonWidget(
-                      iconPath: "assets/Message_light.svg", data: "Taleplerim")
-                ],
+              RequestButtonWidget(
+                iconPath: "assets/Chat_plus.svg",
+                data: "Talep Oluştur",
               ),
-              Row(
-                children: [
-                  RequestButtonWidget(
-                      iconPath: 'assets/User_light.svg', data: "Bilgilerim"),
-                  SizedBox(width: 12),
-                  RequestButtonWidget(
-                      iconPath: 'assets/Sign_out_squre_light.svg',
-                      data: "Çıkış Yap")
-                ],
+              SizedBox(width: 12),
+              RequestButtonWidget(
+                iconPath: "assets/Message_light.svg",
+                data: "Taleplerim",
               ),
             ],
           ),
-        ),
+          Row(
+            children: [
+              RequestButtonWidget(
+                iconPath: 'assets/User_light.svg',
+                data: "Bilgilerim",
+              ),
+              SizedBox(width: 12),
+              RequestButtonWidget(
+                iconPath: 'assets/Sign_out_squre_light.svg',
+                data: "Çıkış Yap",
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
