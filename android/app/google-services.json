@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "456508674488",
+    "project_id": "smarttentcity",
+    "storage_bucket": "smarttentcity.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:456508674488:android:87a64cdeaa9ae716d4bf4d",
+        "android_client_info": {
+          "package_name": "com.example.smart_tent_city"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "456508674488-eihn35j2rpko85lbqac1uk41115ons8d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgkSlBe-ILdhmBcMDppA1wqZsD1fh_ydQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "456508674488-eihn35j2rpko85lbqac1uk41115ons8d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
