@@ -11,12 +11,12 @@ class _LoginButtonState extends State<LoginButton> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.6,
+      width: MediaQuery.of(context).size.width * 0.8,
       height: 50,
       child: ElevatedButton(
         onPressed: () {},
         style: ElevatedButton.styleFrom(
-          primary: Colors.red,
+          primary: Colors.redAccent.shade700,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(8)),
           ),

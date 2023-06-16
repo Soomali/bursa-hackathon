@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smart_tent_city_app/pages/login/login_input.dart';
 
 import '../login_button.dart';
@@ -17,19 +18,27 @@ class LoginExecutivePage extends StatelessWidget {
                 child: Column(
               children: [
                 SizedBox(
-                    height: MediaQuery.of(context).size.height * .45,
-                    width: MediaQuery.of(context).size.width * .8,
-                    child: Image.asset("assets/svgviewer-output 1.png")),
-                Container(
-                  height: 20,
-                  alignment: Alignment.center,
-                  child: Text(
-                    "Çadır Kent Yönetim Sistemi",
-                    style: TextStyle(
-                      color: Colors
-                          .black, // Yazının rengini istediğiniz gibi ayarlayabilirsiniz
-                    ),
+                  height: 40,
+                ),
+                SvgPicture.asset(
+                  'assets/tent.svg',
+                  height: MediaQuery.of(context).size.height * .27,
+                  width: MediaQuery.of(context).size.width * .6,
+                ),
+                SizedBox(
+                  height: 25,
+                ),
+                const Text(
+                  "Çadır Kent Yönetim Sistemi",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24,
+                    color: Colors
+                        .black, // Yazının rengini istediğiniz gibi ayarlayabilirsiniz
                   ),
+                ),
+                SizedBox(
+                  height: 25,
                 ),
                 LoginInput(
                     keyboardType: TextInputType.emailAddress,
