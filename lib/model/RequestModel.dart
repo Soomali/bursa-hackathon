@@ -15,6 +15,7 @@ class RequestModel {
   factory RequestModel.fromJson(Map<String, dynamic> json) {
     var productsList = json['products'] as List<dynamic>;
     List<ProductModel> products = productsList
+        .cast<Map<String, dynamic>>()
         .map((productJson) => ProductModel.fromJson(productJson))
         .toList();
 

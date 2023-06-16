@@ -4,7 +4,7 @@ class VictimModel {
   String id;
   String? phone_number;
   String tent_number;
-  String tent_city_number;
+  String tentCityId;
   List<RequestModel> requests;
   String name;
   String surname;
@@ -15,7 +15,7 @@ class VictimModel {
       {required this.phone_number,
       required this.tent_number,
       required this.id,
-      required this.tent_city_number,
+      required this.tentCityId,
       required this.requests,
       required this.name,
       required this.surname,
@@ -32,7 +32,7 @@ class VictimModel {
         id: id,
         phone_number: json['phoneNumber'],
         tent_number: json['tentNumber'],
-        tent_city_number: json['tent_city'],
+        tentCityId: json['tentCityId'],
         requests: requests,
         name: json['name'],
         surname: json['surname'],
@@ -42,9 +42,9 @@ class VictimModel {
   }
   Map<String, dynamic> toJson() {
     return {
-      'phone_number': phone_number,
-      'tent_number': tent_number,
-      'tent_city_number': tent_city_number,
+      'phoneNumber': phone_number,
+      'tentNumber': tent_number,
+      'tentCityId': tentCityId,
       'requests': requests.map((request) => request.toJson()).toList(),
       'name': name,
       'surname': surname,
