@@ -21,4 +21,9 @@ class InventoryModel {
       'tentCityId': tentCityId
     };
   }
+
+  InventoryModel copy() {
+    return InventoryModel(
+        id: id, products: List.from(products), tentCityId: tentCityId);
+  }
 }
