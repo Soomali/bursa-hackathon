@@ -1,27 +1,17 @@
 class ExecutiveModel {
-  String tent_city_number;
+  String tentCityId;
   String name;
   String surname;
   ExecutiveModel(
-      {required this.tent_city_number,
-      required this.name,
-      required this.surname});
+      {required this.tentCityId, required this.name, required this.surname});
   factory ExecutiveModel.fromJson(Map<String, dynamic> json) {
-    final tent_city_number = json['tent_city_number'];
-    final name = json['name'];
-    final surname = json['surname'];
-
     return ExecutiveModel(
-        tent_city_number: json['tent_city_number'],
+        tentCityId: json['tentCityId'],
         name: json['name'],
         surname: json['surname']);
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'tent_city_number': tent_city_number,
-      'name': name,
-      'surname': surname
-    };
+    return {'tentCityId': tentCityId, 'name': name, 'surname': surname};
   }
 }
