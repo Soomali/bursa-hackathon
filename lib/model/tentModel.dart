@@ -7,14 +7,12 @@ class TentModel {
   List<VictimModel> victim_model;
   String tent_city_id;
   List<RequestModel> requests;
-  String id;
   TentModel(
       {required this.victim_model,
       required this.tent_city_id,
-      required this.id,
       required this.requests});
 
-  factory TentModel.fromJson(Map<String, dynamic> json, String id) {
+  factory TentModel.fromJson(Map<String, dynamic> json) {
     var victim_models_list = json['victim_model'] as List<dynamic>;
     List<VictimModel> victim_model = victim_models_list
         .map((victimJson) => VictimModel.fromJson(victimJson, victimJson['id']))
@@ -26,7 +24,6 @@ class TentModel {
         .toList();
 
     return TentModel(
-      id: id,
       victim_model: victim_model,
       tent_city_id: json['tent_city_id'],
       requests: requests,
