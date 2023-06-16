@@ -3,5 +3,6 @@ import 'package:smart_tent_city_app/pages/login/login_pages/login_executive_page
 import 'package:smart_tent_city_app/pages/onboarding/onboarding_page.dart';
 
 void main() {
-  runApp(MaterialApp(home: const OnboardingPage()));
+  runApp(MaterialApp(
+      debugShowCheckedModeBanner: false, home: const OnboardingPage()));
 }
