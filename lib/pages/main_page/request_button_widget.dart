@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class RequestButtonWidget extends StatefulWidget {
   final String iconPath;
@@ -18,10 +19,10 @@ class _RequestButtonWidgetState extends State<RequestButtonWidget> {
       onPressed: null,
       child: Column(
         children: [
-          Image.asset(
+          SvgPicture.asset(
             widget.iconPath,
-            width: 200,
-            height: 200,
+            width: 80,
+            height: 80,
           ),
           Text(widget.data),
         ],
