@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_tent_city_app/pages/SVG_IMAGE.dart';
 import 'package:smart_tent_city_app/pages/login/login_input.dart';
 
 import '../login_button.dart';
@@ -15,7 +16,7 @@ class LoginVictimPage extends StatelessWidget {
               child: Column(
             children: [
               Stack(alignment: Alignment.center, children: [
-                Image.asset("assets/svgviewer-output 1.png"),
+                SvgImage(path: "assets/svgviewer-output 1.png"),
                 Positioned(
                   bottom:
                       10, // İstediğiniz yüksekliği buradan ayarlayabilirsiniz

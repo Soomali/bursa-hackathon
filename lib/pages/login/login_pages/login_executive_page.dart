@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_tent_city_app/pages/login/login_input.dart';
 
+import '../../SVG_IMAGE.dart';
 import '../login_button.dart';
 
 class LoginExecutivePage extends StatelessWidget {
@@ -19,10 +20,9 @@ class LoginExecutivePage extends StatelessWidget {
                 child: Center(
                     child: Column(
                   children: [
-                    SizedBox(
-                        height: MediaQuery.of(context).size.height * .45,
-                        width: MediaQuery.of(context).size.width * .8,
-                        child: Image.asset("assets/svgviewer-output 1.png")),
+                    ColoredBox(
+                        color: Colors.red,
+                        child: SvgImage(path: "assets/svgviewer-output 1.png")),
                     Container(
                       height: 20,
                       alignment: Alignment.center,
