@@ -4,5 +4,4 @@ class ErrorModel {
 
   ErrorModel(this.id, this.message);
 
-
 }
