@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 
 class login_input extends StatefulWidget {
-  const login_input({Key? key}) : super(key: key);
+  TextInputType keyboardType;
+  int maxLength;
+  String hintText;
+
+  login_input(
+      {Key? key,
+      required this.hintText,
+      required this.keyboardType,
+      required this.maxLength})
+      : super(key: key);
 
   @override
   State<login_input> createState() => _login_inputState();
@@ -10,13 +19,16 @@ class login_input extends StatefulWidget {
 class _login_inputState extends State<login_input> {
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      keyboardType: null,
-      maxLength: null,
-      inputFormatters: null,
-      decoration: InputDecoration(
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-        hintText: null,
+    return Container(
+      width: MediaQuery.of(context).size.width * 0.8,
+      height: 54,
+      child: TextFormField(
+        keyboardType: widget.keyboardType,
+        maxLength: widget.maxLength,
+        decoration: InputDecoration(
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+          hintText: widget.hintText,
+        ),
       ),
     );
   }
