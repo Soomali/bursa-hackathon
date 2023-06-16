@@ -8,13 +8,15 @@ import 'package:smart_tent_city_app/notifiers/async_change_notifier.dart';
 import 'package:smart_tent_city_app/pages/provider/data_change_notifier.dart';
 
 class TentChangeNotifier extends DataChangeNotifier<TentModel> {
+  final collection = FirebaseFirestore.instance.collection(tentCollectionPath);
   Future<void> _get(String id) async {
-    final doc = await FirebaseFirestore.instance
-        .collection(tentCollectionPath)
-        .doc(id)
-        .get();
-    this.data = TentModel.fromJson(doc.data() as Map<String, dynamic>);
+    final doc = await collection.doc(id).get();
+    this.data = TentModel.fromJson(doc.data() as Map<String, dynamic>, id);
     notifyListeners();
+  }
+
+  Future<void> _update(TentModel tentModel) async {
+    collection.doc(tentModel.id).update(tentModel.toJson());
   }
 
   void get(String id) => wrapAsync(() => _get(id),

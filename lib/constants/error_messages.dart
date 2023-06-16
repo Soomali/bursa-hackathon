@@ -9,4 +9,5 @@ class ErrorMessageConstants {
   static const String tentGetError =
       'Çadır getirilirken bir sorunla karşılaşıldı';
   static const String requestsGetError = 'Talepler alınırken bir hata oluştu';
+  static const String inventoryGetError = 'Envanter alınırken bir hata oluştu';
 }
