@@ -6,4 +6,6 @@ class ErrorMessageConstants {
   static const String victimGetError = 'Depremzede bulunamadı';
   static const String victimPostError = 'Depremzede oluşturulamadı';
   static const String victimDeleteError = 'Depremzede silinemedi';
+  static const String tentGetError =
+      'Çadır getirilirken bir sorunla karşılaşıldı';
 }
