@@ -4,7 +4,7 @@ import 'package:smart_tent_city_app/model/RequestStatus.dart';
 import 'package:smart_tent_city_app/notifiers/async_change_notifier_state.dart';
 import 'package:smart_tent_city_app/notifiers/pagination_change_notifier/requests_list_change_notifier.dart';
 import 'package:smart_tent_city_app/notifiers/victim_change_notifier.dart/victim_change_notifier.dart';
-import 'package:smart_tent_city_app/pages/my_requests/request_card.dart';
+import 'package:smart_tent_city_app/pages/victim/my_requests/request_card.dart';
 
 class MyRequestsBody extends StatefulWidget {
   const MyRequestsBody({super.key});

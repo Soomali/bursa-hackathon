@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:smart_tent_city_app/notifiers/executive_change_notifier/executive_change_notifier.dart';
 import 'package:smart_tent_city_app/notifiers/pagination_change_notifier/feedback_list_change_notifier.dart';
 import 'package:smart_tent_city_app/pages/background_page.dart';
-import 'package:smart_tent_city_app/pages/feedbacks/feedback_body.dart';
+import 'package:smart_tent_city_app/pages/executive/feedbacks/feedback_body.dart';
 
 class FeedbackPage extends StatelessWidget {
   const FeedbackPage({super.key});

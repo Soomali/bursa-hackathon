@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:smart_tent_city_app/model/ProductModel.dart';
-import 'package:smart_tent_city_app/pages/request/request_container.dart';
+import 'package:smart_tent_city_app/pages/victim/request/request_container.dart';
 
-import '../background_page.dart';
-import '../login/login_button.dart';
+import '../../background_page.dart';
+import '../../login/login_button.dart';
 
 class RequestDetailPage extends StatelessWidget {
   final List<ProductModel> listereq;

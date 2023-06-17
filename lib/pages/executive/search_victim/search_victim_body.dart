@@ -5,8 +5,8 @@ import 'package:provider/provider.dart';
 import 'package:smart_tent_city_app/notifiers/async_change_notifier_state.dart';
 import 'package:smart_tent_city_app/notifiers/pagination_change_notifier/victim_list_change_notifier.dart';
 import 'package:smart_tent_city_app/notifiers/victim_change_notifier.dart/victim_change_notifier.dart';
-import 'package:smart_tent_city_app/pages/search_victim/search_input.dart';
-import 'package:smart_tent_city_app/pages/search_victim/victim_card.dart';
+import 'package:smart_tent_city_app/pages/executive/search_victim/search_input.dart';
+import 'package:smart_tent_city_app/pages/executive/search_victim/victim_card.dart';
 import 'package:smart_tent_city_app/util/utils.dart';
 
 class SearchVictimPageBody extends StatefulWidget {

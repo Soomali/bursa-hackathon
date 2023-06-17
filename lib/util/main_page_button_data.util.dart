@@ -2,13 +2,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_tent_city_app/data/main_page_button_data/main_page_button_data.dart';
 import 'package:smart_tent_city_app/model/user_type.dart';
-import 'package:smart_tent_city_app/pages/executive_data/executive_data.dart';
-import 'package:smart_tent_city_app/pages/feedbacks/feedback_page.dart';
-import 'package:smart_tent_city_app/pages/my_requests/my_requests_page.dart';
+import 'package:smart_tent_city_app/pages/executive/executive_data/executive_data.dart';
+import 'package:smart_tent_city_app/pages/executive/feedbacks/feedback_page.dart';
+import 'package:smart_tent_city_app/pages/victim/my_requests/my_requests_page.dart';
 import 'package:smart_tent_city_app/pages/onboarding/onboarding_page.dart';
-import 'package:smart_tent_city_app/pages/request_choice/request_choice.dart';
-import 'package:smart_tent_city_app/pages/tent_city_requests/tent_city_requests_body.dart';
-import 'package:smart_tent_city_app/pages/victim_processes/victim_processes_page.dart';
+import 'package:smart_tent_city_app/pages/victim/request_choice/request_choice.dart';
+import 'package:smart_tent_city_app/pages/executive/tent_city_requests/tent_city_requests_body.dart';
+import 'package:smart_tent_city_app/pages/executive/victim_processes/victim_processes_page.dart';
 
 class MainPageButtonDataUtil {
   static List<MainPageButtonData> getButtonDataByUserType(
