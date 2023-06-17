@@ -26,12 +26,12 @@ class _TentCityRequestBodyState extends State<TentCityRequestBody> {
   }
 
   void search() {
-    final victimId =
+    final tentCityId =
         Provider.of<ExecutiveChangeNotifier>(context, listen: false)
             .data!
             .tentCityId;
     Provider.of<RequestsListChangeNotifier>(context, listen: false)
-        .get(victimId: victimId);
+        .get(tentCityId: tentCityId);
   }
 
   @override
