@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smart_tent_city_app/pages/background_page.dart';
+import 'package:smart_tent_city_app/pages/complaint/complaint_page.dart';
 import 'package:smart_tent_city_app/pages/onboarding/style.dart';
 
 class RequestChoiceOption extends StatelessWidget {
@@ -77,7 +78,10 @@ class RequestChoicePage extends StatelessWidget {
           RequestChoiceOption(
             iconPath: 'assets/complaint.svg',
             label: 'İstek ve Şikayet',
-            onPress: () {},
+            onPress: () {
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => ComplaintPage()));
+            },
             style: Style.inverted,
           ),
         ],
