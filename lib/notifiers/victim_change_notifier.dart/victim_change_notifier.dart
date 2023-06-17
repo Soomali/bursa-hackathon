@@ -15,6 +15,7 @@ class VictimChangeNotifier extends DataChangeNotifier<VictimModel> {
     notifyListeners();
   }
 
+
   Future<void> _create(VictimModel victimModel) async {
     await victimCollection.doc(victimModel.id).set(victimModel.toJson());
   }
