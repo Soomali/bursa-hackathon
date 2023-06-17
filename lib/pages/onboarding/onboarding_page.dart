@@ -5,6 +5,7 @@ import 'package:smart_tent_city_app/notifiers/auth/auth_change_notifier.dart';
 import 'package:smart_tent_city_app/notifiers/auth/executive_auth_change_notifier.dart';
 import 'package:smart_tent_city_app/notifiers/auth/executive_auth_data.dart';
 import 'package:smart_tent_city_app/notifiers/auth/victim_auth_change_notifier.dart';
+import 'package:smart_tent_city_app/notifiers/user_type_change_notifier/user_type_change_notifier.dart';
 import 'package:smart_tent_city_app/pages/login/login_pages/login_page.dart';
 import 'package:smart_tent_city_app/pages/onboarding/onboarding_button.dart';
 import 'package:smart_tent_city_app/pages/onboarding/style.dart';
@@ -56,16 +57,12 @@ class OnboardingPage extends StatelessWidget {
 
   void goToLogin<T>(
       BuildContext context, AuthChangeNotifier<T> notifier, UserType userType) {
+    Provider.of<UserTypeChangeNotifier>(context, listen: false)
+        .change(userType);
     Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) => MultiProvider(
-              providers: [
-                Provider<UserType>.value(
-                  value: userType,
-                ),
-                ChangeNotifierProvider<AuthChangeNotifier<T>>.value(
-                  value: notifier,
-                ),
-              ],
+        builder: (context) =>
+            ChangeNotifierProvider<AuthChangeNotifier<T>>.value(
+              value: notifier,
               child: LoginPage<T>(),
             )));
   }

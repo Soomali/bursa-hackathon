@@ -6,6 +6,7 @@ import 'package:smart_tent_city_app/constants/error_ids.dart';
 import 'package:smart_tent_city_app/model/user_type.dart';
 import 'package:smart_tent_city_app/notifiers/auth/auth_change_notifier.dart';
 import 'package:smart_tent_city_app/notifiers/auth/victim_auth_change_notifier.dart';
+import 'package:smart_tent_city_app/notifiers/user_type_change_notifier/user_type_change_notifier.dart';
 import 'package:smart_tent_city_app/pages/login/login_input.dart';
 import 'package:smart_tent_city_app/pages/login/login_pages/login_executive_page_body.dart';
 import 'package:smart_tent_city_app/pages/login/login_pages/login_victim_page_body.dart';
@@ -19,15 +20,12 @@ class LoginPage<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer2<User?, UserType>(builder: (context, user, userType, _) {
+    return Consumer2<User?, UserTypeChangeNotifier>(
+        builder: (context, user, userType, _) {
       if (user != null) {
         WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
           Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(
-                  builder: (context) => MainPage(
-                        list: MainPageButtonDataUtil.getButtonDataByUserType(
-                            context, userType),
-                      )),
+              MaterialPageRoute(builder: (context) => MainPage()),
               (route) => false);
         });
       }
@@ -42,9 +40,10 @@ class LoginPage<T> extends StatelessWidget {
                       ErrorIdConstants.emailAuthErrorId,
                       ErrorIdConstants.phoneAuthErrorId
                     ],
-                    child: Consumer2<AuthChangeNotifier<T>, UserType>(
+                    child: Consumer2<AuthChangeNotifier<T>,
+                            UserTypeChangeNotifier>(
                         builder: (context, notifier, userType, _) {
-                      if (userType == UserType.victim) {
+                      if (userType.userType == UserType.victim) {
                         return LoginVictimPageBody(
                           notifier: notifier as VictimAuthChangeNotifier,
                         );
