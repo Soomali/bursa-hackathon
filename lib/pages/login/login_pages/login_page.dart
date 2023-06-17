@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
@@ -8,6 +9,7 @@ import 'package:smart_tent_city_app/notifiers/auth/victim_auth_change_notifier.d
 import 'package:smart_tent_city_app/pages/login/login_input.dart';
 import 'package:smart_tent_city_app/pages/login/login_pages/login_executive_page_body.dart';
 import 'package:smart_tent_city_app/pages/login/login_pages/login_victim_page_body.dart';
+import 'package:smart_tent_city_app/pages/main_page/main_page.dart';
 import 'package:smart_tent_city_app/pages/provider/auth/auth_provider.dart';
 import 'package:smart_tent_city_app/pages/provider/error_handler/error_handler_provider.dart';
 
@@ -16,27 +18,39 @@ class LoginPage<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: SingleChildScrollView(
-          physics: NeverScrollableScrollPhysics(),
-          child: Container(
-            child: Center(
-              child: ErrorHandlerProvider<AuthChangeNotifier<T>>(
-                  errorIds: [ErrorIdConstants.emailAuthErrorId],
-                  child: Consumer2<AuthChangeNotifier<T>, UserType>(
-                      builder: (context, notifier, userType, _) {
-                    if (userType == UserType.victim) {
-                      return LoginVictimPageBody(
-                        notifier: notifier as VictimAuthChangeNotifier,
-                      );
-                    }
-                    return LoginExecutivePageBody();
-                  })),
+    return Consumer<User?>(builder: (context, user, _) {
+      if (user != null) {
+        WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+          Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (context) => MainPage()),
+              (route) => false);
+        });
+      }
+      return SafeArea(
+        child: Scaffold(
+          body: SingleChildScrollView(
+            physics: NeverScrollableScrollPhysics(),
+            child: Container(
+              child: Center(
+                child: ErrorHandlerProvider<AuthChangeNotifier<T>>(
+                    errorIds: [
+                      ErrorIdConstants.emailAuthErrorId,
+                      ErrorIdConstants.phoneAuthErrorId
+                    ],
+                    child: Consumer2<AuthChangeNotifier<T>, UserType>(
+                        builder: (context, notifier, userType, _) {
+                      if (userType == UserType.victim) {
+                        return LoginVictimPageBody(
+                          notifier: notifier as VictimAuthChangeNotifier,
+                        );
+                      }
+                      return LoginExecutivePageBody();
+                    })),
+              ),
             ),
           ),
         ),
-      ),
-    );
+      );
+    });
   }
 }

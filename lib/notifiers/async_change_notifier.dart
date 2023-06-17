@@ -47,6 +47,8 @@ abstract class AsyncChangeNotifier extends ChangeNotifier {
       notifyListeners();
       await wrapee();
     } catch (e) {
+      print(id);
+      print(e);
       addError(ErrorModel(id, message));
     }
     state = AsyncChangeNotifierState.idle;
