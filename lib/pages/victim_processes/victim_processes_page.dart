@@ -13,7 +13,15 @@ class VictimProcesses extends StatelessWidget {
         VictimProcessOption(
             label: 'Depremzede Kaydet',
             iconPath: 'assets/injured_person.svg',
-            onPress: () {})
+            onPress: () {}),
+        VictimProcessOption(
+            label: 'Depremzede Sil',
+            iconPath: 'assets/injured_person.svg',
+            onPress: () {}),
+        VictimProcessOption(
+            label: 'Depremzede Ara',
+            iconPath: 'assets/injured_person.svg',
+            onPress: () {}),
       ],
     ));
   }
