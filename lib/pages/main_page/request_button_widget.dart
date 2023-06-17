@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:smart_tent_city_app/data/main_page_button_data/main_page_button_data.dart';
 
 class RequestButtonWidget extends StatefulWidget {
-  final String iconPath;
-  final String data;
+  final MainPageButtonData buttonData;
 
-  const RequestButtonWidget({required this.iconPath, required this.data, Key? key})
+  const RequestButtonWidget({required this.buttonData, Key? key})
       : super(key: key);
 
   @override
@@ -16,15 +16,17 @@ class _RequestButtonWidgetState extends State<RequestButtonWidget> {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: null,
+      onPressed: (){
+        widget.buttonData.onPress();
+      },
       child: Column(
         children: [
           SvgPicture.asset(
-            widget.iconPath,
+            widget.buttonData.iconPath,
             width: 80,
             height: 80,
           ),
-          Text(widget.data),
+          Text(widget.buttonData.textData),
         ],
       ),
     );

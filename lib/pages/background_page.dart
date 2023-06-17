@@ -1,21 +1,34 @@
 import 'package:flutter/material.dart';
 
 class BackgroundPage extends StatelessWidget {
-  const BackgroundPage({Key? key}) : super(key: key);
+  BackgroundPage({required this.child,Key? key}) : super(key: key);
+  final Widget child;
+
+  /*List<MainPageButtonData> liste=[
+    MainPageButtonData(iconPath: "assets/Chat_plus.svg", textData: "textData", onPress: (){}),
+    MainPageButtonData(iconPath: "assets/Chat_plus.svg", textData: "textData", onPress: (){}),
+    MainPageButtonData(iconPath: "assets/Chat_plus.svg", textData: "textData", onPress: (){}),
+    MainPageButtonData(iconPath: "assets/Chat_plus.svg", textData: "textData", onPress: (){}),
+    MainPageButtonData(iconPath: "assets/Chat_plus.svg", textData: "textData", onPress: (){}),
+    MainPageButtonData(iconPath: "assets/Chat_plus.svg", textData: "textData", onPress: (){}),
+    MainPageButtonData(iconPath: "assets/Chat_plus.svg", textData: "textData", onPress: (){}),
+  ];*/
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 60,
-        backgroundColor: Colors.redAccent.shade700, // Arkaplan rengini beyaz yap
-        title: Text(
-          "Akıllı Çadır Kent",
-          style: TextStyle(color: Colors.white), // Yazı rengini kırmızı yap
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          toolbarHeight: 60,
+          backgroundColor: Colors.redAccent.shade700,
+          title: Text(
+            "Akıllı Çadır Kent",
+            style: TextStyle(color: Colors.white),
+          ),
         ),
-      ),
-      body: SafeArea(
-        child: Container(), //büşranın sayfa değiştirme bölümü
+        body: SafeArea(
+          child: child, //büşranın sayfa değiştirme bölümü
+        ),
       ),
     );
   }

@@ -1,41 +1,28 @@
 import 'package:flutter/cupertino.dart';
 import 'package:smart_tent_city_app/pages/main_page/request_button_widget.dart';
+import 'package:smart_tent_city_app/data/main_page_button_data/main_page_button_data.dart';
+
 
 class MainPage extends StatelessWidget {
-  const MainPage({Key? key}) : super(key: key);
+  final List<MainPageButtonData> list;
+  const MainPage({required this.list ,Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Column(
-        children: [
-          Row(
-            children: [
-              RequestButtonWidget(
-                iconPath: "assets/Chat_plus.svg",
-                data: "Talep Oluştur",
-              ),
-              SizedBox(width: 12),
-              RequestButtonWidget(
-                iconPath: "assets/Message_light.svg",
-                data: "Taleplerim",
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              RequestButtonWidget(
-                iconPath: 'assets/User_light.svg',
-                data: "Bilgilerim",
-              ),
-              SizedBox(width: 12),
-              RequestButtonWidget(
-                iconPath: 'assets/Sign_out_squre_light.svg',
-                data: "Çıkış Yap",
-              ),
-            ],
-          ),
-        ],
+    return Center(
+      child: MediaQuery.removePadding(
+        context: context,
+        removeTop: true,
+        child: GridView.count(
+          primary: false,
+          padding: const EdgeInsets.all(20),
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
+          crossAxisCount: 2,
+          children: list.map((buttonData) {
+            return RequestButtonWidget(buttonData: buttonData);
+          }).toList(),
+        ),
       ),
     );
   }
