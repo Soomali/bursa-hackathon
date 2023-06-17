@@ -7,9 +7,13 @@ class RequestCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 250,
-      width: 500,
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        color: Colors.red,
+        height: 250,
+        width: 500,
+      ),
     );
   }
 }

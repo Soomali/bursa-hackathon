@@ -44,13 +44,12 @@ class _MyRequestsBodyState extends State<MyRequestsBody> {
       } else if (notifier.data == null || notifier.data!.isEmpty) {
         return Center(child: Text('Sonuç Bulunamadı'));
       }
-      return Expanded(
-          child: ListView.builder(
+      return ListView.builder(
         itemBuilder: (context, index) => RequestCard(
           requestModel: notifier.data![index],
         ),
         itemCount: notifier.data!.length,
-      ));
+      );
     });
   }
 }
