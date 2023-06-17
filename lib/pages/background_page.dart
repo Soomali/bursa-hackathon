@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class BackgroundPage extends StatelessWidget {
-  BackgroundPage({required this.child,Key? key}) : super(key: key);
+  BackgroundPage({required this.child, Key? key}) : super(key: key);
   final Widget child;
 
   /*List<MainPageButtonData> liste=[
@@ -16,21 +16,18 @@ class BackgroundPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          toolbarHeight: 60,
-          backgroundColor: Colors.redAccent.shade700,
-          title: Text(
-            "Akıllı Çadır Kent",
-            style: TextStyle(color: Colors.white),
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: 60,
+        backgroundColor: Colors.redAccent.shade700,
+        title: Text(
+          "Akıllı Çadır Kent",
+          style: TextStyle(color: Colors.white),
         ),
-        body: SafeArea(
-          child: child, //büşranın sayfa değiştirme bölümü
-        ),
+      ),
+      body: SafeArea(
+        child: child, //büşranın sayfa değiştirme bölümü
       ),
     );
   }
 }
-
