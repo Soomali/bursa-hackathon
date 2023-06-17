@@ -6,3 +6,4 @@ const String requestCollectionPath = 'request';
 const String feedbackCollectionPath = 'feedback';
 const String inventoryCollectionPath = 'inventory';
 const String movementCollectionPath = 'movement';
+const String announcementCollectionPath = 'announcement';
