@@ -4,12 +4,16 @@ import 'package:smart_tent_city_app/pages/background_page.dart';
 import 'package:smart_tent_city_app/pages/complaint/complaint_page.dart';
 import 'package:smart_tent_city_app/pages/onboarding/style.dart';
 
+import '../../model/ProductModel.dart';
+import '../request/request_customer_page.dart';
+
 class RequestChoiceOption extends StatelessWidget {
+
   final Style style;
   final String iconPath;
   final String label;
   final VoidCallback onPress;
-  const RequestChoiceOption(
+  RequestChoiceOption(
       {super.key,
       this.style = Style.normal,
       required this.iconPath,
@@ -74,7 +78,15 @@ class RequestChoicePage extends StatelessWidget {
           RequestChoiceOption(
               iconPath: 'assets/Bag.svg',
               label: 'Ürün talep et',
-              onPress: () {}),
+              onPress: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => RequestPage(lister:
+                  [ProductModel(type: "type", amount: 20, category: "category"),
+                    ProductModel(type: "type", amount: 20, category: "category"),
+                    ProductModel(type: "type", amount: 20, category: "category"),
+                    ProductModel(type: "type", amount: 20, category: "category"),
+                    ProductModel(type: "type", amount: 20, category: "category")],)),
+              );}),
           RequestChoiceOption(
             iconPath: 'assets/complaint.svg',
             label: 'İstek ve Şikayet',

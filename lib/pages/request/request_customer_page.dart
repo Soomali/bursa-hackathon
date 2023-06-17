@@ -4,9 +4,9 @@ import 'package:smart_tent_city_app/pages/request/request_container.dart';
 import '../background_page.dart';
 import '../login/login_button.dart';
 
-class RequestDetailPage extends StatelessWidget {
-  final List<ProductModel> listereq;
-  RequestDetailPage({required this.listereq, Key? key}) : super(key: key);
+class RequestPage extends StatelessWidget {
+  final List<ProductModel> lister;
+  RequestPage({required this.lister, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +22,11 @@ class RequestDetailPage extends StatelessWidget {
               crossAxisSpacing: 5,
               mainAxisSpacing: 5,
               crossAxisCount: 3,
-              children: listereq
+              children: lister
                   .map((containerRequest) {
-                    return RequestContainer(
-                        model: containerRequest, isVictim: true);
-                  })
+                return RequestContainer(
+                    model: containerRequest, isVictim: true);
+              })
                   .toList()
                   .cast<Widget>(),
             ),
@@ -36,7 +36,8 @@ class RequestDetailPage extends StatelessWidget {
         LoginButton(
           title: "Talep Oluştur",
           onPressed: () {},
-        )
+        ),
+        SizedBox(height: 12)
       ]),
     );
   }

@@ -1,3 +1,6 @@
+
+
+
 import 'package:flutter/material.dart';
 import 'package:smart_tent_city_app/model/ProductModel.dart';
 
@@ -55,27 +58,23 @@ class _RequestContainerState extends State<RequestContainer> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: InkWell(
-          onTap: () {},
-          child: Container(
-            width: 98,
-            height: 110,
-            decoration: const BoxDecoration(
-                color: Colors.red,
-                borderRadius: BorderRadius.all(Radius.circular(8))),
-            child: Center(
-              child: Column(mainAxisSize: MainAxisSize.min, children: [
-                Icon(Icons.star, size: 35),
-                SizedBox(width: 5, height: 7),
-                Text(widget.model.type),
-                SizedBox(width: 3, height: 3),
-                Center(child: MyFloatingActionButton(widget.isVictim)),
-                SizedBox(width: 1)
-              ]),
-            ),
-          ),
+    return InkWell(
+        onTap: () {},
+        child: Container(
+          height: 110,
+          decoration: const BoxDecoration(
+              color: Colors.red,
+              borderRadius: BorderRadius.all(Radius.circular(8))),
+          child: Center(
+            child: Column(mainAxisSize: MainAxisSize.min, children: [
+              Icon(Icons.star, size: 35),
+              SizedBox(width: 5, height: 7),
+              Text(widget.model.type),
+              SizedBox(width: 3, height: 3),
+              Center(child: MyFloatingActionButton(widget.isVictim)),
+              SizedBox(width: 1)
+            ]),
+
         ),
       ),
     );

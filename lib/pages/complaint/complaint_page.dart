@@ -6,6 +6,7 @@ import 'package:smart_tent_city_app/pages/background_page.dart';
 import 'package:smart_tent_city_app/pages/complaint/complaint_body.dart';
 
 class ComplaintPage extends StatelessWidget {
+
   const ComplaintPage({super.key});
 
   @override
