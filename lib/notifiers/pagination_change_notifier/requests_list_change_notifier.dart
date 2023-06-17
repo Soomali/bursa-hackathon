@@ -5,7 +5,7 @@ import 'package:smart_tent_city_app/constants/firebase.dart';
 import 'package:smart_tent_city_app/model/RequestModel.dart';
 import 'package:smart_tent_city_app/notifiers/pagination_change_notifier/pagination_change_notifier.dart';
 
-class RequestsListChangeNotifier extends PaginationChangeNotier {
+class RequestsListChangeNotifier extends PaginationChangeNotier<RequestModel> {
   Future<void> _get({String? victimId, String? tentId}) async {
     final field = victimId != null ? 'victimId' : 'tentId';
     final query = FirebaseFirestore.instance
