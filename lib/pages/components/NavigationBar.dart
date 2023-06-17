@@ -8,6 +8,7 @@ import 'package:smart_tent_city_app/pages/components/NavigationBarItem.dart';
 import 'package:smart_tent_city_app/pages/executive/executive_data/executive_data.dart';
 import 'package:smart_tent_city_app/pages/executive/qr_scan/qr_scan_page.dart';
 import 'package:smart_tent_city_app/pages/executive/tent_city_requests/tent_city_requests_body.dart';
+import 'package:smart_tent_city_app/pages/executive/victim_processes/victim_processes_page.dart';
 import 'package:smart_tent_city_app/pages/request/request_page.dart';
 import 'package:smart_tent_city_app/pages/request/request_page_type.dart';
 import 'package:smart_tent_city_app/pages/victim/my_requests/my_requests_page.dart';
@@ -32,7 +33,7 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
     TentCityRequests(),
     RequestPage(type: RequestPageType.inventory),
     QrScanPage(),
-    ExecutiveInfoPage(),
+    VictimProcesses(),
   ];
   void _onItemTapped(int index) {
     if (index == 4) {

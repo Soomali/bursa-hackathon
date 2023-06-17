@@ -5,13 +5,20 @@ import 'package:smart_tent_city_app/pages/background_page.dart';
 import 'package:smart_tent_city_app/pages/executive/search_victim/search_victim_body.dart';
 
 class SearchVictim extends StatelessWidget {
-  const SearchVictim({super.key});
+  final VoidCallback onFinished;
+  const SearchVictim({super.key, required this.onFinished});
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider.value(
       value: VictimListChangeNotifier(),
-      child: BackgroundPage(child: SearchVictimPageBody()),
+      child: BackgroundPage(
+          child: WillPopScope(
+              onWillPop: () async {
+                onFinished();
+                return false;
+              },
+              child: SearchVictimPageBody())),
     );
   }
 }

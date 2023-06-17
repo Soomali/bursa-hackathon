@@ -6,36 +6,71 @@ import 'package:smart_tent_city_app/pages/executive/remove_victim/remove_victim.
 import 'package:smart_tent_city_app/pages/executive/search_victim/search_victim.dart';
 import 'package:smart_tent_city_app/pages/executive/victim_processes/victim_process_option.dart';
 
-class VictimProcesses extends StatelessWidget {
+class VictimProcesses extends StatefulWidget {
   const VictimProcesses({super.key});
 
   @override
+  State<VictimProcesses> createState() => _VictimProcessesState();
+}
+
+class _VictimProcessesState extends State<VictimProcesses> {
+  late List<Widget> _pages = [
+    VictimOptionsWidget(
+      onTap: (val) {
+        setState(() {
+          _currentPage = val + 1;
+        });
+      },
+    ),
+    CreateVictim(
+      onFinished: resetState,
+    ),
+    RemoveVictim(onFinished: resetState),
+    SearchVictim(onFinished: resetState)
+  ];
+  void resetState() {
+    setState(() {
+      _currentPage = 0;
+    });
+  }
+
+  int _currentPage = 0;
+  @override
   Widget build(BuildContext context) {
-    return BackgroundPage(
-        child: Column(
+    return BackgroundPage(child: _pages[_currentPage]);
+  }
+}
+
+class VictimOptionsWidget extends StatelessWidget {
+  const VictimOptionsWidget({
+    super.key,
+    required this.onTap,
+  });
+  final void Function(int) onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
       children: [
         VictimProcessOption(
             label: 'Depremzede Kaydet',
             iconPath: 'assets/injured_person.svg',
             onPress: () {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => CreateVictim()));
+              onTap(0);
             }),
         VictimProcessOption(
             label: 'Depremzede Sil',
             iconPath: 'assets/injured_person.svg',
             onPress: () {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => RemoveVictim()));
+              onTap(1);
             }),
         VictimProcessOption(
             label: 'Depremzede Ara',
             iconPath: 'assets/injured_person.svg',
             onPress: () {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => SearchVictim()));
+              onTap(2);
             }),
       ],
-    ));
+    );
   }
 }

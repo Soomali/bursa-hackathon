@@ -6,33 +6,47 @@ import 'package:smart_tent_city_app/pages/background_page.dart';
 import 'package:smart_tent_city_app/pages/executive/remove_victim/remove_victim_body.dart';
 
 class RemoveVictim extends StatelessWidget {
-  const RemoveVictim({super.key});
+  final VoidCallback onFinished;
+  const RemoveVictim({super.key, required this.onFinished});
 
   @override
   Widget build(BuildContext context) {
-    return BackgroundPage(
+    bool isLoading = false;
+    return WillPopScope(
+      onWillPop: () async {
+        onFinished();
+        return false;
+      },
+      child: BackgroundPage(
         child: ChangeNotifierProvider.value(
-      value: VictimChangeNotifier(),
-      child: Builder(builder: (context) {
-        return Consumer<VictimChangeNotifier>(builder: (context, notifier, _) {
-          if (notifier.state == AsyncChangeNotifierState.busy) {
-            WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-              showDialog(
-                  context: context,
-                  builder: (context) => Center(
-                        child: CircularProgressIndicator(),
-                      ));
+          value: VictimChangeNotifier(),
+          child: Builder(builder: (context) {
+            return Consumer<VictimChangeNotifier>(
+                builder: (context, notifier, _) {
+              if (notifier.state == AsyncChangeNotifierState.busy &&
+                  !isLoading) {
+                isLoading = true;
+                WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+                  showDialog(
+                      context: context,
+                      builder: (context) => Center(
+                            child: CircularProgressIndicator(),
+                          ));
+                });
+              }
+              if (notifier.state == AsyncChangeNotifierState.done &&
+                  isLoading) {
+                isLoading = false;
+                WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+                  Navigator.of(context).pop();
+                  onFinished();
+                });
+              }
+              return RemoveVictimBody();
             });
-          }
-          if (notifier.state == AsyncChangeNotifierState.done) {
-            WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-              Navigator.of(context).pop();
-              Navigator.of(context).pop();
-            });
-          }
-          return RemoveVictimBody();
-        });
-      }),
-    ));
+          }),
+        ),
+      ),
+    );
   }
 }
