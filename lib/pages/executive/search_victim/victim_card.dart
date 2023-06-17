@@ -7,10 +7,74 @@ class VictimCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 450,
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.redAccent.shade700),
+    return Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: Container(
+        padding: EdgeInsets.symmetric(vertical: 16),
+        decoration: BoxDecoration(
+            border:
+                Border(bottom: BorderSide(color: Colors.redAccent.shade700))),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              victimModel.name + ' ' + victimModel.surname,
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Çadır kent numarası ${victimModel.tentCityId}',
+                        style: TextStyle(fontSize: 12),
+                        textAlign: TextAlign.center,
+                      ),
+                      Text(
+                        'Çadır numarası ${victimModel.tent_number}',
+                        style: TextStyle(fontSize: 12),
+                      ),
+                      Text(
+                        'telefon numarası ${victimModel.phone_number ?? "bilinmiyor"}',
+                        style: TextStyle(fontSize: 12),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  width: 1,
+                  height: 50,
+                  color: Colors.redAccent.shade700,
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'doğum tarihi ${victimModel.birthday ?? "bilinmiyor"}',
+                        style: TextStyle(fontSize: 12),
+                      ),
+                      Text(
+                        'kan grubu ${victimModel.blood_type ?? "bilinmiyor"}',
+                        style: TextStyle(fontSize: 12),
+                      ),
+                      Text(
+                        'cinsiyet ${victimModel.gender}',
+                        style: TextStyle(fontSize: 12),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            )
+          ],
+        ),
       ),
     );
   }

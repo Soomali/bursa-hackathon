@@ -74,16 +74,23 @@ class _SearchVictimPageBodyState extends State<SearchVictimPageBody> {
       }
       return Column(
         children: [
-          SearchInput(
-            onChanged: (val) {
-              setState(() {
-                searchQuery = val;
-              });
-              t.cancel();
-              t = Timer(Duration(milliseconds: 250), () {
-                search();
-              });
-            },
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20),
+            child: TextField(
+              decoration: InputDecoration(
+                  hintText: 'ad soyad / telefon',
+                  prefixIcon: Icon(Icons.search),
+                  border: OutlineInputBorder()),
+              onChanged: (val) {
+                setState(() {
+                  searchQuery = val;
+                });
+                t.cancel();
+                t = Timer(Duration(milliseconds: 250), () {
+                  search();
+                });
+              },
+            ),
           ),
           widget
         ],

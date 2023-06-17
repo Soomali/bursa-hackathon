@@ -6,6 +6,7 @@ import 'package:smart_tent_city_app/pages/executive/search_victim/search_victim_
 
 class SearchVictim extends StatelessWidget {
   final VoidCallback onFinished;
+
   const SearchVictim({super.key, required this.onFinished});
 
   @override

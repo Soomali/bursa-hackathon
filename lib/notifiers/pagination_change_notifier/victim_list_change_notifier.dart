@@ -28,7 +28,7 @@ class VictimListChangeNotifier extends PaginationChangeNotier<VictimModel> {
       query = collection
           .where('name', isEqualTo: nameList.join(' '))
           .where('surname', isEqualTo: surname);
-      if (lastQuery == fullName) {
+      if (lastQuery != fullName) {
         query = paginate(query);
         this.data = [];
         notifyListeners();
