@@ -11,15 +11,15 @@ class VictimModel {
   String? blood_type;
   String? additional_data;
   VictimModel(
-      {required this.phone_number,
+      {this.phone_number,
       required this.tent_number,
       required this.id,
       required this.tentCityId,
       required this.name,
       required this.surname,
-      required this.birthday,
-      required this.blood_type,
-      required this.additional_data});
+      this.birthday,
+      this.blood_type,
+      this.additional_data});
   factory VictimModel.fromJson(Map<String, dynamic> json, String id) {
     return VictimModel(
         id: id,
