@@ -7,6 +7,7 @@ import 'package:smart_tent_city_app/notifiers/user_type_change_notifier/user_typ
 import 'package:smart_tent_city_app/pages/components/NavigationBarItem.dart';
 import 'package:smart_tent_city_app/pages/executive/executive_data/executive_data.dart';
 import 'package:smart_tent_city_app/pages/executive/qr_scan/qr_scan_page.dart';
+import 'package:smart_tent_city_app/pages/executive/request_feedback/request_feedback.dart';
 import 'package:smart_tent_city_app/pages/executive/tent_city_requests/tent_city_requests_body.dart';
 import 'package:smart_tent_city_app/pages/executive/victim_processes/victim_processes_page.dart';
 import 'package:smart_tent_city_app/pages/request/request_page.dart';
@@ -30,7 +31,7 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
     VictimData(),
   ];
   final List<Widget> _executiveBodies = [
-    TentCityRequests(),
+    RequestFeedback(),
     RequestPage(type: RequestPageType.inventory),
     QrScanPage(),
     VictimProcesses(),

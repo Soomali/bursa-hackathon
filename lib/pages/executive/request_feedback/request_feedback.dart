@@ -18,6 +18,7 @@ class _RequestFeedbackState extends State<RequestFeedback> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
+          currentIndex: _selectedIndex,
           onTap: (index) {
             setState(() {
               _selectedIndex = index;
