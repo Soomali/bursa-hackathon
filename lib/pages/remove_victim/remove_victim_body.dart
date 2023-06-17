@@ -50,13 +50,16 @@ class _RemoveVictimBodyState extends State<RemoveVictimBody> {
               hintText: 'çadır numarası',
               keyboardType: TextInputType.number,
               maxLength: 5),
-          LoginButton(onPressed: () {
-            final executiveModel =
-                Provider.of<ExecutiveChangeNotifier>(context, listen: false)
-                    .data!;
-            Provider.of<VictimChangeNotifier>(context, listen: false)
-                .delete(name, surname, tentNumber, executiveModel.tentCityId);
-          })
+          LoginButton(
+              title: 'Sil',
+              onPressed: () {
+                final executiveModel =
+                    Provider.of<ExecutiveChangeNotifier>(context, listen: false)
+                        .data!;
+                Provider.of<VictimChangeNotifier>(context, listen: false)
+                    .delete(
+                        name, surname, tentNumber, executiveModel.tentCityId);
+              })
         ],
       ),
     );

@@ -94,25 +94,27 @@ class _CreateVictimBodyState extends State<CreateVictimBody> {
               hintText: 'Ek Bilgi',
               keyboardType: TextInputType.text,
               maxLength: 40),
-          LoginButton(onPressed: () {
-            final ExecutiveModel executiveModel =
-                Provider.of<ExecutiveChangeNotifier>(context, listen: false)
-                    .data!;
-            VictimModel victimModel = VictimModel(
-                tent_number: tentNumber,
-                id: FirebaseFirestore.instance
-                    .collection(victimCollectionPath)
-                    .doc()
-                    .id,
-                tentCityId: executiveModel.tentCityId,
-                name: name,
-                surname: surname,
-                birthday: birthDate,
-                blood_type: bloodType,
-                phone_number: phoneNumber);
-            Provider.of<VictimChangeNotifier>(context, listen: false)
-                .create(victimModel);
-          })
+          LoginButton(
+              title: 'Kaydet',
+              onPressed: () {
+                final ExecutiveModel executiveModel =
+                    Provider.of<ExecutiveChangeNotifier>(context, listen: false)
+                        .data!;
+                VictimModel victimModel = VictimModel(
+                    tent_number: tentNumber,
+                    id: FirebaseFirestore.instance
+                        .collection(victimCollectionPath)
+                        .doc()
+                        .id,
+                    tentCityId: executiveModel.tentCityId,
+                    name: name,
+                    surname: surname,
+                    birthday: birthDate,
+                    blood_type: bloodType,
+                    phone_number: phoneNumber);
+                Provider.of<VictimChangeNotifier>(context, listen: false)
+                    .create(victimModel);
+              })
         ],
       ),
     );

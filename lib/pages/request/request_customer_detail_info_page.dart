@@ -34,6 +34,7 @@ class RequestDetailPage extends StatelessWidget {
         const Divider(color: Colors.red),
         LoginButton(
           title: "Talep Oluştur",
+          onPressed: () {},
         )
       ]),
     );
