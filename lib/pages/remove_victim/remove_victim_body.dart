@@ -19,18 +19,34 @@ class _RemoveVictimBodyState extends State<RemoveVictimBody> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      padding: EdgeInsets.fromLTRB(40, 30, 0, 0),
       physics: NeverScrollableScrollPhysics(),
       child: Column(
         children: [
           LoginInput(
+              onChanged: (val) {
+                setState(() {
+                  name = val;
+                });
+              },
               hintText: 'Kişinin adı',
               keyboardType: TextInputType.name,
               maxLength: 60),
           LoginInput(
+              onChanged: (val) {
+                setState(() {
+                  surname = val;
+                });
+              },
               hintText: 'Kişinin soyadı',
               keyboardType: TextInputType.name,
               maxLength: 60),
           LoginInput(
+              onChanged: (val) {
+                setState(() {
+                  tentNumber = val;
+                });
+              },
               hintText: 'çadır numarası',
               keyboardType: TextInputType.number,
               maxLength: 5),
