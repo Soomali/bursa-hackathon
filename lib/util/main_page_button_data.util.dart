@@ -5,6 +5,8 @@ import 'package:smart_tent_city_app/model/user_type.dart';
 import 'package:smart_tent_city_app/pages/executive/executive_data/executive_data.dart';
 import 'package:smart_tent_city_app/pages/executive/feedbacks/feedback_page.dart';
 import 'package:smart_tent_city_app/pages/executive/qr_scan/qr_scan_page.dart';
+import 'package:smart_tent_city_app/pages/request/request_page.dart';
+import 'package:smart_tent_city_app/pages/request/request_page_type.dart';
 import 'package:smart_tent_city_app/pages/victim/my_requests/my_requests_page.dart';
 import 'package:smart_tent_city_app/pages/onboarding/onboarding_page.dart';
 import 'package:smart_tent_city_app/pages/victim/qr_page/qr_page.dart';
@@ -44,7 +46,9 @@ class MainPageButtonDataUtil {
           iconPath: 'assets/inventory.svg',
           textData: 'Envanter Yönetimi',
           onPress: () {
-            print('GO TO REQUESTS PAGE');
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) =>
+                    RequestPage(type: RequestPageType.inventory)));
           }),
       MainPageButtonData(
           iconPath: 'assets/inventory.svg',
