@@ -19,18 +19,30 @@ class VictimChangeNotifier extends DataChangeNotifier<VictimModel> {
     await victimCollection.doc(victimModel.id).set(victimModel.toJson());
   }
 
-  Future<void> _delete(String id) async {
-    await victimCollection.doc(id).delete();
+  Future<void> _delete(
+      String name, String surname, String tentNumber, String tentCityId) async {
+    final snapshot = await victimCollection
+        .where('name', isEqualTo: name)
+        .where('surname', isEqualTo: surname)
+        .where('tentNumber', isEqualTo: tentNumber)
+        .where('tentCityId', isEqualTo: tentCityId)
+        .get();
+    if (snapshot.docs.length != 1) {
+      throw Exception();
+    }
+    await victimCollection.doc(snapshot.docs.first.id).delete();
   }
 
   void create(VictimModel victimModel) => wrapAsync(
       () => _create(victimModel),
       ErrorIdConstants.victimPostErrorId,
       ErrorMessageConstants.victimPostError);
-  void delete(String id) => wrapAsync(
-      () => _delete(id),
-      ErrorIdConstants.victimDeleteErrorId,
-      ErrorMessageConstants.victimDeleteError);
+  void delete(
+          String name, String surname, String tentNumber, String tentCityId) =>
+      wrapAsync(
+          () => _delete(name, surname, tentNumber, tentCityId),
+          ErrorIdConstants.victimDeleteErrorId,
+          ErrorMessageConstants.victimDeleteError);
   void get(String id) => wrapAsync(() => _get(id),
       ErrorIdConstants.victimGetErrorId, ErrorMessageConstants.victimGetError);
 }
