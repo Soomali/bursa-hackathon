@@ -10,13 +10,18 @@ class VictimProcessOption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      shape: Border(bottom: BorderSide(color: Colors.redAccent.shade700)),
       leading: SvgPicture.asset(
         iconPath,
         color: Colors.redAccent.shade700,
+        width: 32,
       ),
-      title: Text('label'),
+      title: Text(label),
       onTap: onPress,
-      trailing: Icon(Icons.arrow_forward_ios),
+      trailing: Icon(
+        Icons.arrow_forward_ios,
+        color: Colors.redAccent.shade700,
+      ),
     );
   }
 }

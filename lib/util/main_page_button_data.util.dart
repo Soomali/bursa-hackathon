@@ -6,6 +6,7 @@ import 'package:smart_tent_city_app/pages/executive_data/executive_data.dart';
 import 'package:smart_tent_city_app/pages/feedbacks/feedback_page.dart';
 import 'package:smart_tent_city_app/pages/onboarding/onboarding_page.dart';
 import 'package:smart_tent_city_app/pages/request_choice/request_choice.dart';
+import 'package:smart_tent_city_app/pages/victim_processes/victim_processes_page.dart';
 
 class MainPageButtonDataUtil {
   static List<MainPageButtonData> getButtonDataByUserType(
@@ -29,7 +30,8 @@ class MainPageButtonDataUtil {
           iconPath: 'assets/Home_light.svg',
           textData: 'Depremzede İşlemleri',
           onPress: () {
-            print('GO TO REQUESTS PAGE');
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => VictimProcesses()));
           }),
       MainPageButtonData(
           iconPath: 'assets/inventory.svg',
