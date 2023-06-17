@@ -46,12 +46,13 @@ abstract class AsyncChangeNotifier extends ChangeNotifier {
       state = AsyncChangeNotifierState.busy;
       notifyListeners();
       await wrapee();
+      state = AsyncChangeNotifierState.done;
     } catch (e) {
       print(id);
       print(e);
       addError(ErrorModel(id, message));
+      state = AsyncChangeNotifierState.idle;
     }
-    state = AsyncChangeNotifierState.idle;
     notifyListeners();
   }
 }
