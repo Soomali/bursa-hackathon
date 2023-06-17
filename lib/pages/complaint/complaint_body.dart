@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_tent_city_app/constants/firebase.dart';
 import 'package:smart_tent_city_app/model/FeedBackModel.dart';
-import 'package:smart_tent_city_app/model/VictimModel.dart';
 import 'package:smart_tent_city_app/notifiers/feedback_change_notifier/feedback_change_notifier.dart';
 import 'package:smart_tent_city_app/notifiers/victim_change_notifier.dart/victim_change_notifier.dart';
 import 'package:smart_tent_city_app/pages/complaint/complaint_button.dart';
@@ -23,7 +22,7 @@ class _ComplaintBodyState extends State<ComplaintBody> {
     return Column(
       children: [
         Text(
-          '*lütfen görevlilerimizin elinden geldiğini yaptığını istek ve şikayetinizi iletirken dikkate alınız*',
+          '*lütfen görevlilerimizin elinden geleni yaptığını, istek ve şikayetinizi iletirken dikkate alınız*',
           textAlign: TextAlign.center,
         ),
         TextField(

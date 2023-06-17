@@ -1,18 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:smart_tent_city_app/model/ProductModel.dart';
+import 'package:smart_tent_city_app/pages/request/request_customer_page_slider.dart';
 import 'package:smart_tent_city_app/pages/victim/request/request_container.dart';
+import '../background_page.dart';
+import '../login/login_button.dart';
 
-import '../../background_page.dart';
-import '../../login/login_button.dart';
-
-class RequestDetailPage extends StatelessWidget {
-  final List<ProductModel> listereq;
-  RequestDetailPage({required this.listereq, Key? key}) : super(key: key);
+class RequestPage extends StatelessWidget {
+  final List<ProductModel> lister;
+  RequestPage({required this.lister, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BackgroundPage(
       child: Column(children: [
+        SizedBox(
+            height: MediaQuery.of(context).size.height * .1,
+            child: CategorySlider(categories: [
+              "categories",
+              "Yemek",
+              "Giyim",
+              "Sağlık",
+              "Yemek",
+              "Giyim",
+              "Yemek",
+              "Giyim",
+              "Yemek",
+              "Giyim"
+            ])),
         MediaQuery.removePadding(
           context: context,
           removeTop: true,
@@ -23,7 +37,7 @@ class RequestDetailPage extends StatelessWidget {
               crossAxisSpacing: 5,
               mainAxisSpacing: 5,
               crossAxisCount: 3,
-              children: listereq
+              children: lister
                   .map((containerRequest) {
                     return RequestContainer(
                         model: containerRequest, isVictim: true);
@@ -37,6 +51,9 @@ class RequestDetailPage extends StatelessWidget {
         LoginButton(
           title: "Talep Oluştur",
           onPressed: () {},
+        ),
+        SizedBox(
+          height: 7,
         )
       ]),
     );

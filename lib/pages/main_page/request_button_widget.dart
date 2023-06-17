@@ -22,12 +22,14 @@ class _RequestButtonWidgetState extends State<RequestButtonWidget> {
         widget.buttonData.onPress();
       },
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SvgPicture.asset(
             widget.buttonData.iconPath,
             width: 80,
             height: 80,
           ),
+          SizedBox(height: 7),
           Text(widget.buttonData.textData),
         ],
       ),
