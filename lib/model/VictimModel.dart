@@ -1,8 +1,9 @@
 import 'package:smart_tent_city_app/model/movement_model.dart';
 
-import 'RequestModel.dart';
 
 class VictimModel {
+  String? photo;
+  String gender;
   String id;
   String? phone_number;
   String tent_number;
@@ -15,6 +16,7 @@ class VictimModel {
   String? additional_data;
   VictimModel(
       {this.phone_number,
+        required this.gender,
       required this.tent_number,
       required this.id,
       required this.tentCityId,
@@ -26,6 +28,7 @@ class VictimModel {
   factory VictimModel.fromJson(Map<String, dynamic> json, String id) {
     return VictimModel(
         id: id,
+        gender: json["gender"],
         phone_number: json['phoneNumber'],
         tent_number: json['tentNumber'],
         tentCityId: json['tentCityId'],
@@ -37,6 +40,7 @@ class VictimModel {
   }
   Map<String, dynamic> toJson() {
     return {
+      'gender':gender,
       'phoneNumber': phone_number,
       'tentNumber': tent_number,
       'tentCityId': tentCityId,

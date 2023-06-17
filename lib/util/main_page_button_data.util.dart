@@ -12,6 +12,8 @@ import 'package:smart_tent_city_app/pages/victim/request_choice/request_choice.d
 import 'package:smart_tent_city_app/pages/executive/tent_city_requests/tent_city_requests_body.dart';
 import 'package:smart_tent_city_app/pages/executive/victim_processes/victim_processes_page.dart';
 
+import '../pages/victim/victim_data/victim_data.dart';
+
 class MainPageButtonDataUtil {
   static List<MainPageButtonData> getButtonDataByUserType(
       BuildContext context, UserType userType) {
@@ -104,7 +106,8 @@ class MainPageButtonDataUtil {
           iconPath: 'assets/User_light.svg',
           textData: 'bilgilerim',
           onPress: () {
-            print('GO TO REQUESTS PAGE');
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => VictimData()));
           }),
       MainPageButtonData(
           iconPath: 'assets/Sign_out_squre_light.svg',

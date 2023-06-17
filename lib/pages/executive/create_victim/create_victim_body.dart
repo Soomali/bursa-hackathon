@@ -12,11 +12,15 @@ import 'package:smart_tent_city_app/pages/login/login_input.dart';
 class CreateVictimBody extends StatefulWidget {
   const CreateVictimBody({super.key});
 
+
   @override
   State<CreateVictimBody> createState() => _CreateVictimBodyState();
 }
+enum Gender { kadin, erkek }
+
 
 class _CreateVictimBodyState extends State<CreateVictimBody> {
+  Gender? _gender;
   String? phoneNumber;
   String name = '';
   String surname = '';
@@ -24,6 +28,7 @@ class _CreateVictimBodyState extends State<CreateVictimBody> {
   String? birthDate;
   String tentNumber = '';
   String? additionalData;
+  String gender="";
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -94,6 +99,32 @@ class _CreateVictimBodyState extends State<CreateVictimBody> {
               hintText: 'Ek Bilgi',
               keyboardType: TextInputType.text,
               maxLength: 40),
+          Row(
+            children: <Widget>[
+            ListTile(
+              title: Text('Kadın'),
+              leading: Radio<Gender>(
+                value: Gender.kadin,
+                groupValue: _gender,
+                onChanged: (Gender? value) {
+                  setState(() {
+                    _gender = value;
+                  });
+              },
+            ),
+          ),
+              ListTile(
+                title: Text('Erkek'),
+                leading: Radio<Gender>(
+                  value: Gender.erkek,
+                  groupValue: _gender,
+                  onChanged: (Gender? value) {
+                    setState(() {
+                      _gender = value;
+                    });
+                  },
+                ),
+              ),
           LoginButton(
               title: 'Kaydet',
               onPressed: () {
@@ -107,6 +138,7 @@ class _CreateVictimBodyState extends State<CreateVictimBody> {
                         .doc()
                         .id,
                     tentCityId: executiveModel.tentCityId,
+                    gender: gender,
                     name: name,
                     surname: surname,
                     birthday: birthDate,
@@ -117,6 +149,7 @@ class _CreateVictimBodyState extends State<CreateVictimBody> {
               })
         ],
       ),
+    ])
     );
   }
 }
