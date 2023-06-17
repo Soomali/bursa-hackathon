@@ -147,8 +147,17 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
         Provider.of<UserTypeChangeNotifier>(context, listen: false).userType;
     return SafeArea(
       child: Scaffold(
+        floatingActionButton: _selectedIndex == 0
+            ? null
+            : FloatingActionButton(
+                backgroundColor: Colors.redAccent.shade700,
+                onPressed: () {},
+                child: Icon(Icons.notifications),
+              ),
         body: userType == UserType.victim
-            ? this._victimBodies[_selectedIndex]
+            ? _selectedIndex == this._victimBodies.length
+                ? Container()
+                : this._victimBodies[_selectedIndex]
             : this._executiveBodies[_selectedIndex],
         bottomNavigationBar: BottomNavigationBar(
           items: getItems().asMap().entries.map((entry) {
