@@ -11,4 +11,5 @@ class ErrorMessageConstants {
   static const String requestsGetError = 'Talepler alınırken bir hata oluştu';
   static const String inventoryGetError = 'Envanter alınamadı';
   static const String inventoryUpdateError = 'Envanter güncellenemedi';
+  static const String requestsUpdateError = 'Talep güncellenemedi';
 }

@@ -5,7 +5,6 @@ class VictimModel {
   String? phone_number;
   String tent_number;
   String tentCityId;
-  List<RequestModel> requests;
   String name;
   String surname;
   String? birthday;
@@ -16,24 +15,17 @@ class VictimModel {
       required this.tent_number,
       required this.id,
       required this.tentCityId,
-      required this.requests,
       required this.name,
       required this.surname,
       required this.birthday,
       required this.blood_type,
       required this.additional_data});
   factory VictimModel.fromJson(Map<String, dynamic> json, String id) {
-    var requestsJson = json['requests'] as List<dynamic>;
-    List<RequestModel> requests = requestsJson
-        .map((requestsJson) => RequestModel.fromJson(requestsJson))
-        .toList();
-
     return VictimModel(
         id: id,
         phone_number: json['phoneNumber'],
         tent_number: json['tentNumber'],
         tentCityId: json['tentCityId'],
-        requests: requests,
         name: json['name'],
         surname: json['surname'],
         birthday: json['birthday'],
@@ -45,7 +37,6 @@ class VictimModel {
       'phoneNumber': phone_number,
       'tentNumber': tent_number,
       'tentCityId': tentCityId,
-      'requests': requests.map((request) => request.toJson()).toList(),
       'name': name,
       'surname': surname,
       'birthday': birthday,

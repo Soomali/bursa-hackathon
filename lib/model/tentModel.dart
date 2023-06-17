@@ -20,7 +20,8 @@ class TentModel {
 
     var requests_list = json['requests'] as List<dynamic>;
     List<RequestModel> requests = requests_list
-        .map((requestJson) => RequestModel.fromJson(requestJson))
+        .map((requestJson) =>
+            RequestModel.fromJson(requestJson, requestJson['id']))
         .toList();
 
     return TentModel(

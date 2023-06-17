@@ -6,13 +6,15 @@ class RequestModel {
   String? executive_note;
   String? victim_note;
   RequestStatus status;
+  String id;
   RequestModel(
       {required this.products,
       required this.executive_note,
       required this.status,
+      required this.id,
       required this.victim_note});
 
-  factory RequestModel.fromJson(Map<String, dynamic> json) {
+  factory RequestModel.fromJson(Map<String, dynamic> json, String id) {
     var productsList = json['products'] as List<dynamic>;
     List<ProductModel> products = productsList
         .cast<Map<String, dynamic>>()
@@ -23,6 +25,7 @@ class RequestModel {
       products: products,
       executive_note: json['executive_note'],
       status: MyRequestExtension.fromJson(json['status']),
+      id: id,
       victim_note: json['victim_note'],
     );
   }
@@ -34,5 +37,9 @@ class RequestModel {
       'status': status.name,
       'victim_note': victim_note,
     };
+  }
+
+  RequestModel clone() {
+    return RequestModel.fromJson(this.toJson(), this.id);
   }
 }
