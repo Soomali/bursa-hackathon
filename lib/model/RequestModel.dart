@@ -5,6 +5,7 @@ class RequestModel {
   List<ProductModel> products;
   String? executive_note;
   String? victim_note;
+  String tentCityId;
   RequestStatus status;
   String id;
   String victimId;
@@ -13,6 +14,7 @@ class RequestModel {
       {required this.products,
       this.executive_note,
       required this.status,
+      required this.tentCityId,
       this.executiveId,
       required this.victimId,
       required this.id,
@@ -26,6 +28,7 @@ class RequestModel {
         .toList();
 
     return RequestModel(
+      tentCityId: json['tentCityId'],
       products: products,
       executiveId: json['executiveId'],
       victimId: json['victimId'],
@@ -38,6 +41,7 @@ class RequestModel {
 
   Map<String, dynamic> toJson() {
     return {
+      'tentCityId': tentCityId,
       'products': products.map((product) => product.toJson()).toList(),
       'executive_note': executive_note,
       'status': status.name,
