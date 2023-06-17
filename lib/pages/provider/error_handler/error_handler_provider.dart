@@ -11,8 +11,10 @@ class ErrorHandlerProvider<T extends AsyncChangeNotifier>
   final ErrorHandleMode mode;
   final Widget child;
   final List<String> errorIds;
+  final void Function(ErrorModel)? onErrorHandled;
   ErrorHandlerProvider(
       {this.mode = ErrorHandleMode.popup,
+      this.onErrorHandled,
       required this.child,
       required this.errorIds});
 
@@ -56,10 +58,12 @@ class ErrorHandlerProvider<T extends AsyncChangeNotifier>
       if (mode == ErrorHandleMode.popup) {
         showErrorPopUp(context, error, () {
           notifier.removeError(error.id);
+          onErrorHandled?.call(error);
         });
       } else {
         showErrorSnackbar(context, error, () {
           notifier.removeError(error.id);
+          onErrorHandled?.call(error);
         });
       }
     }

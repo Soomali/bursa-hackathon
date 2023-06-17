@@ -1,3 +1,5 @@
+import 'package:smart_tent_city_app/model/movement_model.dart';
+
 import 'RequestModel.dart';
 
 class VictimModel {
@@ -6,6 +8,7 @@ class VictimModel {
   String tent_number;
   String tentCityId;
   String name;
+  List<MovementModel> movements = [];
   String surname;
   String? birthday;
   String? blood_type;
