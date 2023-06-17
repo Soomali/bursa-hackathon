@@ -11,7 +11,6 @@ import 'package:smart_tent_city_app/pages/login/login_input.dart';
 import 'package:smart_tent_city_app/pages/login/login_pages/login_executive_page_body.dart';
 import 'package:smart_tent_city_app/pages/login/login_pages/login_victim_page_body.dart';
 import 'package:smart_tent_city_app/pages/main_page/main_page.dart';
-import 'package:smart_tent_city_app/pages/provider/auth/auth_provider.dart';
 import 'package:smart_tent_city_app/pages/provider/error_handler/error_handler_provider.dart';
 import 'package:smart_tent_city_app/util/main_page_button_data.util.dart';
 
