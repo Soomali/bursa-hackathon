@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:smart_tent_city_app/model/RequestStatus.dart';
 import 'package:smart_tent_city_app/notifiers/async_change_notifier_state.dart';
 import 'package:smart_tent_city_app/notifiers/auth/executive_auth_change_notifier.dart';
 import 'package:smart_tent_city_app/notifiers/executive_change_notifier/executive_change_notifier.dart';
@@ -49,6 +50,16 @@ class _TentCityRequestBodyState extends State<TentCityRequestBody> {
       return ListView.builder(
         itemBuilder: (context, index) => RequestCard(
           requestModel: notifier.data![index],
+          onTapAccept: () {
+            final model = notifier.data![index];
+            model.status = RequestStatus.accepted;
+            notifier.update(notifier.data![index], index);
+          },
+          onTapReject: () {
+            final model = notifier.data![index];
+            model.status = RequestStatus.rejected;
+            notifier.update(notifier.data![index], index);
+          },
         ),
         itemCount: notifier.data!.length,
       );

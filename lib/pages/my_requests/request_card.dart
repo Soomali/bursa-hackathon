@@ -3,7 +3,13 @@ import 'package:smart_tent_city_app/model/RequestModel.dart';
 
 class RequestCard extends StatelessWidget {
   final RequestModel requestModel;
-  const RequestCard({super.key, required this.requestModel});
+  final VoidCallback? onTapReject;
+  final VoidCallback? onTapAccept;
+  const RequestCard(
+      {super.key,
+      required this.requestModel,
+      this.onTapAccept,
+      this.onTapReject});
 
   @override
   Widget build(BuildContext context) {
@@ -13,6 +19,14 @@ class RequestCard extends StatelessWidget {
         color: Colors.red,
         height: 250,
         width: 500,
+        child: Row(
+          children: [
+            if (onTapReject != null)
+              TextButton(onPressed: onTapReject, child: Text('Reddet')),
+            if (onTapAccept != null)
+              TextButton(onPressed: onTapAccept, child: Text('Kabul Et')),
+          ],
+        ),
       ),
     );
   }
