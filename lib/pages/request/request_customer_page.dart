@@ -225,7 +225,7 @@ class _RequestBody extends StatelessWidget {
     return Column(children: [
       if (requestPageType != RequestPageType.submit)
         SizedBox(
-            height: MediaQuery.of(context).size.height * .1,
+            height: MediaQuery.of(context).size.height * .08,
             child: CategorySlider(
                 onTapCategory: onTapCategory, categories: categories)),
       MediaQuery.removePadding(
@@ -257,7 +257,6 @@ class _RequestBody extends StatelessWidget {
           ),
         ),
       ),
-      const Divider(color: Colors.red),
       if (requestPageType == RequestPageType.submit)
         LoginButton(
           title: "Talep Oluştur",

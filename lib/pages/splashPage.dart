@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:smart_tent_city_app/pages/main_page/main_page.dart';
+import 'package:smart_tent_city_app/pages/components/NavigationBar.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => MainPage(),
+          builder: (context) => NavigationBarPage(),
         ),
       );
     });

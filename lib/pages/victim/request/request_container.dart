@@ -25,7 +25,7 @@ class _RequestContainerState extends State<RequestContainer> {
           child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          if (widget.model.amount > 0)
+          if (widget.model.amount > 0) ...[
             IconButton(
               onPressed: () {
                 Provider.of<CartChangeNotifier>(context, listen: false)
@@ -36,10 +36,11 @@ class _RequestContainerState extends State<RequestContainer> {
                 size: 21,
               ),
             ),
-          Text(
-            "${widget.model.amount}",
-            style: TextStyle(fontSize: 16),
-          ),
+            Text(
+              "${widget.model.amount}",
+              style: TextStyle(fontSize: 16),
+            ),
+          ],
           IconButton(
             onPressed: () {
               Provider.of<CartChangeNotifier>(context, listen: false)
@@ -54,20 +55,27 @@ class _RequestContainerState extends State<RequestContainer> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 110,
-      decoration: BoxDecoration(
-          color: Colors.red,
-          borderRadius: BorderRadius.all(Radius.circular(widget.radius))),
-      child: Center(
-        child: Column(mainAxisSize: MainAxisSize.min, children: [
-          Icon(Icons.star, size: 35),
-          SizedBox(width: 5, height: 7),
-          Text(widget.model.productModel.type),
-          SizedBox(width: 3, height: 3),
-          Center(child: MyFloatingActionButton()),
-          SizedBox(width: 1)
-        ]),
+    return DefaultTextStyle(
+      style: TextStyle(color: Colors.redAccent.shade700),
+      child: IconTheme(
+        data: IconThemeData(color: Colors.redAccent.shade700),
+        child: Container(
+          height: 110,
+          decoration: BoxDecoration(
+              color: Colors.white,
+              border: Border.all(color: Colors.redAccent.shade400),
+              borderRadius: BorderRadius.all(Radius.circular(widget.radius))),
+          child: Center(
+            child: Column(mainAxisSize: MainAxisSize.min, children: [
+              Align(child: Icon(Icons.star, size: 35)),
+              SizedBox(width: 5, height: 7),
+              Text(widget.model.productModel.type),
+              SizedBox(width: 3, height: 3),
+              Center(child: MyFloatingActionButton()),
+              SizedBox(width: 1)
+            ]),
+          ),
+        ),
       ),
     );
   }

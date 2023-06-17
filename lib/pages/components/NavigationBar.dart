@@ -1,6 +1,19 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
+import 'package:smart_tent_city_app/model/user_type.dart';
+import 'package:smart_tent_city_app/notifiers/user_type_change_notifier/user_type_change_notifier.dart';
 import 'package:smart_tent_city_app/pages/components/NavigationBarItem.dart';
+import 'package:smart_tent_city_app/pages/executive/executive_data/executive_data.dart';
+import 'package:smart_tent_city_app/pages/executive/qr_scan/qr_scan_page.dart';
+import 'package:smart_tent_city_app/pages/executive/tent_city_requests/tent_city_requests_body.dart';
+import 'package:smart_tent_city_app/pages/request/request_page.dart';
+import 'package:smart_tent_city_app/pages/request/request_page_type.dart';
+import 'package:smart_tent_city_app/pages/victim/my_requests/my_requests_page.dart';
+import 'package:smart_tent_city_app/pages/victim/qr_page/qr_page.dart';
+import 'package:smart_tent_city_app/pages/victim/request_choice/request_choice.dart';
+import 'package:smart_tent_city_app/pages/victim/victim_data/victim_data.dart';
 
 class NavigationBarPage extends StatefulWidget {
   @override
@@ -9,21 +22,36 @@ class NavigationBarPage extends StatefulWidget {
 
 class _NavigationBarPageState extends State<NavigationBarPage> {
   int _selectedIndex = 0;
-
+  final List<Widget> _victimBodies = const [
+    RequestChoicePage(),
+    MyRequestsPage(),
+    QrPage(),
+    VictimData(),
+  ];
+  final List<Widget> _executiveBodies = [
+    TentCityRequests(),
+    RequestPage(type: RequestPageType.inventory),
+    QrScanPage(),
+    ExecutiveInfoPage(),
+  ];
   void _onItemTapped(int index) {
+    if (index == 4) {
+      FirebaseAuth.instance.signOut();
+    }
     setState(() {
       _selectedIndex = index;
     });
   }
 
-  @override
-  Widget build(BuildContext context) {
-    List<NavigationBarItem> bottomNavigationBarItems = [
+  List<NavigationBarItem> getItems() {
+    return [
       NavigationBarItem(
         icon: SvgPicture.asset(
           "assets/Chat_plus.svg",
           width: 24, // İstediğiniz boyuta göre değiştirin
           height: 24, // İstediğiniz boyuta göre değiştirin
+
+          color: _selectedIndex == 0 ? Colors.red : Colors.grey[800],
         ),
         title: Text(
           "Talep Oluştur",
@@ -40,6 +68,8 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
           "assets/Message_light.svg",
           width: 24, // İstediğiniz boyuta göre değiştirin
           height: 24, // İstediğiniz boyuta göre değiştirin
+
+          color: _selectedIndex == 1 ? Colors.red : Colors.grey[800],
         ),
         title: Text(
           "Taleplerim",
@@ -56,7 +86,7 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
           "assets/qr-code-svgrepo-com.svg",
           width: 30,
           height: 30,
-          color: Colors.white,
+          color: _selectedIndex == 2 ? Colors.red : Colors.grey[800],
         ),
         title: Text(
           "QR",
@@ -73,6 +103,8 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
           'assets/User_light.svg',
           width: 24, // İstediğiniz boyuta göre değiştirin
           height: 24, // İstediğiniz boyuta göre değiştirin
+
+          color: _selectedIndex == 3 ? Colors.red : Colors.grey[800],
         ),
         title: Text(
           "Profilim",
@@ -86,9 +118,11 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
       ),
       NavigationBarItem(
         icon: SvgPicture.asset(
-          'assets/Sign_out_square_light.svg',
+          'assets/Sign_out_squre_light.svg',
           width: 30, // İstediğiniz boyuta göre değiştirin
           height: 30, // İstediğiniz boyuta göre değiştirin
+
+          color: _selectedIndex == 4 ? Colors.red : Colors.grey[800],
         ),
         title: Text(
           "Çıkış Yap",
@@ -103,12 +137,19 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
 
       // Diğer NavigationBarItem'ları buraya ekleyin
     ];
+  }
 
-    return Scaffold(
-      bottomNavigationBar: Padding(
-        padding: EdgeInsets.fromLTRB(0, 200, 0, 10),
-        child: BottomNavigationBar(
-          items: bottomNavigationBarItems.asMap().entries.map((entry) {
+  @override
+  Widget build(BuildContext context) {
+    final userType =
+        Provider.of<UserTypeChangeNotifier>(context, listen: false).userType;
+    return SafeArea(
+      child: Scaffold(
+        body: userType == UserType.victim
+            ? this._victimBodies[_selectedIndex]
+            : this._executiveBodies[_selectedIndex],
+        bottomNavigationBar: BottomNavigationBar(
+          items: getItems().asMap().entries.map((entry) {
             final index = entry.key;
             final item = entry.value;
 
@@ -120,21 +161,11 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
                 child: Column(
                   children: [
                     Container(
-                        width: 78, // İkonun genişliği
-                        height: 78, // İkonun yüksekliği
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: _selectedIndex == index
-                              ? Colors.red
-                              : Colors.grey[800],
-                        ),
+                        width: 24, // İkonun genişliği
+                        height: 24, // İkonun yüksekliği
+
                         child: item.icon),
-                    Text(
-                      item.title.data ?? '',
-                      style: TextStyle(
-                        color: Colors.red,
-                      ),
-                    )
+                    item.title
                   ],
                 ),
               ),
