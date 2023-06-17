@@ -5,6 +5,8 @@ import 'package:smart_tent_city_app/pages/background_page.dart';
 import 'package:smart_tent_city_app/pages/complaint/complaint_page.dart';
 import 'package:smart_tent_city_app/pages/onboarding/style.dart';
 import 'package:smart_tent_city_app/pages/request/request_customer_page.dart';
+import 'package:smart_tent_city_app/pages/request/request_page.dart';
+import 'package:smart_tent_city_app/pages/request/request_page_type.dart';
 
 class RequestChoiceOption extends StatelessWidget {
   final Style style;
@@ -80,28 +82,7 @@ class RequestChoicePage extends StatelessWidget {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                       builder: (context) => RequestPage(
-                            lister: [
-                              ProductModel(
-                                  type: "type",
-                                  amount: 20,
-                                  category: "category"),
-                              ProductModel(
-                                  type: "type",
-                                  amount: 20,
-                                  category: "category"),
-                              ProductModel(
-                                  type: "type",
-                                  amount: 20,
-                                  category: "category"),
-                              ProductModel(
-                                  type: "type",
-                                  amount: 20,
-                                  category: "category"),
-                              ProductModel(
-                                  type: "type",
-                                  amount: 20,
-                                  category: "category")
-                            ],
+                            type: RequestPageType.search,
                           )),
                 );
               }),
