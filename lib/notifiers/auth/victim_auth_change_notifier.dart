@@ -20,6 +20,7 @@ class VictimAuthChangeNotifier extends AuthChangeNotifier<String> {
         verificationId: _verificationId, smsCode: code);
     wrapAsync(() async {
       await FirebaseAuth.instance.signInWithCredential(credential);
+      LocalStorage().setUserType(UserType.victim);
     }, ErrorIdConstants.phoneAuthErrorId, ErrorMessageConstants.phoneAuthError);
   }
 

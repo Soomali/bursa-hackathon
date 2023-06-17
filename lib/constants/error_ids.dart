@@ -7,6 +7,7 @@ class ErrorIdConstants {
   static const String victimDeleteErrorId = 'victimDeleteErrorId';
   static const String tentGetErrorId = 'tentGetErrorId';
   static const String requestsGetErrorId = 'requestsGetErrorId';
+  static const String requestsUpdateErrorId = 'requestsUpdateErrorId';
   static const String inventoryGetErrorId = 'inventoryGetErrorId';
   static const String inventoryUpdateErrorId = 'inventoryUpdateErrorId';
 }
