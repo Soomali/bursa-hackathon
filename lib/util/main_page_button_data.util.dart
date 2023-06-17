@@ -6,6 +6,7 @@ import 'package:smart_tent_city_app/pages/executive/executive_data/executive_dat
 import 'package:smart_tent_city_app/pages/executive/feedbacks/feedback_page.dart';
 import 'package:smart_tent_city_app/pages/victim/my_requests/my_requests_page.dart';
 import 'package:smart_tent_city_app/pages/onboarding/onboarding_page.dart';
+import 'package:smart_tent_city_app/pages/victim/qr_page/qr_page.dart';
 import 'package:smart_tent_city_app/pages/victim/request_choice/request_choice.dart';
 import 'package:smart_tent_city_app/pages/executive/tent_city_requests/tent_city_requests_body.dart';
 import 'package:smart_tent_city_app/pages/executive/victim_processes/victim_processes_page.dart';
@@ -76,6 +77,13 @@ class MainPageButtonDataUtil {
           onPress: () {
             Navigator.of(context).push(
                 MaterialPageRoute(builder: (context) => RequestChoicePage()));
+          }),
+      MainPageButtonData(
+          iconPath: 'assets/Chat_plus.svg',
+          textData: 'QRım',
+          onPress: () {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => QrPage()));
           }),
       MainPageButtonData(
           iconPath: 'assets/Message_light.svg',
