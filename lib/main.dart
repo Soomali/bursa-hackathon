@@ -52,14 +52,18 @@ class _SmartTentState extends State<SmartTent> {
           value: FirebaseAuth.instance.authStateChanges(),
           initialData: null,
           child: Builder(builder: (context) {
-            return Consumer<User?>(
-              builder: (context, user, _) {
+            return Consumer2<User?, UserTypeChangeNotifier>(
+              builder: (context, user, userType, _) {
                 if (user != null) {
                   WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-                    Provider.of<ExecutiveChangeNotifier>(context, listen: false)
-                        .get(user.uid);
-                    Provider.of<VictimChangeNotifier>(context, listen: false)
-                        .get(user.uid);
+                    if (userType.userType == UserType.executive) {
+                      Provider.of<ExecutiveChangeNotifier>(context,
+                              listen: false)
+                          .get(user.uid);
+                    } else {
+                      Provider.of<VictimChangeNotifier>(context, listen: false)
+                          .get(user.uid);
+                    }
                   });
                 }
                 return MaterialApp(
