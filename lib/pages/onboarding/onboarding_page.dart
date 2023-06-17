@@ -1,4 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:smart_tent_city_app/model/user_type.dart';
+import 'package:smart_tent_city_app/notifiers/auth/auth_change_notifier.dart';
+import 'package:smart_tent_city_app/notifiers/auth/executive_auth_change_notifier.dart';
+import 'package:smart_tent_city_app/notifiers/auth/executive_auth_data.dart';
+import 'package:smart_tent_city_app/notifiers/auth/victim_auth_change_notifier.dart';
+import 'package:smart_tent_city_app/pages/login/login_pages/login_page.dart';
 import 'package:smart_tent_city_app/pages/onboarding/onboarding_button.dart';
 import 'package:smart_tent_city_app/pages/onboarding/style.dart';
 
@@ -21,7 +28,10 @@ class OnboardingPage extends StatelessWidget {
                 child: OnboardingButton(
                     label: 'Görevliyim',
                     iconPath: 'assets/help.svg',
-                    onPress: () {}),
+                    onPress: () {
+                      goToLogin<ExecutiveAuthData>(context,
+                          ExecutiveAuthChangeNotifier(), UserType.executive);
+                    }),
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * .09,
@@ -33,11 +43,30 @@ class OnboardingPage extends StatelessWidget {
                       label: 'Depremzedeyim',
                       style: Style.inverted,
                       iconPath: 'assets/injured_person.svg',
-                      onPress: () {})),
+                      onPress: () {
+                        goToLogin<String>(context, VictimAuthChangeNotifier(),
+                            UserType.victim);
+                      })),
             ],
           ),
         ),
       ),
     );
+  }
+
+  void goToLogin<T>(
+      BuildContext context, AuthChangeNotifier<T> notifier, UserType userType) {
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => MultiProvider(
+              providers: [
+                Provider<UserType>.value(
+                  value: userType,
+                ),
+                ChangeNotifierProvider<AuthChangeNotifier<T>>.value(
+                  value: notifier,
+                ),
+              ],
+              child: LoginPage<T>(),
+            )));
   }
 }

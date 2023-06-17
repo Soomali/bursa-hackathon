@@ -17,30 +17,33 @@ class OnboardingButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          color: style == Style.inverted ? Colors.white : Colors.redAccent,
-          border: Border.all(color: Colors.redAccent),
-          borderRadius: BorderRadius.circular(12)),
-      width: MediaQuery.of(context).size.width * .7,
-      padding: EdgeInsets.symmetric(
-          vertical: MediaQuery.of(context).size.height * .05),
-      height: MediaQuery.of(context).size.height * .35,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          SvgPicture.asset(
-            iconPath,
-            width: 80,
-            height: 80,
-            color: style == Style.inverted ? Colors.red : Colors.white,
-          ),
-          Text(
-            label,
-            style: TextStyle(
-                color: style == Style.inverted ? Colors.red : Colors.white),
-          )
-        ],
+    return GestureDetector(
+      onTap: onPress,
+      child: Container(
+        decoration: BoxDecoration(
+            color: style == Style.inverted ? Colors.white : Colors.redAccent,
+            border: Border.all(color: Colors.redAccent),
+            borderRadius: BorderRadius.circular(12)),
+        width: MediaQuery.of(context).size.width * .7,
+        padding: EdgeInsets.symmetric(
+            vertical: MediaQuery.of(context).size.height * .05),
+        height: MediaQuery.of(context).size.height * .35,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            SvgPicture.asset(
+              iconPath,
+              width: 80,
+              height: 80,
+              color: style == Style.inverted ? Colors.red : Colors.white,
+            ),
+            Text(
+              label,
+              style: TextStyle(
+                  color: style == Style.inverted ? Colors.red : Colors.white),
+            )
+          ],
+        ),
       ),
     );
   }

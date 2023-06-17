@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class login_input extends StatefulWidget {
+class LoginInput extends StatefulWidget {
   TextInputType keyboardType;
   int maxLength;
   String hintText;
 
-  login_input(
+  LoginInput(
       {Key? key,
       required this.hintText,
       required this.keyboardType,
@@ -13,15 +13,14 @@ class login_input extends StatefulWidget {
       : super(key: key);
 
   @override
-  State<login_input> createState() => _login_inputState();
+  State<LoginInput> createState() => _LoginInputState();
 }
 
-class _login_inputState extends State<login_input> {
+class _LoginInputState extends State<LoginInput> {
   @override
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width * 0.8,
-      height: 54,
       child: TextFormField(
         keyboardType: widget.keyboardType,
         maxLength: widget.maxLength,
