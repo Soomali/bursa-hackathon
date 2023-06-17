@@ -11,12 +11,12 @@ class RequestModel {
   String? executiveId;
   RequestModel(
       {required this.products,
-      required this.executive_note,
+      this.executive_note,
       required this.status,
       this.executiveId,
       required this.victimId,
       required this.id,
-      required this.victim_note});
+      this.victim_note});
 
   factory RequestModel.fromJson(Map<String, dynamic> json, String id) {
     var productsList = json['products'] as List<dynamic>;
