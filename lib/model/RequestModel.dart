@@ -7,10 +7,14 @@ class RequestModel {
   String? victim_note;
   RequestStatus status;
   String id;
+  String victimId;
+  String? executiveId;
   RequestModel(
       {required this.products,
       required this.executive_note,
       required this.status,
+      this.executiveId,
+      required this.victimId,
       required this.id,
       required this.victim_note});
 
@@ -23,6 +27,8 @@ class RequestModel {
 
     return RequestModel(
       products: products,
+      executiveId: json['executiveId'],
+      victimId: json['victimId'],
       executive_note: json['executive_note'],
       status: MyRequestExtension.fromJson(json['status']),
       id: id,
@@ -36,6 +42,8 @@ class RequestModel {
       'executive_note': executive_note,
       'status': status.name,
       'victim_note': victim_note,
+      'victimId': victimId,
+      'executiveId': executiveId
     };
   }
 
