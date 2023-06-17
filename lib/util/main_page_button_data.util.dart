@@ -4,6 +4,7 @@ import 'package:smart_tent_city_app/data/main_page_button_data/main_page_button_
 import 'package:smart_tent_city_app/model/user_type.dart';
 import 'package:smart_tent_city_app/pages/executive_data/executive_data.dart';
 import 'package:smart_tent_city_app/pages/onboarding/onboarding_page.dart';
+import 'package:smart_tent_city_app/pages/request_choice/request_choice.dart';
 
 class MainPageButtonDataUtil {
   static List<MainPageButtonData> getButtonDataByUserType(
@@ -66,7 +67,8 @@ class MainPageButtonDataUtil {
           iconPath: 'assets/Chat_plus.svg',
           textData: 'Talep Oluştur',
           onPress: () {
-            print('GO TO REQUESTS PAGE');
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => RequestChoicePage()));
           }),
       MainPageButtonData(
           iconPath: 'assets/Message_light.svg',
