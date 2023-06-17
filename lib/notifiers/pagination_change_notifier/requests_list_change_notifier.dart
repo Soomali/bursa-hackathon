@@ -7,7 +7,7 @@ import 'package:smart_tent_city_app/notifiers/pagination_change_notifier/paginat
 
 class RequestsListChangeNotifier extends PaginationChangeNotier {
   Future<void> _get({String? victimId, String? tentId}) async {
-    final field = victimId == null ? 'victimId' : 'tentId';
+    final field = victimId != null ? 'victimId' : 'tentId';
     final query = FirebaseFirestore.instance
         .collection(requestCollectionPath)
         .limit(10)

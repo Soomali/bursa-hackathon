@@ -35,8 +35,7 @@ class _MyRequestsBodyState extends State<MyRequestsBody> {
   Widget build(BuildContext context) {
     return Consumer<RequestsListChangeNotifier>(
         builder: (context, notifier, _) {
-      if (notifier.data != null &&
-          notifier.data!.isEmpty &&
+      if ((notifier.data == null || notifier.data!.isEmpty) &&
           notifier.state == AsyncChangeNotifierState.busy) {
         return Center(
           child: CircularProgressIndicator(),
@@ -44,13 +43,12 @@ class _MyRequestsBodyState extends State<MyRequestsBody> {
       } else if (notifier.data == null || notifier.data!.isEmpty) {
         return Center(child: Text('Sonuç Bulunamadı'));
       }
-      return Expanded(
-          child: ListView.builder(
+      return ListView.builder(
         itemBuilder: (context, index) => RequestCard(
           requestModel: notifier.data![index],
         ),
         itemCount: notifier.data!.length,
-      ));
+      );
     });
   }
 }
