@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class BackgroundPage extends StatelessWidget {
-  BackgroundPage({required this.child, Key? key}) : super(key: key);
+  final Widget? fab;
+  BackgroundPage({required this.child, this.fab, Key? key}) : super(key: key);
   final Widget child;
 
   /*List<MainPageButtonData> liste=[
@@ -17,6 +18,7 @@ class BackgroundPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: fab,
       appBar: AppBar(
         toolbarHeight: 60,
         backgroundColor: Colors.redAccent.shade700,

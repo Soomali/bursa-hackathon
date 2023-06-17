@@ -18,6 +18,7 @@ class RequestPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final CartChangeNotifier cartNotifier = CartChangeNotifier();
+
     final tentCityId = type == RequestPageType.inventory
         ? Provider.of<ExecutiveChangeNotifier>(context, listen: false)
             .data!
@@ -40,6 +41,55 @@ class RequestPage extends StatelessWidget {
       return ChangeNotifierProvider.value(
         value: cartNotifier,
         child: BackgroundPage(
+          fab: Builder(builder: (context) {
+            return Consumer<CartChangeNotifier>(
+                builder: (context, notifier, child) {
+                  return Stack(
+                    children: [
+                      Positioned(
+                        child: child!,
+                      ),
+                      if (notifier.cart.isNotEmpty)
+                        Positioned(
+                          top: 12,
+                          left: 8,
+                          child: Container(
+                            padding: EdgeInsets.all(8),
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(color: Colors.redAccent),
+                              color: Colors.white,
+                            ),
+                            child: Text(
+                              notifier.cart
+                                  .map((e) => e.amount)
+                                  .reduce((value, element) => value + element)
+                                  .toString(),
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.redAccent.shade700),
+                            ),
+                          ),
+                        )
+                    ],
+                  );
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(24.0),
+                  child: Container(
+                      padding: EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(color: Colors.redAccent.shade700),
+                        color: Colors.redAccent.shade700,
+                      ),
+                      child: Icon(
+                        Icons.shopping_bag_outlined,
+                        size: 48,
+                        color: Colors.white,
+                      )),
+                ));
+          }),
           child:
               RequestPageBody(productList: notifier.data!.products, type: type),
         ),
