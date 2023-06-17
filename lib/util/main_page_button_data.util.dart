@@ -82,7 +82,10 @@ class MainPageButtonDataUtil {
           iconPath: 'assets/Sign_out_squre_light.svg',
           textData: 'Çıkış Yap',
           onPress: () {
-            print('GO TO REQUESTS PAGE');
+            FirebaseAuth.instance.signOut();
+            Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(builder: (context) => OnboardingPage()),
+                (route) => false);
           }),
     ];
   }
