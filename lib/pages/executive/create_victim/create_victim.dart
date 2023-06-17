@@ -10,12 +10,15 @@ class CreateVictim extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isShowingProgressIndicator = false;
     return ChangeNotifierProvider.value(
         value: VictimChangeNotifier(),
         child: Builder(builder: (context) {
           return Consumer<VictimChangeNotifier>(
               builder: (context, notifier, _) {
-            if (notifier.state == AsyncChangeNotifierState.busy) {
+            if (notifier.state == AsyncChangeNotifierState.busy &&
+                !isShowingProgressIndicator) {
+              isShowingProgressIndicator = true;
               WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
                 showDialog(
                     context: context,
@@ -24,7 +27,9 @@ class CreateVictim extends StatelessWidget {
                         ));
               });
             }
-            if (notifier.state == AsyncChangeNotifierState.done) {
+            if (notifier.state == AsyncChangeNotifierState.done &&
+                isShowingProgressIndicator) {
+              isShowingProgressIndicator = false;
               WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
                 Navigator.of(context).pop();
                 Navigator.of(context).pop();

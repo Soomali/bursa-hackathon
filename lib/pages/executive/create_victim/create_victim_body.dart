@@ -12,12 +12,11 @@ import 'package:smart_tent_city_app/pages/login/login_input.dart';
 class CreateVictimBody extends StatefulWidget {
   const CreateVictimBody({super.key});
 
-
   @override
   State<CreateVictimBody> createState() => _CreateVictimBodyState();
 }
-enum Gender { kadin, erkek }
 
+enum Gender { kadin, erkek }
 
 class _CreateVictimBodyState extends State<CreateVictimBody> {
   Gender? _gender;
@@ -28,14 +27,13 @@ class _CreateVictimBodyState extends State<CreateVictimBody> {
   String? birthDate;
   String tentNumber = '';
   String? additionalData;
-  String gender="";
+  String gender = "";
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      padding: EdgeInsets.fromLTRB(40, 30, 0, 0),
-      physics: BouncingScrollPhysics(),
-      child: Column(
-        children: [
+        padding: EdgeInsets.fromLTRB(40, 30, 0, 0),
+        physics: BouncingScrollPhysics(),
+        child: Column(children: [
           LoginInput(
               onChanged: (val) {
                 setState(() {
@@ -101,30 +99,28 @@ class _CreateVictimBodyState extends State<CreateVictimBody> {
               maxLength: 40),
           Row(
             children: <Widget>[
-            ListTile(
-              title: Text('Kadın'),
-              leading: Radio<Gender>(
+              Radio<Gender>(
                 value: Gender.kadin,
                 groupValue: _gender,
                 onChanged: (Gender? value) {
                   setState(() {
                     _gender = value;
                   });
-              },
-            ),
-          ),
-              ListTile(
-                title: Text('Erkek'),
-                leading: Radio<Gender>(
-                  value: Gender.erkek,
-                  groupValue: _gender,
-                  onChanged: (Gender? value) {
-                    setState(() {
-                      _gender = value;
-                    });
-                  },
-                ),
+                },
               ),
+              Text('Kadın'),
+              Radio<Gender>(
+                value: Gender.erkek,
+                groupValue: _gender,
+                onChanged: (Gender? value) {
+                  setState(() {
+                    _gender = value;
+                  });
+                },
+              ),
+              Text('Erkek'),
+            ],
+          ),
           LoginButton(
               title: 'Kaydet',
               onPressed: () {
@@ -147,9 +143,6 @@ class _CreateVictimBodyState extends State<CreateVictimBody> {
                 Provider.of<VictimChangeNotifier>(context, listen: false)
                     .create(victimModel);
               })
-        ],
-      ),
-    ])
-    );
+        ]));
   }
 }
