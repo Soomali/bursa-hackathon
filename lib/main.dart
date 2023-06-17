@@ -12,6 +12,7 @@ import 'package:smart_tent_city_app/notifiers/victim_change_notifier.dart/victim
 import 'package:smart_tent_city_app/pages/main_page/main_page.dart';
 import 'package:smart_tent_city_app/pages/onboarding/onboarding_page.dart';
 import 'package:smart_tent_city_app/pages/provider/auth/auth_provider.dart';
+import 'package:smart_tent_city_app/util/main_page_button_data.util.dart';
 
 import 'model/user_type.dart';
 
@@ -19,6 +20,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   final UserType? userType = await LocalStorage().getUserType();
+  // FirebaseAuth.instance.signOut();
   runApp(SmartTent(
     userType: userType,
   ));
@@ -33,7 +35,6 @@ class SmartTent extends StatefulWidget {
 }
 
 class _SmartTentState extends State<SmartTent> {
-  User? before;
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -52,7 +53,14 @@ class _SmartTentState extends State<SmartTent> {
               builder: (context, user, _) {
                 return MaterialApp(
                     debugShowCheckedModeBanner: false,
-                    home: user == null ? OnboardingPage() : MainPage());
+                    home: user == null
+                        ? OnboardingPage()
+                        : MainPage(
+                            list:
+                                MainPageButtonDataUtil.getButtonDataByUserType(
+                                    context,
+                                    widget.userType ?? UserType.executive),
+                          ));
               },
             );
           })),
