@@ -5,3 +5,4 @@ const String tentCityCollectionPath = 'tentCity';
 const String requestCollectionPath = 'request';
 const String feedbackCollectionPath = 'feedback';
 const String inventoryCollectionPath = 'inventory';
+const String movementCollectionPath = 'movement';

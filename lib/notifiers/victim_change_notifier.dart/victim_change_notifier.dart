@@ -3,11 +3,14 @@ import 'package:smart_tent_city_app/constants/error_ids.dart';
 import 'package:smart_tent_city_app/constants/error_messages.dart';
 import 'package:smart_tent_city_app/constants/firebase.dart';
 import 'package:smart_tent_city_app/model/VictimModel.dart';
+import 'package:smart_tent_city_app/model/movement_model.dart';
 import 'package:smart_tent_city_app/pages/provider/data_change_notifier.dart';
 
 class VictimChangeNotifier extends DataChangeNotifier<VictimModel> {
   final victimCollection =
       FirebaseFirestore.instance.collection(victimCollectionPath);
+  CollectionReference getMovementCollection(String victimId) =>
+      victimCollection.doc(victimId).collection(movementCollectionPath);
   Future<void> _get(String id) async {
     final doc = await victimCollection.doc(id).get();
     this.data =
@@ -15,6 +18,23 @@ class VictimChangeNotifier extends DataChangeNotifier<VictimModel> {
     notifyListeners();
   }
 
+  Future<void> _getMovements(String id) async {
+    if (this.data?.id != id) {
+      await _get(id);
+    }
+    final movementCollection = getMovementCollection(id);
+    final snapshots = await movementCollection.get();
+    this.data!.movements = snapshots.docs
+        .map((e) => e.data())
+        .cast<Map<String, dynamic>>()
+        .map(MovementModel.fromJson)
+        .toList();
+  }
+
+  Future<void> _addMovement(String id, MovementModel movementModel) async {
+    final movementCollection = getMovementCollection(id);
+    await movementCollection.add(movementModel.toJson());
+  }
 
   Future<void> _create(VictimModel victimModel) async {
     await victimCollection.doc(victimModel.id).set(victimModel.toJson());
@@ -33,6 +53,13 @@ class VictimChangeNotifier extends DataChangeNotifier<VictimModel> {
     }
     await victimCollection.doc(snapshot.docs.first.id).delete();
   }
+
+  void addMovement(String id, MovementModel movementModel) => wrapAsync(
+      () => _addMovement(id, movementModel),
+      'addMovementID',
+      'add Movement error');
+  void getMovements(String id) => wrapAsync(
+      () => _getMovements(id), 'get movements error Id', 'get movements error');
 
   void create(VictimModel victimModel) => wrapAsync(
       () => _create(victimModel),
