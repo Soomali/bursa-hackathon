@@ -68,10 +68,7 @@ class _LoginVictimPageBodyState extends State<LoginVictimPageBody> {
       case PhoneAuthState.codeVerified:
         WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
           Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(
-                  builder: (context) => MainPage(
-                      list: MainPageButtonDataUtil.getButtonDataByUserType(
-                          context, UserType.victim))),
+              MaterialPageRoute(builder: (context) => MainPage()),
               (route) => false);
         });
         break;
