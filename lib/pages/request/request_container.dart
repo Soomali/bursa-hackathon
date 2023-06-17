@@ -55,8 +55,7 @@ class _RequestContainerState extends State<RequestContainer> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        home: SafeArea(
+    return SafeArea(
       child: Scaffold(
         body: InkWell(
           onTap: () {},
@@ -79,6 +78,6 @@ class _RequestContainerState extends State<RequestContainer> {
           ),
         ),
       ),
-    ));
+    );
   }
 }

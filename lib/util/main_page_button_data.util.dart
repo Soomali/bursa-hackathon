@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_tent_city_app/data/main_page_button_data/main_page_button_data.dart';
 import 'package:smart_tent_city_app/model/user_type.dart';
+import 'package:smart_tent_city_app/pages/executive_data/executive_data.dart';
 import 'package:smart_tent_city_app/pages/onboarding/onboarding_page.dart';
 
 class MainPageButtonDataUtil {
@@ -38,7 +39,8 @@ class MainPageButtonDataUtil {
           iconPath: 'assets/User_light.svg',
           textData: 'bilgilerim',
           onPress: () {
-            print('GO TO REQUESTS PAGE');
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => ExecutiveInfoPage()));
           }),
       MainPageButtonData(
           iconPath: 'assets/Chat_search.svg',
