@@ -35,8 +35,7 @@ class _MyRequestsBodyState extends State<MyRequestsBody> {
   Widget build(BuildContext context) {
     return Consumer<RequestsListChangeNotifier>(
         builder: (context, notifier, _) {
-      if (notifier.data != null &&
-          notifier.data!.isEmpty &&
+      if ((notifier.data == null || notifier.data!.isEmpty) &&
           notifier.state == AsyncChangeNotifierState.busy) {
         return Center(
           child: CircularProgressIndicator(),
