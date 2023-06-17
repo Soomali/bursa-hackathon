@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_tent_city_app/pages/background_page.dart';
+import 'package:smart_tent_city_app/pages/create_victim/create_victim.dart';
+import 'package:smart_tent_city_app/pages/create_victim/create_victim_body.dart';
 import 'package:smart_tent_city_app/pages/victim_processes/victim_process_option.dart';
 
 class VictimProcesses extends StatelessWidget {
@@ -13,7 +15,10 @@ class VictimProcesses extends StatelessWidget {
         VictimProcessOption(
             label: 'Depremzede Kaydet',
             iconPath: 'assets/injured_person.svg',
-            onPress: () {}),
+            onPress: () {
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => CreateVictim()));
+            }),
         VictimProcessOption(
             label: 'Depremzede Sil',
             iconPath: 'assets/injured_person.svg',
