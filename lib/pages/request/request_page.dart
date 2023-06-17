@@ -13,11 +13,23 @@ import 'package:smart_tent_city_app/pages/background_page.dart';
 import 'package:smart_tent_city_app/pages/request/request_customer_page.dart';
 import 'package:smart_tent_city_app/pages/request/request_page_type.dart';
 
-class RequestPage extends StatelessWidget {
+class RequestPage extends StatefulWidget {
   final RequestPageType type;
   final CartChangeNotifier cartNotifier;
   RequestPage({super.key, required this.type, CartChangeNotifier? notifier})
       : cartNotifier = notifier ?? CartChangeNotifier();
+
+  @override
+  State<RequestPage> createState() => _RequestPageState();
+}
+
+class _RequestPageState extends State<RequestPage> {
+  late RequestPageType type;
+  @override
+  void initState() {
+    super.initState();
+    type = widget.type;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +55,7 @@ class RequestPage extends StatelessWidget {
       return MultiProvider(
         providers: [
           ChangeNotifierProvider.value(
-            value: cartNotifier,
+            value: widget.cartNotifier,
           ),
           ChangeNotifierProvider.value(
             value: RequestChangeNotifier(),
@@ -58,10 +70,9 @@ class RequestPage extends StatelessWidget {
                           onTap: notifier.cart.isEmpty
                               ? null
                               : () {
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => RequestPage(
-                                          notifier: notifier,
-                                          type: RequestPageType.submit)));
+                                  setState(() {
+                                    type = RequestPageType.submit;
+                                  });
                                 },
                           child: Stack(
                             children: [
@@ -115,8 +126,15 @@ class RequestPage extends StatelessWidget {
                       ));
                 })
               : null,
-          child:
-              RequestPageBody(productList: notifier.data!.products, type: type),
+          child: RequestPageBody(
+              onSubmitted: () {
+                widget.cartNotifier.cart = [];
+                setState(() {
+                  type = RequestPageType.search;
+                });
+              },
+              productList: notifier.data!.products,
+              type: type),
         ),
       );
     });

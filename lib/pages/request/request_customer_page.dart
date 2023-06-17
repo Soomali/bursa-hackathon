@@ -22,8 +22,13 @@ import '../login/login_button.dart';
 class RequestPageBody extends StatefulWidget {
   final List<ProductModel> productList;
   final RequestPageType type;
+  final VoidCallback onSubmitted;
 
-  RequestPageBody({required this.productList, required this.type, Key? key})
+  RequestPageBody(
+      {required this.productList,
+      required this.onSubmitted,
+      required this.type,
+      Key? key})
       : super(key: key);
 
   @override
@@ -63,11 +68,11 @@ class _RequestPageBodyState extends State<RequestPageBody> {
           isShowingProgressIndicator) {
         WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
           Navigator.of(context).pop();
-          Navigator.of(context).pop();
-          Navigator.of(context).pop();
+          widget.onSubmitted();
         });
       } else if (requestNotifier.state == AsyncChangeNotifierState.busy &&
           !isShowingProgressIndicator) {
+        isShowingProgressIndicator = true;
         WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
           showDialog(
               context: context,
@@ -104,15 +109,18 @@ class _RequestPageBodyState extends State<RequestPageBody> {
                         horizontal: MediaQuery.of(context).size.width * .2),
                     child: Material(
                         child: _UpdateInventoryWidget(
-                            type: widget.type, cartModel: model)),
+                            onSubmitted: widget.onSubmitted,
+                            type: widget.type,
+                            cartModel: model)),
                   );
                 });
           },
           onTapSubmit: () {
             final victimData =
                 Provider.of<VictimChangeNotifier>(context, listen: false).data!;
+
             final RequestModel requestModel = RequestModel(
-              products: products,
+              products: notifier.cart.map((e) => e.productModel).toList(),
               status: RequestStatus.waiting,
               victimId: victimData.id,
               tentCityId: victimData.tentCityId,
@@ -131,11 +139,12 @@ class _RequestPageBodyState extends State<RequestPageBody> {
 }
 
 class _UpdateInventoryWidget extends StatefulWidget {
-  const _UpdateInventoryWidget({
-    super.key,
-    required this.type,
-    required this.cartModel,
-  });
+  const _UpdateInventoryWidget(
+      {super.key,
+      required this.type,
+      required this.cartModel,
+      required this.onSubmitted});
+  final VoidCallback onSubmitted;
   final RequestPageType type;
   final CartModel cartModel;
 
@@ -163,7 +172,7 @@ class _UpdateInventoryWidgetState extends State<_UpdateInventoryWidget> {
           isShowingCircularIndicator) {
         WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
           Navigator.of(context).pop();
-          Navigator.of(context).pop();
+          this.widget.onSubmitted.call();
           isShowingCircularIndicator = false;
         });
       }

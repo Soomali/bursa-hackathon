@@ -22,7 +22,7 @@ class NavigationBarPage extends StatefulWidget {
 
 class _NavigationBarPageState extends State<NavigationBarPage> {
   int _selectedIndex = 0;
-  final List<Widget> _victimBodies = const [
+  final List<Widget> _victimBodies = [
     RequestChoicePage(),
     MyRequestsPage(),
     QrPage(),

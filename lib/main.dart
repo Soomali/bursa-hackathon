@@ -66,7 +66,9 @@ class _SmartTentState extends State<SmartTent> {
                   });
                 }
                 return MaterialApp(
-                    theme: ThemeData(primaryColor: Colors.redAccent.shade700),
+                    theme: ThemeData(
+                        colorScheme: ColorScheme.fromSeed(
+                            seedColor: Colors.redAccent.shade700)),
                     debugShowCheckedModeBanner: false,
                     home:
                         user == null ? OnboardingPage() : NavigationBarPage());
