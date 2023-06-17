@@ -4,6 +4,7 @@ import 'package:smart_tent_city_app/constants/error_messages.dart';
 import 'package:smart_tent_city_app/constants/firebase.dart';
 import 'package:smart_tent_city_app/model/VictimModel.dart';
 import 'package:smart_tent_city_app/model/movement_model.dart';
+import 'package:smart_tent_city_app/notifiers/async_change_notifier_state.dart';
 import 'package:smart_tent_city_app/pages/provider/data_change_notifier.dart';
 
 class VictimChangeNotifier extends DataChangeNotifier<VictimModel> {

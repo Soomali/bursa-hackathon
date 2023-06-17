@@ -14,6 +14,6 @@ class MovementModel {
             : Movement.out);
   }
   Map<String, dynamic> toJson() {
-    return {'time': time, 'movement': movement};
+    return {'time': time, 'movement': movement.name};
   }
 }

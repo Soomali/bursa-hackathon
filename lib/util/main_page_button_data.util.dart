@@ -4,6 +4,7 @@ import 'package:smart_tent_city_app/data/main_page_button_data/main_page_button_
 import 'package:smart_tent_city_app/model/user_type.dart';
 import 'package:smart_tent_city_app/pages/executive/executive_data/executive_data.dart';
 import 'package:smart_tent_city_app/pages/executive/feedbacks/feedback_page.dart';
+import 'package:smart_tent_city_app/pages/executive/qr_scan/qr_scan_page.dart';
 import 'package:smart_tent_city_app/pages/victim/my_requests/my_requests_page.dart';
 import 'package:smart_tent_city_app/pages/onboarding/onboarding_page.dart';
 import 'package:smart_tent_city_app/pages/victim/qr_page/qr_page.dart';
@@ -42,6 +43,13 @@ class MainPageButtonDataUtil {
           textData: 'Envanter Yönetimi',
           onPress: () {
             print('GO TO REQUESTS PAGE');
+          }),
+      MainPageButtonData(
+          iconPath: 'assets/inventory.svg',
+          textData: 'QR oku',
+          onPress: () {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => QrScanPage()));
           }),
       MainPageButtonData(
           iconPath: 'assets/User_light.svg',
