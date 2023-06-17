@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_tent_city_app/notifiers/auth/auth_change_notifier.dart';
-import 'package:smart_tent_city_app/notifiers/auth/executive_auth_change_notifier.dart';
 import 'package:smart_tent_city_app/notifiers/auth/executive_auth_data.dart';
 import 'package:smart_tent_city_app/pages/login/login_button.dart';
 import 'package:smart_tent_city_app/pages/login/login_input.dart';
@@ -69,7 +68,8 @@ class _LoginExecutivePageBodyState extends State<LoginExecutivePageBody> {
         SizedBox(
           height: 15,
         ),
-        Center(child: LoginButton(
+        Center(
+            child: LoginButton(
           onPressed: () {
             final notifier = Provider.of<AuthChangeNotifier<ExecutiveAuthData>>(
                 context,
@@ -77,6 +77,7 @@ class _LoginExecutivePageBodyState extends State<LoginExecutivePageBody> {
             notifier.authenticate(
                 ExecutiveAuthData(email: email, password: password));
           },
+          title: "Giriş Yap",
         )),
         SizedBox(
           height: 15,

@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_tent_city_app/constants/error_messages.dart';
-import 'package:smart_tent_city_app/model/user_type.dart';
 import 'package:smart_tent_city_app/notifiers/auth/auth_change_notifier.dart';
 import 'package:smart_tent_city_app/notifiers/auth/victim_auth_change_notifier.dart';
 import 'package:smart_tent_city_app/pages/login/login_button.dart';
 import 'package:smart_tent_city_app/pages/login/login_input.dart';
 import 'package:smart_tent_city_app/pages/main_page/main_page.dart';
-import 'package:smart_tent_city_app/util/main_page_button_data.util.dart';
 
 import '../../../notifiers/auth/phone_auth_state.dart';
 
@@ -124,13 +122,15 @@ class _LoginVictimPageBodyState extends State<LoginVictimPageBody> {
                   },
                   hintText: "Telefon Numarası"),
               SizedBox(height: 15, width: double.infinity),
-              Center(child: LoginButton(
+              Center(
+                  child: LoginButton(
                 onPressed: () {
                   final notifier = Provider.of<AuthChangeNotifier<String>>(
                       context,
                       listen: false);
                   notifier.authenticate(phoneNumber);
                 },
+                title: "Giriş Yapınız",
               )),
               SizedBox(height: 15, width: double.infinity)
             ]);

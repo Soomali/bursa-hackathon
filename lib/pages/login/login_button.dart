@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 class LoginButton extends StatefulWidget {
   final VoidCallback onPressed;
-  const LoginButton({Key? key, required this.onPressed}) : super(key: key);
+  final String title;
+  const LoginButton({Key? key, required this.onPressed, required this.title})
+      : super(key: key);
 
   @override
   State<LoginButton> createState() => _LoginButtonState();
@@ -22,7 +24,7 @@ class _LoginButtonState extends State<LoginButton> {
             borderRadius: BorderRadius.all(Radius.circular(8)),
           ),
         ),
-        child: Text(style: TextStyle(color: Colors.white), "Giriş Yap"),
+        child: Text(style: TextStyle(color: Colors.white), widget.title),
       ),
     );
   }
