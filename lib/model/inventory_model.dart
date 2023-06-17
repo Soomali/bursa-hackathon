@@ -22,6 +22,14 @@ class InventoryModel {
     };
   }
 
+  void change(String type, int amount) {
+    int index = this.products.indexWhere((element) => element.type == type);
+    if (index == -1) {
+      return;
+    }
+    this.products[index].amount = amount;
+  }
+
   InventoryModel copy() {
     return InventoryModel(
         id: id, products: List.from(products), tentCityId: tentCityId);

@@ -4,7 +4,19 @@ import 'package:smart_tent_city_app/notifiers/async_change_notifier_state.dart';
 import '../model/error_model.dart';
 
 abstract class AsyncChangeNotifier extends ChangeNotifier {
-  AsyncChangeNotifierState state = AsyncChangeNotifierState.idle;
+  AsyncChangeNotifierState _state = AsyncChangeNotifierState.idle;
+  AsyncChangeNotifierState get state => _state;
+  void set state(AsyncChangeNotifierState newState) {
+    _stateBefore = _state;
+    _state = newState;
+  }
+
+  bool get stateChanged {
+    return _stateBefore != _state;
+  }
+
+  AsyncChangeNotifierState _stateBefore = AsyncChangeNotifierState.idle;
+  AsyncChangeNotifierState get stateBefore => _stateBefore;
   @protected
   List<ErrorModel> errors = [];
 
