@@ -22,7 +22,14 @@ class ErrorHandlerProvider<T extends AsyncChangeNotifier>
         context: context,
         builder: (context) {
           return AlertDialog(
-            actions: [TextButton(onPressed: onPressed, child: Text('Tamam'))],
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    onPressed();
+                    Navigator.of(context).pop();
+                  },
+                  child: Text('Tamam'))
+            ],
             content: Text(errorModel.message),
           );
         });
@@ -69,6 +76,9 @@ class ErrorHandlerProvider<T extends AsyncChangeNotifier>
             errors.add(error);
           }
         }
+        WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+          handleErrors(context, errors, notifier);
+        });
 
         return widget ?? child;
       },
