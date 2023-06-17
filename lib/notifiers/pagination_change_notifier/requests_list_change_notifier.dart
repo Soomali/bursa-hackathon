@@ -8,10 +8,13 @@ import 'package:smart_tent_city_app/notifiers/pagination_change_notifier/paginat
 class RequestsListChangeNotifier extends PaginationChangeNotier<RequestModel> {
   Future<void> _get({String? victimId, String? tentCityId}) async {
     final field = victimId != null ? 'victimId' : 'tentCityId';
-    final query = FirebaseFirestore.instance
+    var query = FirebaseFirestore.instance
         .collection(requestCollectionPath)
         .limit(10)
         .where(field, isEqualTo: victimId ?? tentCityId);
+    if (tentCityId != null) {
+      query = query.where('status', isEqualTo: 'waiting');
+    }
 
     final snapshot = await paginate(query).get();
     final newData = snapshot.docs
@@ -21,6 +24,20 @@ class RequestsListChangeNotifier extends PaginationChangeNotier<RequestModel> {
     this.data = [...(this.data ?? []), ...newData];
     notifyListeners();
   }
+
+  Future<void> _handleUpdate(RequestModel requestModel, int index) async {
+    this.data?.removeAt(index);
+    notifyListeners();
+    await FirebaseFirestore.instance
+        .collection(requestCollectionPath)
+        .doc(requestModel.id)
+        .update(requestModel.toJson());
+  }
+
+  void update(RequestModel requestModel, int index) => wrapAsync(
+      () => _handleUpdate(requestModel, index),
+      'updateRequestListId',
+      'updateRequestId');
 
   void get({String? victimId, String? tentCityId}) {
     assert(victimId != null || tentCityId != null,
