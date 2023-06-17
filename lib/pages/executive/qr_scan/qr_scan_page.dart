@@ -43,25 +43,9 @@ class _QrScanPageState extends State<QrScanPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            flex: 5,
-            child: QRView(
-              key: qrKey,
-              onQRViewCreated: _onQRViewCreated,
-            ),
-          ),
-          Expanded(
-            flex: 1,
-            child: Center(
-              child: (result != null)
-                  ? Text(
-                      'Barcode Type: ${result!.format}   Data: ${result!.code}')
-                  : Text('Scan a code'),
-            ),
-          )
-        ],
+      body: QRView(
+        key: qrKey,
+        onQRViewCreated: _onQRViewCreated,
       ),
     );
   }

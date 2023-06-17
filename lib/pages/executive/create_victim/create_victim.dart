@@ -6,7 +6,8 @@ import 'package:smart_tent_city_app/pages/background_page.dart';
 import 'package:smart_tent_city_app/pages/executive/create_victim/create_victim_body.dart';
 
 class CreateVictim extends StatelessWidget {
-  const CreateVictim({super.key});
+  final VoidCallback onFinished;
+  const CreateVictim({super.key, required this.onFinished});
 
   @override
   Widget build(BuildContext context) {
@@ -32,10 +33,15 @@ class CreateVictim extends StatelessWidget {
               isShowingProgressIndicator = false;
               WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
                 Navigator.of(context).pop();
-                Navigator.of(context).pop();
+                this.onFinished();
               });
             }
-            return BackgroundPage(child: CreateVictimBody());
+            return WillPopScope(
+                onWillPop: () async {
+                  onFinished();
+                  return false;
+                },
+                child: BackgroundPage(child: CreateVictimBody()));
           });
         }));
   }

@@ -7,6 +7,7 @@ import 'package:smart_tent_city_app/pages/onboarding/style.dart';
 import 'package:smart_tent_city_app/pages/request/request_customer_page.dart';
 import 'package:smart_tent_city_app/pages/request/request_page.dart';
 import 'package:smart_tent_city_app/pages/request/request_page_type.dart';
+import 'package:smart_tent_city_app/util/status_bar_appbar.dart';
 
 class RequestChoiceOption extends StatelessWidget {
   final Style style;
@@ -63,40 +64,82 @@ class RequestChoiceOption extends StatelessWidget {
   }
 }
 
-class RequestChoicePage extends StatelessWidget {
-  const RequestChoicePage({super.key});
+class RequestChoicePage extends StatefulWidget {
+  RequestChoicePage({super.key});
+
+  @override
+  State<RequestChoicePage> createState() => _RequestChoicePageState();
+}
+
+class _RequestChoicePageState extends State<RequestChoicePage> {
+  int _selectedIndex = 0;
+
+  final List<Widget> _pages = [
+    RequestPage(
+      type: RequestPageType.search,
+    ),
+    ComplaintPage()
+  ];
 
   @override
   Widget build(BuildContext context) {
-    return BackgroundPage(
-        child: Padding(
-      padding: EdgeInsets.symmetric(
-          horizontal: MediaQuery.of(context).size.width * .06),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          RequestChoiceOption(
-              iconPath: 'assets/Bag.svg',
-              label: 'Ürün talep et',
-              onPress: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                      builder: (context) => RequestPage(
-                            type: RequestPageType.search,
-                          )),
-                );
-              }),
-          RequestChoiceOption(
-            iconPath: 'assets/complaint.svg',
-            label: 'İstek ve Şikayet',
-            onPress: () {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => ComplaintPage()));
+    return Scaffold(
+        appBar: AppBarProvider.getStatusBarAppBar(),
+        bottomNavigationBar: BottomNavigationBar(
+            currentIndex: _selectedIndex,
+            onTap: (val) {
+              setState(() {
+                _selectedIndex = val;
+              });
             },
-            style: Style.inverted,
-          ),
-        ],
-      ),
-    ));
+            items: [
+              BottomNavigationBarItem(
+                  icon: SvgPicture.asset(
+                    'assets/Bag.svg',
+                    color: _selectedIndex == 0
+                        ? Colors.redAccent.shade700
+                        : Colors.black,
+                  ),
+                  label: 'Ürün'),
+              BottomNavigationBarItem(
+                  icon: SvgPicture.asset(
+                    'assets/complaint.svg',
+                    color: _selectedIndex == 1
+                        ? Colors.redAccent.shade700
+                        : Colors.black,
+                  ),
+                  label: 'Dilek'),
+            ]),
+        body: _pages[_selectedIndex]
+        // body: Padding(
+        //   padding: EdgeInsets.symmetric(
+        //       horizontal: MediaQuery.of(context).size.width * .06),
+        //   child: Column(
+        //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        //     children: [
+        //       RequestChoiceOption(
+        //           iconPath: 'assets/Bag.svg',
+        //           label: 'Ürün talep et',
+        //           onPress: () {
+        //             Navigator.of(context).push(
+        //               MaterialPageRoute(
+        //                   builder: (context) => RequestPage(
+        //                         type: RequestPageType.search,
+        //                       )),
+        //             );
+        //           }),
+        //       RequestChoiceOption(
+        //         iconPath: 'assets/complaint.svg',
+        //         label: 'İstek ve Şikayet',
+        //         onPress: () {
+        //           Navigator.of(context).push(
+        //               MaterialPageRoute(builder: (context) => ComplaintPage()));
+        //         },
+        //         style: Style.inverted,
+        //       ),
+        //     ],
+        //   ),
+        // )
+        );
   }
 }

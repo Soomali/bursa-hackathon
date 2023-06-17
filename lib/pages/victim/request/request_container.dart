@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:smart_tent_city_app/constants/custom_colors.dart';
 import 'package:smart_tent_city_app/model/ProductModel.dart';
 import 'package:smart_tent_city_app/notifiers/cart_change_notifier/cart_change_notifier.dart';
 import 'package:smart_tent_city_app/pages/request/request_page_type.dart';
@@ -25,27 +26,28 @@ class _RequestContainerState extends State<RequestContainer> {
           child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          if (widget.model.amount > 0)
+          if (widget.model.amount > 0) ...[
             IconButton(
               onPressed: () {
                 Provider.of<CartChangeNotifier>(context, listen: false)
                     .decrement(widget.model.productModel);
               },
               icon: Icon(
-                Icons.remove,
+                Icons.remove_circle,
                 size: 21,
               ),
             ),
-          Text(
-            "${widget.model.amount}",
-            style: TextStyle(fontSize: 16),
-          ),
+            Text(
+              "${widget.model.amount}",
+              style: TextStyle(fontSize: 16),
+            ),
+          ],
           IconButton(
             onPressed: () {
               Provider.of<CartChangeNotifier>(context, listen: false)
                   .increment(widget.model.productModel);
             },
-            icon: Icon(Icons.add, size: 21),
+            icon: Icon(Icons.add_circle, size: 21),
           ),
         ],
       ));
@@ -54,20 +56,31 @@ class _RequestContainerState extends State<RequestContainer> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 110,
-      decoration: BoxDecoration(
-          color: Colors.red,
-          borderRadius: BorderRadius.all(Radius.circular(widget.radius))),
-      child: Center(
-        child: Column(mainAxisSize: MainAxisSize.min, children: [
-          Icon(Icons.star, size: 35),
-          SizedBox(width: 5, height: 7),
-          Text(widget.model.productModel.type),
-          SizedBox(width: 3, height: 3),
-          Center(child: MyFloatingActionButton()),
-          SizedBox(width: 1)
-        ]),
+    return DefaultTextStyle(
+      style: TextStyle(color: CustomColors.greenAccent),
+      child: IconTheme(
+        data: IconThemeData(color: CustomColors.greenAccent),
+        child: Container(
+          height: 140,
+          decoration: BoxDecoration(
+              color: Colors.white,
+              border: Border.all(color: CustomColors.greenAccent, width: 1.6),
+              borderRadius: BorderRadius.all(Radius.circular(widget.radius))),
+          child: Center(
+            child: Column(mainAxisSize: MainAxisSize.min, children: [
+              Transform.rotate(
+                  angle: -0.5,
+                  child: Align(
+                      child:
+                          Icon(Icons.baby_changing_station_rounded, size: 40))),
+              SizedBox(width: 5, height: 24),
+              Text(widget.model.productModel.type),
+              SizedBox(width: 3, height: 1),
+              Center(child: MyFloatingActionButton()),
+              SizedBox(width: 1)
+            ]),
+          ),
+        ),
       ),
     );
   }

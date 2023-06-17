@@ -7,10 +7,10 @@ import 'package:smart_tent_city_app/model/user_type.dart';
 import 'package:smart_tent_city_app/notifiers/auth/auth_change_notifier.dart';
 import 'package:smart_tent_city_app/notifiers/auth/victim_auth_change_notifier.dart';
 import 'package:smart_tent_city_app/notifiers/user_type_change_notifier/user_type_change_notifier.dart';
+import 'package:smart_tent_city_app/pages/components/NavigationBar.dart';
 import 'package:smart_tent_city_app/pages/login/login_input.dart';
 import 'package:smart_tent_city_app/pages/login/login_pages/login_executive_page_body.dart';
 import 'package:smart_tent_city_app/pages/login/login_pages/login_victim_page_body.dart';
-import 'package:smart_tent_city_app/pages/main_page/main_page.dart';
 import 'package:smart_tent_city_app/pages/provider/error_handler/error_handler_provider.dart';
 import 'package:smart_tent_city_app/util/main_page_button_data.util.dart';
 
@@ -24,7 +24,7 @@ class LoginPage<T> extends StatelessWidget {
       if (user != null) {
         WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
           Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(builder: (context) => MainPage()),
+              MaterialPageRoute(builder: (context) => NavigationBarPage()),
               (route) => false);
         });
       }

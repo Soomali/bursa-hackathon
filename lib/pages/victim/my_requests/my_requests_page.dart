@@ -10,13 +10,17 @@ class MyRequestsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final notifier = RequestsListChangeNotifier();
-    final victimId =
-        Provider.of<VictimChangeNotifier>(context, listen: false).data!.id;
-    notifier.get(victimId: victimId);
-    return ChangeNotifierProvider.value(
-      value: notifier,
-      child: BackgroundPage(child: MyRequestsBody()),
-    );
+    final requestsNotifier = RequestsListChangeNotifier();
+
+    return Consumer<VictimChangeNotifier>(builder: (context, notifier, _) {
+      if (notifier.data == null) {
+        return CircularProgressIndicator();
+      }
+      final victimId = notifier.data!.id;
+      requestsNotifier.get(victimId: victimId);
+      return ChangeNotifierProvider.value(
+          value: requestsNotifier,
+          child: BackgroundPage(child: MyRequestsBody()));
+    });
   }
 }

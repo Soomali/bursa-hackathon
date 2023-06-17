@@ -4,9 +4,9 @@ import 'package:provider/provider.dart';
 import 'package:smart_tent_city_app/constants/error_messages.dart';
 import 'package:smart_tent_city_app/notifiers/auth/auth_change_notifier.dart';
 import 'package:smart_tent_city_app/notifiers/auth/victim_auth_change_notifier.dart';
+import 'package:smart_tent_city_app/pages/components/NavigationBar.dart';
 import 'package:smart_tent_city_app/pages/login/login_button.dart';
 import 'package:smart_tent_city_app/pages/login/login_input.dart';
-import 'package:smart_tent_city_app/pages/main_page/main_page.dart';
 
 import '../../../notifiers/auth/phone_auth_state.dart';
 
@@ -66,7 +66,7 @@ class _LoginVictimPageBodyState extends State<LoginVictimPageBody> {
       case PhoneAuthState.codeVerified:
         WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
           Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(builder: (context) => MainPage()),
+              MaterialPageRoute(builder: (context) => NavigationBarPage()),
               (route) => false);
         });
         break;
