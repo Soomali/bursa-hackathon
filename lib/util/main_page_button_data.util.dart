@@ -7,6 +7,7 @@ import 'package:smart_tent_city_app/pages/feedbacks/feedback_page.dart';
 import 'package:smart_tent_city_app/pages/my_requests/my_requests_page.dart';
 import 'package:smart_tent_city_app/pages/onboarding/onboarding_page.dart';
 import 'package:smart_tent_city_app/pages/request_choice/request_choice.dart';
+import 'package:smart_tent_city_app/pages/tent_city_requests/tent_city_requests_body.dart';
 import 'package:smart_tent_city_app/pages/victim_processes/victim_processes_page.dart';
 
 class MainPageButtonDataUtil {
@@ -25,7 +26,8 @@ class MainPageButtonDataUtil {
           iconPath: 'assets/Chat_search.svg',
           textData: 'Talepleri Görüntüle',
           onPress: () {
-            print('GO TO REQUESTS PAGE');
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => TentCityRequests()));
           }),
       MainPageButtonData(
           iconPath: 'assets/Home_light.svg',
