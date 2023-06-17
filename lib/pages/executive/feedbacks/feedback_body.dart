@@ -5,7 +5,7 @@ import 'package:smart_tent_city_app/notifiers/async_change_notifier_state.dart';
 import 'package:smart_tent_city_app/notifiers/executive_change_notifier/executive_change_notifier.dart';
 import 'package:smart_tent_city_app/notifiers/feedback_change_notifier/feedback_change_notifier.dart';
 import 'package:smart_tent_city_app/notifiers/pagination_change_notifier/feedback_list_change_notifier.dart';
-import 'package:smart_tent_city_app/pages/feedbacks/feedback_card.dart';
+import 'package:smart_tent_city_app/pages/executive/feedbacks/feedback_card.dart';
 
 class FeedbackBody extends StatefulWidget {
   const FeedbackBody({super.key});

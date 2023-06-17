@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:smart_tent_city_app/notifiers/async_change_notifier_state.dart';
 import 'package:smart_tent_city_app/notifiers/victim_change_notifier.dart/victim_change_notifier.dart';
 import 'package:smart_tent_city_app/pages/background_page.dart';
-import 'package:smart_tent_city_app/pages/create_victim/create_victim_body.dart';
+import 'package:smart_tent_city_app/pages/executive/create_victim/create_victim_body.dart';
 
 class CreateVictim extends StatelessWidget {
   const CreateVictim({super.key});
