@@ -109,14 +109,13 @@ class _RequestPageBodyState extends State<RequestPageBody> {
                 });
           },
           onTapSubmit: () {
-            final victimId =
-                Provider.of<VictimChangeNotifier>(context, listen: false)
-                    .data!
-                    .id;
+            final victimData =
+                Provider.of<VictimChangeNotifier>(context, listen: false).data!;
             final RequestModel requestModel = RequestModel(
               products: products,
               status: RequestStatus.waiting,
-              victimId: victimId,
+              victimId: victimData.id,
+              tentCityId: victimData.tentCityId,
               id: FirebaseFirestore.instance
                   .collection(requestCollectionPath)
                   .doc()
