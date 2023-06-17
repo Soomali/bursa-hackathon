@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:smart_tent_city_app/constants/custom_colors.dart';
 import 'package:smart_tent_city_app/model/ProductModel.dart';
 import 'package:smart_tent_city_app/model/inventory_model.dart';
 import 'package:smart_tent_city_app/notifiers/async_change_notifier_state.dart';
@@ -70,13 +71,14 @@ class RequestPage extends StatelessWidget {
                               if (notifier.cart.isNotEmpty)
                                 Positioned(
                                   top: 12,
-                                  left: 8,
+                                  left:
+                                      MediaQuery.of(context).size.width * .043,
                                   child: Container(
                                     padding: EdgeInsets.all(8),
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
-                                      border:
-                                          Border.all(color: Colors.redAccent),
+                                      border: Border.all(
+                                          color: CustomColors.greenAccent),
                                       color: Colors.white,
                                     ),
                                     child: Text(
@@ -87,7 +89,7 @@ class RequestPage extends StatelessWidget {
                                           .toString(),
                                       style: TextStyle(
                                           fontSize: 20,
-                                          color: Colors.redAccent.shade700),
+                                          color: CustomColors.greenAccent),
                                     ),
                                   ),
                                 )

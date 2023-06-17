@@ -12,50 +12,50 @@ class VictimData extends StatelessWidget {
         Provider.of<VictimChangeNotifier>(context, listen: false).data!;
 
     return BackgroundPage(
-        child: Padding(
-          padding: EdgeInsets.all(8),
-          child: Center(
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 22.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      victim.photo == null ? Icon(Icons.account_circle,size: 130) : Icon(Icons.account_circle_outlined,size:130),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 12.0),
-                        child: Column(
-                          children: [
-                            Text(victim.name+" "+victim.surname,style: TextStyle(fontSize: 30)),
-                            victim.blood_type!=null ?Text("Kan grubu: "+victim.blood_type.toString(),style: TextStyle(fontSize: 20)):Text("Kan grubu bilinmiyor",style:TextStyle(fontSize: 20))
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                Row(
-                  children: [
-                    Column(
-                      children: [
-                        Text("Çadır no: "+victim.tent_number),
-                        Text("Çadır kent no: "+victim.tentCityId)
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Text("Telefon no: "+victim.phone_number.toString()),
-                        Text("Cinsiyet: "+victim.gender)
-                      ],
-                    )
-                  ],
-                ),
-                victim.additional_data!=null ? Text("Kazazede açıklaması: "+victim.additional_data!):SizedBox(),
-              ],
-            ),
+        child: SizedBox(
+      width: double.infinity,
+      child: Column(
+        children: [
+          Text(victim.id),
+          Divider(
+            color: Colors.red,
           ),
-        )
-    );
+          Text(victim.name),
+          Divider(
+            color: Colors.red,
+          ),
+          Text(victim.surname),
+          Divider(
+            color: Colors.red,
+          ),
+          victim.birthday != null ? Text("${victim.birthday}") : Text("-"),
+          Divider(
+            color: Colors.red,
+          ),
+          victim.blood_type != null ? Text("${victim.blood_type}") : Text("-"),
+          Divider(
+            color: Colors.red,
+          ),
+          victim.phone_number != null
+              ? Text("${victim.phone_number}")
+              : Text("-"),
+          Divider(
+            color: Colors.red,
+          ),
+          victim.tent_number != null
+              ? Text("${victim.tent_number}")
+              : Text("-"),
+          Divider(
+            color: Colors.red,
+          ),
+          victim.additional_data != null
+              ? Text("${victim.additional_data}")
+              : Text("-"),
+          Divider(
+            color: Colors.red,
+          ),
+        ],
+      ),
+    ));
   }
 }

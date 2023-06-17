@@ -22,8 +22,8 @@ class BackgroundPage extends StatelessWidget {
       appBar: AppBar(
         toolbarHeight: 0,
         systemOverlayStyle: SystemUiOverlayStyle(
-            systemNavigationBarColor: Colors.redAccent.shade700,
-            statusBarColor: Colors.red.shade700),
+            systemNavigationBarColor: Colors.redAccent.shade700.withOpacity(.6),
+            statusBarColor: Colors.red.shade700.withOpacity(.8)),
       ),
       floatingActionButton: fab,
       // appBar: AppBar(

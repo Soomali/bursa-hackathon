@@ -234,9 +234,10 @@ class _RequestBody extends StatelessWidget {
         child: Expanded(
           child: GridView.count(
             primary: false,
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.fromLTRB(10, 20, 10, 10),
             crossAxisSpacing: 5,
-            mainAxisSpacing: 5,
+            childAspectRatio: .8,
+            mainAxisSpacing: 20,
             crossAxisCount: 3,
             children: shownProducts
                 .map((containerRequest) {
