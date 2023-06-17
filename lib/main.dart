@@ -12,7 +12,6 @@ import 'package:smart_tent_city_app/notifiers/user_type_change_notifier/user_typ
 import 'package:smart_tent_city_app/notifiers/victim_change_notifier.dart/victim_change_notifier.dart';
 import 'package:smart_tent_city_app/pages/main_page/main_page.dart';
 import 'package:smart_tent_city_app/pages/onboarding/onboarding_page.dart';
-import 'package:smart_tent_city_app/pages/provider/auth/auth_provider.dart';
 import 'package:smart_tent_city_app/util/main_page_button_data.util.dart';
 
 import 'model/user_type.dart';
