@@ -1,4 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:smart_tent_city_app/constants/firebase.dart';
+import 'package:smart_tent_city_app/model/ExecutiveModel.dart';
+import 'package:smart_tent_city_app/model/VictimModel.dart';
+import 'package:smart_tent_city_app/notifiers/executive_change_notifier/executive_change_notifier.dart';
+import 'package:smart_tent_city_app/notifiers/victim_change_notifier.dart/victim_change_notifier.dart';
 import 'package:smart_tent_city_app/pages/login/login_button.dart';
 import 'package:smart_tent_city_app/pages/login/login_input.dart';
 
@@ -87,7 +94,25 @@ class _CreateVictimBodyState extends State<CreateVictimBody> {
               hintText: 'Ek Bilgi',
               keyboardType: TextInputType.text,
               maxLength: 40),
-          LoginButton(onPressed: () {})
+          LoginButton(onPressed: () {
+            final ExecutiveModel executiveModel =
+                Provider.of<ExecutiveChangeNotifier>(context, listen: false)
+                    .data!;
+            VictimModel victimModel = VictimModel(
+                tent_number: tentNumber,
+                id: FirebaseFirestore.instance
+                    .collection(victimCollectionPath)
+                    .doc()
+                    .id,
+                tentCityId: executiveModel.tentCityId,
+                name: name,
+                surname: surname,
+                birthday: birthDate,
+                blood_type: bloodType,
+                phone_number: phoneNumber);
+            Provider.of<VictimChangeNotifier>(context, listen: false)
+                .create(victimModel);
+          })
         ],
       ),
     );
