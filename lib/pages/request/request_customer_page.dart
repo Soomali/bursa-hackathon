@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_tent_city_app/model/ProductModel.dart';
 import 'package:smart_tent_city_app/pages/request/request_container.dart';
+import 'package:smart_tent_city_app/pages/request/request_customer_page_slider.dart';
 import '../background_page.dart';
 import '../login/login_button.dart';
 
@@ -12,6 +13,8 @@ class RequestPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BackgroundPage(
       child: Column(children: [
+        SizedBox(
+            height: MediaQuery.of(context).size.height *.1,child: CategorySlider(categories: ["categories","Yemek","Giyim","Sağlık","Yemek","Giyim","Yemek","Giyim","Yemek","Giyim"])),
         MediaQuery.removePadding(
           context: context,
           removeTop: true,
@@ -37,7 +40,7 @@ class RequestPage extends StatelessWidget {
           title: "Talep Oluştur",
           onPressed: () {},
         ),
-        SizedBox(height: 12)
+        SizedBox(height: 7,)
       ]),
     );
   }
