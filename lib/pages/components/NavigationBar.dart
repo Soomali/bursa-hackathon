@@ -50,14 +50,14 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
     return [
       NavigationBarItem(
         icon: SvgPicture.asset(
-          "assets/Chat_plus.svg",
+          "assets/Chat_search.svg",
           width: 24, // İstediğiniz boyuta göre değiştirin
           height: 24, // İstediğiniz boyuta göre değiştirin
 
           color: _selectedIndex == 0 ? Colors.red : Colors.grey[800],
         ),
         title: Text(
-          "Talep Oluştur",
+          "Talepler",
           style: TextStyle(
             color: _selectedIndex == 0 ? Colors.red : Colors.grey[800],
           ),
@@ -68,14 +68,14 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
       ),
       NavigationBarItem(
         icon: SvgPicture.asset(
-          "assets/Message_light.svg",
+          "assets/inventory.svg",
           width: 24, // İstediğiniz boyuta göre değiştirin
           height: 24, // İstediğiniz boyuta göre değiştirin
 
           color: _selectedIndex == 1 ? Colors.red : Colors.grey[800],
         ),
         title: Text(
-          "Taleplerim",
+          "Envanter",
           style: TextStyle(
             color: _selectedIndex == 1 ? Colors.red : Colors.grey[800],
           ),
@@ -103,42 +103,37 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
       ),
       NavigationBarItem(
         icon: SvgPicture.asset(
-          'assets/User_light.svg',
+          'assets/injured_person.svg',
           width: 24, // İstediğiniz boyuta göre değiştirin
           height: 24, // İstediğiniz boyuta göre değiştirin
 
           color: _selectedIndex == 3 ? Colors.red : Colors.grey[800],
         ),
         title: Text(
-          "Profilim",
+          "Depremzede",
           style: TextStyle(
             color: _selectedIndex == 3 ? Colors.red : Colors.grey[800],
           ),
         ),
-        onPressed: () {
-          // Buton 1'e basıldığında yapılacak işlemler
-        },
+        onPressed: () {},
       ),
       NavigationBarItem(
         icon: SvgPicture.asset(
           'assets/Sign_out_squre_light.svg',
-          width: 30, // İstediğiniz boyuta göre değiştirin
-          height: 30, // İstediğiniz boyuta göre değiştirin
-
+          width: 30,
+          height: 30,
           color: Colors.grey[800],
         ),
         title: Text(
-          "Çıkış Yap",
+          "Çıkış",
           style: TextStyle(
             color: Colors.grey[800],
           ),
         ),
         onPressed: () {
-          // Buton 1'e basıldığında yapılacak işlemler
+          FirebaseAuth.instance.signOut();
         },
       ),
-
-      // Diğer NavigationBarItem'ları buraya ekleyin
     ];
   }
 
@@ -164,7 +159,9 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
             ? _selectedIndex == this._victimBodies.length
                 ? AnnouncementPage()
                 : this._victimBodies[_selectedIndex]
-            : this._executiveBodies[_selectedIndex],
+            : _selectedIndex == this._executiveBodies.length
+                ? AnnouncementPage()
+                : this._executiveBodies[_selectedIndex],
         bottomNavigationBar: BottomNavigationBar(
           items: getItems().asMap().entries.map((entry) {
             final index = entry.key;
