@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
+import 'package:smart_tent_city_app/constants/asset_icons.dart';
 import 'package:smart_tent_city_app/constants/custom_colors.dart';
 import 'package:smart_tent_city_app/model/ProductModel.dart';
 import 'package:smart_tent_city_app/notifiers/cart_change_notifier/cart_change_notifier.dart';
@@ -70,9 +72,13 @@ class _RequestContainerState extends State<RequestContainer> {
             child: Column(mainAxisSize: MainAxisSize.min, children: [
               Transform.rotate(
                   angle: -0.5,
-                  child: Align(
-                      child:
-                          Icon(Icons.baby_changing_station_rounded, size: 40))),
+                  child: SvgPicture.asset(
+                    AssetIconConstants.icons
+                            .contains(widget.model.productModel.type)
+                        ? 'assets/svg_/${widget.model.productModel.type}.svg'
+                        : 'assets/inventory.svg',
+                    width: 24,
+                  )),
               SizedBox(width: 5, height: 24),
               Text(widget.model.productModel.type),
               SizedBox(width: 3, height: 1),
