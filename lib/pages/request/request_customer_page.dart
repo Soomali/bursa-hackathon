@@ -120,6 +120,7 @@ class _RequestPageBodyState extends State<RequestPageBody> {
                 Provider.of<VictimChangeNotifier>(context, listen: false).data!;
 
             final RequestModel requestModel = RequestModel(
+              tent_number: victimData.tent_number,
               products: notifier.cart.map((e) => e.productModel).toList(),
               status: RequestStatus.waiting,
               victimId: victimData.id,

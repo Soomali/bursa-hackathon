@@ -4,6 +4,7 @@ import 'RequestStatus.dart';
 class RequestModel {
   List<ProductModel> products;
   String? executive_note;
+  String tent_number;
   String? victim_note;
   String tentCityId;
   RequestStatus status;
@@ -13,6 +14,7 @@ class RequestModel {
   RequestModel(
       {required this.products,
       this.executive_note,
+      required this.tent_number,
       required this.status,
       required this.tentCityId,
       this.executiveId,
@@ -30,6 +32,7 @@ class RequestModel {
     return RequestModel(
       tentCityId: json['tentCityId'],
       products: products,
+      tent_number: json['tentNumber'],
       executiveId: json['executiveId'],
       victimId: json['victimId'],
       executive_note: json['executive_note'],
@@ -46,6 +49,7 @@ class RequestModel {
       'executive_note': executive_note,
       'status': status.name,
       'victim_note': victim_note,
+      'tentNumber': tent_number,
       'victimId': victimId,
       'executiveId': executiveId
     };

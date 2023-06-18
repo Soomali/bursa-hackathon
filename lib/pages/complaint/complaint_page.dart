@@ -6,7 +6,6 @@ import 'package:smart_tent_city_app/pages/background_page.dart';
 import 'package:smart_tent_city_app/pages/complaint/complaint_body.dart';
 
 class ComplaintPage extends StatelessWidget {
-
   const ComplaintPage({super.key});
 
   @override
@@ -19,7 +18,6 @@ class ComplaintPage extends StatelessWidget {
                       builder: (context, notifier, _) {
                     if (notifier.state == AsyncChangeNotifierState.done) {
                       WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-                        Navigator.of(context).pop();
                         Navigator.of(context).pop();
                       });
                     }

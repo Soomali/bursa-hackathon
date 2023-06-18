@@ -11,7 +11,8 @@ class FeedbackListChangeNotifier extends PaginationChangeNotier {
     final query = FirebaseFirestore.instance
         .collection(feedbackCollectionPath)
         .limit(10)
-        .where('tentCityId', isEqualTo: tentCityId);
+        .where('tentCityId', isEqualTo: tentCityId)
+        .where('status', isEqualTo: 'notSeen');
 
     final snapshot = await paginate(query).get();
     final newData = snapshot.docs
@@ -22,6 +23,24 @@ class FeedbackListChangeNotifier extends PaginationChangeNotier {
     notifyListeners();
   }
 
+  Future<void> _resolve(FeedBackModel feedBackModel) async {
+    int? index =
+        this.data?.indexWhere((element) => element.id == feedBackModel.id);
+    if (index != null && index != -1) {
+      this.data!.removeAt(index);
+      notifyListeners();
+    }
+    feedBackModel.status = FeedbackStatus.seen;
+    await FirebaseFirestore.instance
+        .collection(feedbackCollectionPath)
+        .doc(feedBackModel.id)
+        .set(feedBackModel.toJson());
+  }
+
+  void resolve(FeedBackModel feedBackModel) => wrapAsync(
+      () => _resolve(feedBackModel),
+      'resolve feedback error ',
+      'resolve feedback error message');
   void get(String tentCityId) {
     wrapAsync(
         () => _get(tentCityId), "getFeedback error", "get feedback error");

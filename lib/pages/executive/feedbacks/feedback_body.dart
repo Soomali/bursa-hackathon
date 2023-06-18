@@ -39,17 +39,23 @@ class _FeedbackBodyState extends State<FeedbackBody> {
       builder: (context, notifier, _) {
         if (notifier.state == AsyncChangeNotifierState.busy &&
             (notifier.data == null || notifier.data!.isEmpty)) {
-          return CircularProgressIndicator();
+          return Center(child: CircularProgressIndicator());
         }
-        if (notifier.data == null) {
+        if (notifier.state == AsyncChangeNotifierState.done &&
+            (notifier.data == null || notifier.data!.isEmpty)) {
           return Center(
-            child: Text('Hiç istek veeya şikayet yok.'),
+            child: Text('Hiç istek veya şikayet yok.'),
           );
         }
         return ListView.builder(
           controller: _controller,
-          itemBuilder: (context, index) =>
-              FeedbackCard(feedBackModel: notifier.data![index]),
+          itemBuilder: (context, index) => FeedBackCard(
+            feedBackModel: notifier.data![index],
+            onTapAccept: () {
+              final feedBackModel = notifier.data![index];
+              notifier.resolve(feedBackModel);
+            },
+          ),
           itemCount: notifier.data!.length,
         );
       },

@@ -45,7 +45,7 @@ class QrPage extends StatelessWidget {
                     height: 40,
                   ),
                   Text(
-                    'Bu QR kodu Yetkiliye göstermeniz halinde çadırkente giriş çıkış işlemlerinizin kayıt altına alınmasını kolaylaştırır. Kendinizin ve çadır kentimizin güvenliği için hep birlikte çalışalım.',
+                    'Bu QR kodu Yetkiliye göstermeniz halinde çadırkente giriş çıkış işlemlerinizin kayıt altına alınması işlemi hızlanacaktır. Kendinizin ve çadır kentimizin güvenliği için hep birlikte çalışalım.',
                     style: TextStyle(fontWeight: FontWeight.w300),
                     textAlign: TextAlign.center,
                   ),

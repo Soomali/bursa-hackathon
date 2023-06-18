@@ -51,18 +51,20 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
     });
   }
 
-  List<NavigationBarItem> getItems() {
+  List<NavigationBarItem> getItems(UserType userType) {
     return [
       NavigationBarItem(
         icon: SvgPicture.asset(
-          "assets/Chat_search.svg",
+          userType == UserType.executive
+              ? "assets/Chat_search.svg"
+              : 'assets/Chat_plus.svg',
           width: 24, // İstediğiniz boyuta göre değiştirin
           height: 24, // İstediğiniz boyuta göre değiştirin
 
           color: _selectedIndex == 0 ? Colors.red : Colors.grey[800],
         ),
         title: Text(
-          "Talepler",
+          userType == UserType.executive ? "Talepler" : 'Talep Oluştur',
           style: TextStyle(
             color: _selectedIndex == 0 ? Colors.red : Colors.grey[800],
           ),
@@ -73,14 +75,16 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
       ),
       NavigationBarItem(
         icon: SvgPicture.asset(
-          "assets/inventory.svg",
+          userType == UserType.executive
+              ? "assets/inventory.svg"
+              : 'assets/Message_light.svg',
           width: 24, // İstediğiniz boyuta göre değiştirin
           height: 24, // İstediğiniz boyuta göre değiştirin
 
           color: _selectedIndex == 1 ? Colors.red : Colors.grey[800],
         ),
         title: Text(
-          "Envanter",
+          userType == UserType.executive ? "Envanter" : 'Taleplerim',
           style: TextStyle(
             color: _selectedIndex == 1 ? Colors.red : Colors.grey[800],
           ),
@@ -108,14 +112,16 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
       ),
       NavigationBarItem(
         icon: SvgPicture.asset(
-          'assets/injured_person.svg',
+          userType == UserType.executive
+              ? 'assets/injured_person.svg'
+              : 'assets/User_light.svg',
           width: 24, // İstediğiniz boyuta göre değiştirin
           height: 24, // İstediğiniz boyuta göre değiştirin
 
           color: _selectedIndex == 3 ? Colors.red : Colors.grey[800],
         ),
         title: Text(
-          "Depremzede",
+          userType == UserType.executive ? "Depremzede" : 'Profil',
           style: TextStyle(
             color: _selectedIndex == 3 ? Colors.red : Colors.grey[800],
           ),
@@ -168,7 +174,10 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
                 ? AnnouncementPage()
                 : this._executiveBodies[_selectedIndex],
         bottomNavigationBar: BottomNavigationBar(
-          items: getItems().asMap().entries.map((entry) {
+          items: getItems(userType ?? UserType.victim)
+              .asMap()
+              .entries
+              .map((entry) {
             final index = entry.key;
             final item = entry.value;
 
