@@ -17,6 +17,7 @@ class RequestsListChangeNotifier extends PaginationChangeNotier<RequestModel> {
     }
 
     final snapshot = await paginate(query).get();
+    lastSnapshot = snapshot.docs.last;
     final newData = snapshot.docs
         .map((e) =>
             RequestModel.fromJson(e.data() as Map<String, dynamic>, e.id))
