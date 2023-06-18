@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 enum FeedbackStatus { seen, notSeen }
 
 class FeedBackModel {
@@ -6,11 +8,13 @@ class FeedBackModel {
   String tentCityId;
   String tent_number;
   String victimId;
+  Timestamp date;
   String id;
   FeedbackStatus status;
   FeedBackModel(
       {required this.topic,
       required this.id,
+      required this.date,
       required this.tent_number,
       required this.tentCityId,
       required this.victimId,
@@ -22,6 +26,7 @@ class FeedBackModel {
 
     return FeedBackModel(
       topic: json['topic'],
+      date: json['date'],
       victimId: json['victimId'],
       tent_number: json['tentNumber'],
       tentCityId: json['tentCityId'],
@@ -36,6 +41,7 @@ class FeedBackModel {
   Map<String, dynamic> toJson() {
     return {
       'topic': topic,
+      'date': date,
       'description': description,
       'tentNumber': tent_number,
       'status': status.name,

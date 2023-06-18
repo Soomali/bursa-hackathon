@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'ProductModel.dart';
 import 'RequestStatus.dart';
 
@@ -10,10 +12,12 @@ class RequestModel {
   RequestStatus status;
   String id;
   String victimId;
+  Timestamp date;
   String? executiveId;
   RequestModel(
       {required this.products,
       this.executive_note,
+      required this.date,
       required this.tent_number,
       required this.status,
       required this.tentCityId,
@@ -32,6 +36,7 @@ class RequestModel {
     return RequestModel(
       tentCityId: json['tentCityId'],
       products: products,
+      date: json['date'],
       tent_number: json['tentNumber'],
       executiveId: json['executiveId'],
       victimId: json['victimId'],
@@ -45,6 +50,7 @@ class RequestModel {
   Map<String, dynamic> toJson() {
     return {
       'tentCityId': tentCityId,
+      'date': date,
       'products': products.map((product) => product.toJson()).toList(),
       'executive_note': executive_note,
       'status': status.name,

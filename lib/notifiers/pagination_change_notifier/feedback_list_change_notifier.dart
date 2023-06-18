@@ -6,21 +6,31 @@ import 'package:smart_tent_city_app/model/FeedBackModel.dart';
 import 'package:smart_tent_city_app/model/RequestModel.dart';
 import 'package:smart_tent_city_app/notifiers/pagination_change_notifier/pagination_change_notifier.dart';
 
-class FeedbackListChangeNotifier extends PaginationChangeNotier {
-  Future<void> _get(String? tentCityId) async {
-    final query = FirebaseFirestore.instance
+class FeedbackListChangeNotifier extends PaginationChangeNotier<FeedBackModel> {
+  Future<void> _get({String? tentCityId, String? victimId}) async {
+    final field = victimId != null ? 'victimId' : 'tentCityId';
+    Query query = FirebaseFirestore.instance
         .collection(feedbackCollectionPath)
         .limit(10)
-        .where('tentCityId', isEqualTo: tentCityId)
-        .where('status', isEqualTo: 'notSeen');
-
+        .where(field, isEqualTo: tentCityId ?? victimId);
+    if (tentCityId != null) {
+      query = query.where('status', isEqualTo: 'notSeen');
+    }
+    query = paginate(query);
     final snapshot = await paginate(query).get();
-    final newData = snapshot.docs
-        .map((e) =>
-            FeedBackModel.fromJson(e.data() as Map<String, dynamic>, e.id))
-        .toList();
-    this.data = [...(this.data ?? []), ...newData];
+
+    this.data = this.data = [
+      ...(this.data ?? []),
+      ...snapshot.docs
+          .map((e) =>
+              FeedBackModel.fromJson(e.data() as Map<String, dynamic>, e.id))
+          .where((element) =>
+              this.data == null ||
+              this.data!.indexWhere((saved) => saved.id == element.id) == -1)
+          .toList()
+    ];
     notifyListeners();
+    lastSnapshot = snapshot.docs.last;
   }
 
   Future<void> _resolve(FeedBackModel feedBackModel) async {
@@ -41,8 +51,8 @@ class FeedbackListChangeNotifier extends PaginationChangeNotier {
       () => _resolve(feedBackModel),
       'resolve feedback error ',
       'resolve feedback error message');
-  void get(String tentCityId) {
-    wrapAsync(
-        () => _get(tentCityId), "getFeedback error", "get feedback error");
+  void get({String? tentCityId, String? victimId}) {
+    wrapAsync(() => _get(tentCityId: tentCityId, victimId: victimId),
+        "getFeedback error", "get feedback error");
   }
 }

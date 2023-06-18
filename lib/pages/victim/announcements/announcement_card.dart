@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_tent_city_app/model/announcement_model.dart';
+import 'package:smart_tent_city_app/util/utils.dart';
 
 class AnnouncementCard extends StatelessWidget {
   final AnnouncementModel model;
@@ -42,9 +43,5 @@ class AnnouncementCard extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  String getDateString(DateTime date) {
-    return '${date.year}/${('0' + date.month.toString()).substring(0, 2)}/${('0' + date.day.toString()).substring(0, 2)}';
   }
 }

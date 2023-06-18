@@ -13,7 +13,7 @@ class FeedbackPage extends StatelessWidget {
     final notifier = FeedbackListChangeNotifier();
     final executive =
         Provider.of<ExecutiveChangeNotifier>(context, listen: false).data!;
-    notifier.get(executive.tentCityId);
+    notifier.get(tentCityId: executive.tentCityId);
     return ChangeNotifierProvider.value(
       value: notifier,
       child: BackgroundPage(child: FeedbackBody()),

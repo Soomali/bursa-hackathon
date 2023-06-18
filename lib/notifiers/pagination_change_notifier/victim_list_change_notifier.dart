@@ -36,11 +36,16 @@ class VictimListChangeNotifier extends PaginationChangeNotier<VictimModel> {
       lastQuery = fullName;
     }
     final snapshot = await query.get();
-    final newData = snapshot.docs
-        .map(
-            (e) => VictimModel.fromJson(e.data() as Map<String, dynamic>, e.id))
-        .toList();
-    this.data = [...(this.data ?? []), ...newData];
+    this.data = [
+      ...(this.data ?? []),
+      ...snapshot.docs
+          .map((e) =>
+              VictimModel.fromJson(e.data() as Map<String, dynamic>, e.id))
+          .where((element) =>
+              this.data == null ||
+              this.data?.indexWhere((saved) => saved.id == element.id) == -1)
+          .toList()
+    ];
     notifyListeners();
   }
 

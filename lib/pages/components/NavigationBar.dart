@@ -17,6 +17,7 @@ import 'package:smart_tent_city_app/pages/victim/announcements/announcements.dar
 import 'package:smart_tent_city_app/pages/victim/my_requests/my_requests_page.dart';
 import 'package:smart_tent_city_app/pages/victim/qr_page/qr_page.dart';
 import 'package:smart_tent_city_app/pages/victim/request_choice/request_choice.dart';
+import 'package:smart_tent_city_app/pages/victim/requests_feedback/requests_feedback.dart';
 import 'package:smart_tent_city_app/pages/victim/victim_data/victim_data.dart';
 
 class NavigationBarPage extends StatefulWidget {
@@ -28,7 +29,7 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
   int _selectedIndex = 0;
   final List<Widget> _victimBodies = [
     RequestChoicePage(),
-    MyRequestsPage(),
+    RequestsFeedbackPage(),
     QrPage(),
     VictimData(),
   ];
