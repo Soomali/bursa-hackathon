@@ -110,36 +110,6 @@ class _RequestChoicePageState extends State<RequestChoicePage> {
                   ),
                   label: 'Dilek'),
             ]),
-        body: _pages[_selectedIndex]
-        // body: Padding(
-        //   padding: EdgeInsets.symmetric(
-        //       horizontal: MediaQuery.of(context).size.width * .06),
-        //   child: Column(
-        //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        //     children: [
-        //       RequestChoiceOption(
-        //           iconPath: 'assets/Bag.svg',
-        //           label: 'Ürün talep et',
-        //           onPress: () {
-        //             Navigator.of(context).push(
-        //               MaterialPageRoute(
-        //                   builder: (context) => RequestPage(
-        //                         type: RequestPageType.search,
-        //                       )),
-        //             );
-        //           }),
-        //       RequestChoiceOption(
-        //         iconPath: 'assets/complaint.svg',
-        //         label: 'İstek ve Şikayet',
-        //         onPress: () {
-        //           Navigator.of(context).push(
-        //               MaterialPageRoute(builder: (context) => ComplaintPage()));
-        //         },
-        //         style: Style.inverted,
-        //       ),
-        //     ],
-        //   ),
-        // )
-        );
+        body: _pages[_selectedIndex]);
   }
 }

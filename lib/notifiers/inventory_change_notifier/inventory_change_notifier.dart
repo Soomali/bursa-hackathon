@@ -3,7 +3,7 @@ import 'package:smart_tent_city_app/constants/error_ids.dart';
 import 'package:smart_tent_city_app/constants/error_messages.dart';
 import 'package:smart_tent_city_app/constants/firebase.dart';
 import 'package:smart_tent_city_app/model/inventory_model.dart';
-import 'package:smart_tent_city_app/pages/provider/data_change_notifier.dart';
+import 'package:smart_tent_city_app/notifiers/data_change_notifier.dart';
 
 class InventoryChangeNotifier extends DataChangeNotifier<InventoryModel> {
   final collection =

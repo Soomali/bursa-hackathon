@@ -5,7 +5,7 @@ import 'package:smart_tent_city_app/constants/firebase.dart';
 import 'package:smart_tent_city_app/model/ExecutiveModel.dart';
 import 'package:smart_tent_city_app/model/tentModel.dart';
 import 'package:smart_tent_city_app/notifiers/async_change_notifier.dart';
-import 'package:smart_tent_city_app/pages/provider/data_change_notifier.dart';
+import 'package:smart_tent_city_app/notifiers/data_change_notifier.dart';
 
 class TentChangeNotifier extends DataChangeNotifier<TentModel> {
   Future<void> _get(String id) async {
