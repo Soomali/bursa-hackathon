@@ -12,6 +12,13 @@ class CategorySlider extends StatefulWidget {
 }
 
 class _CategorySliderState extends State<CategorySlider> {
+  late String activeCategory;
+  @override
+  void initState() {
+    super.initState();
+    activeCategory = widget.categories.first;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -39,11 +46,23 @@ class _CategorySliderState extends State<CategorySlider> {
                     borderRadius: BorderRadius.circular(18),
                   )),
               child: ActionChip(
+                backgroundColor: activeCategory == data
+                    ? Colors.white
+                    : Colors.redAccent.shade700,
                 elevation: 5,
-                onPressed: () => widget.onTapCategory(data),
+                onPressed: () {
+                  widget.onTapCategory(data);
+                  setState(() {
+                    this.activeCategory = data;
+                  });
+                },
                 label: Text(
                   data,
-                  style: TextStyle(fontSize: 18, color: Colors.white),
+                  style: TextStyle(
+                      fontSize: 18,
+                      color: activeCategory == data
+                          ? Colors.redAccent.shade700
+                          : Colors.white),
                 ),
               ),
             ),
