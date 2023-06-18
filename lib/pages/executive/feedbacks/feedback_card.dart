@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_tent_city_app/constants/custom_colors.dart';
 import 'package:smart_tent_city_app/model/FeedBackModel.dart';
 import 'package:smart_tent_city_app/model/RequestModel.dart';
 
@@ -10,6 +11,31 @@ class FeedBackCard extends StatelessWidget {
     required this.feedBackModel,
     this.onTapAccept,
   });
+
+  Widget getStatusChip() {
+    String label = '';
+    Color color;
+    Color textColor;
+    switch (feedBackModel.status) {
+      case FeedbackStatus.seen:
+        label = 'Dikkate Alındı';
+        color = CustomColors.greenAccent;
+        textColor = Colors.white;
+        break;
+      case FeedbackStatus.notSeen:
+        label = 'Henüz Görülmedi';
+        color = Colors.yellow;
+        textColor = Colors.black;
+        break;
+    }
+    return Chip(
+        labelPadding: EdgeInsets.fromLTRB(2, 0, 2, 0),
+        backgroundColor: color,
+        label: Text(
+          label,
+          style: TextStyle(color: textColor, fontSize: 12),
+        ));
+  }
 
   @override
   Widget build(BuildContext context) {
