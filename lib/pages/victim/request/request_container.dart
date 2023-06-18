@@ -70,15 +70,19 @@ class _RequestContainerState extends State<RequestContainer> {
               borderRadius: BorderRadius.all(Radius.circular(widget.radius))),
           child: Center(
             child: Column(mainAxisSize: MainAxisSize.min, children: [
-              Transform.rotate(
-                  angle: -0.5,
-                  child: SvgPicture.asset(
-                    AssetIconConstants.icons
-                            .contains(widget.model.productModel.type)
-                        ? 'assets/svg_/${widget.model.productModel.type}.svg'
-                        : 'assets/inventory.svg',
-                    width: 24,
-                  )),
+              if (AssetIconConstants.icons
+                  .contains(widget.model.productModel.type + '.svg'))
+                SvgPicture.asset(
+                  'assets/svg_/${widget.model.productModel.type}.svg',
+                  width: 32,
+                ),
+              if (!AssetIconConstants.icons
+                  .contains(widget.model.productModel.type + '.svg'))
+                SvgPicture.asset(
+                  'assets/inventory.svg',
+                  width: 32,
+                  color: Colors.black,
+                ),
               SizedBox(width: 5, height: 24),
               Text(widget.model.productModel.type),
               SizedBox(width: 3, height: 1),
