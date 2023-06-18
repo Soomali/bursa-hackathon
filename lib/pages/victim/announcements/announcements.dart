@@ -32,13 +32,14 @@ class AnnouncementPage extends StatelessWidget {
           });
           return Consumer<AnnouncementListChangeNotifier>(
             builder: (context, notifier, child) {
+              Widget? widget;
               if ((notifier.data == null || notifier.data!.isEmpty) &&
                   notifier.state == AsyncChangeNotifierState.busy) {
-                return Center(
+                widget = Center(
                   child: CircularProgressIndicator(),
                 );
               } else if (notifier.data == null || notifier.data!.isEmpty) {
-                return Center(child: Text('Sonuç Bulunamadı'));
+                widget = Center(child: Text('Sonuç Bulunamadı'));
               }
 
               return Column(
@@ -68,13 +69,14 @@ class AnnouncementPage extends StatelessWidget {
                     height: 20,
                   ),
                   Expanded(
-                    child: ListView.builder(
-                      padding: EdgeInsets.all(8),
-                      itemBuilder: (context, index) => AnnouncementCard(
-                        model: notifier.data![index],
-                      ),
-                      itemCount: notifier.data!.length,
-                    ),
+                    child: widget ??
+                        ListView.builder(
+                          padding: EdgeInsets.all(8),
+                          itemBuilder: (context, index) => AnnouncementCard(
+                            model: notifier.data![index],
+                          ),
+                          itemCount: notifier.data!.length,
+                        ),
                   ),
                 ],
               );
