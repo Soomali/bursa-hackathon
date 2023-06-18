@@ -36,6 +36,7 @@ class VictimListChangeNotifier extends PaginationChangeNotier<VictimModel> {
       lastQuery = fullName;
     }
     final snapshot = await query.get();
+    lastSnapshot = snapshot.docs.isEmpty ? null : snapshot.docs.last;
     this.data = [
       ...(this.data ?? []),
       ...snapshot.docs

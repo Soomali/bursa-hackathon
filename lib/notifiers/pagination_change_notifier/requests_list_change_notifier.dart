@@ -17,7 +17,7 @@ class RequestsListChangeNotifier extends PaginationChangeNotier<RequestModel> {
     }
 
     final snapshot = await paginate(query).get();
-    lastSnapshot = snapshot.docs.last;
+    lastSnapshot = snapshot.docs.isEmpty ? null : snapshot.docs.last;
     this.data = [
       ...(this.data ?? []),
       ...snapshot.docs
