@@ -30,7 +30,7 @@ class FeedbackListChangeNotifier extends PaginationChangeNotier<FeedBackModel> {
           .toList()
     ];
     notifyListeners();
-    lastSnapshot = snapshot.docs.last;
+    lastSnapshot = snapshot.docs.isNotEmpty ? snapshot.docs.last : null;
   }
 
   Future<void> _resolve(FeedBackModel feedBackModel) async {

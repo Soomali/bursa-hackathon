@@ -17,7 +17,7 @@ class AnnouncementListChangeNotifier
     if (snapshot.docs.isEmpty) {
       return;
     }
-    lastSnapshot = snapshot.docs.last;
+    lastSnapshot = snapshot.docs.isEmpty ? null : snapshot.docs.last;
     this.data = [
       ...(this.data ?? []),
       ...snapshot.docs
