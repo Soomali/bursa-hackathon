@@ -48,6 +48,8 @@ class _LoginVictimPageBodyState extends State<LoginVictimPageBody> {
               context: context,
               builder: (context) => AlertDialog(
                     content: TextField(
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(), hintText: 'Kodu girin'),
                       maxLength: 6,
                       onChanged: (val) {
                         code = val;
