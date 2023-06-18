@@ -94,22 +94,11 @@ class _LoginVictimPageBodyState extends State<LoginVictimPageBody> {
               SizedBox(
                 height: 40,
               ),
-              SvgPicture.asset(
-                'assets/tent.svg',
+              Image.asset(
+                'assets/logo2.png',
+                fit: BoxFit.fitWidth,
+                width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height * .27,
-                width: MediaQuery.of(context).size.width * .6,
-              ),
-              SizedBox(
-                height: 25,
-              ),
-              const Text(
-                "Akıllı Çadır Kent",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 24,
-                  color: Colors
-                      .black, // Yazının rengini istediğiniz gibi ayarlayabilirsiniz
-                ),
               ),
               SizedBox(
                 height: 25,
