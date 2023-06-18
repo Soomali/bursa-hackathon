@@ -28,7 +28,7 @@ class _FeedbackBodyState extends State<FeedbackBody> {
         }
         final executive =
             Provider.of<ExecutiveChangeNotifier>(context, listen: false).data!;
-        feedbackNotifier.get(executive.tentCityId);
+        feedbackNotifier.get(tentCityId: executive.tentCityId);
       }
     });
   }

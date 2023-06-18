@@ -25,8 +25,9 @@ class AnnouncementListChangeNotifier
           .cast<Map<String, dynamic>>()
           .map(AnnouncementModel.fromJson)
           .where((element) =>
+              this.data == null ||
               this.data?.indexWhere((saved) => saved.date == element.date) ==
-              -1)
+                  -1)
           .toList()
     ];
   }

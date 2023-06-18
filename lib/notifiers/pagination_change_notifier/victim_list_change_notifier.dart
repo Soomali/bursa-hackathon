@@ -42,6 +42,7 @@ class VictimListChangeNotifier extends PaginationChangeNotier<VictimModel> {
           .map((e) =>
               VictimModel.fromJson(e.data() as Map<String, dynamic>, e.id))
           .where((element) =>
+              this.data == null ||
               this.data?.indexWhere((saved) => saved.id == element.id) == -1)
           .toList()
     ];

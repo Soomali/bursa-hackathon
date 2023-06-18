@@ -24,6 +24,7 @@ class RequestsListChangeNotifier extends PaginationChangeNotier<RequestModel> {
           .map((e) =>
               RequestModel.fromJson(e.data() as Map<String, dynamic>, e.id))
           .where((element) =>
+              this.data == null ||
               this.data?.indexWhere((saved) => saved.id == element.id) == -1)
           .toList()
     ];

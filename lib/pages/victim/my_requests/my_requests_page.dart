@@ -14,7 +14,7 @@ class MyRequestsPage extends StatelessWidget {
 
     return Consumer<VictimChangeNotifier>(builder: (context, notifier, _) {
       if (notifier.data == null) {
-        return CircularProgressIndicator();
+        return Center(child: CircularProgressIndicator());
       }
       final victimId = notifier.data!.id;
       requestsNotifier.get(victimId: victimId);
