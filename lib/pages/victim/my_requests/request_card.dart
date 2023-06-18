@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:smart_tent_city_app/constants/custom_colors.dart';
 import 'package:smart_tent_city_app/model/RequestModel.dart';
+import 'package:smart_tent_city_app/model/RequestStatus.dart';
 
 class RequestCard extends StatelessWidget {
   final RequestModel requestModel;
@@ -10,6 +12,36 @@ class RequestCard extends StatelessWidget {
       required this.requestModel,
       this.onTapAccept,
       this.onTapReject});
+
+  Widget getStatusChip() {
+    String label = '';
+    Color color;
+    Color textColor;
+    switch (this.requestModel.status) {
+      case RequestStatus.accepted:
+        label = 'Onaylandı';
+        color = CustomColors.greenAccent;
+        textColor = Colors.white;
+        break;
+      case RequestStatus.rejected:
+        label = 'Reddedildi';
+        color = Colors.redAccent.shade700;
+        textColor = Colors.white;
+        break;
+      case RequestStatus.waiting:
+        label = 'Bekleniyor';
+        color = Colors.yellow;
+        textColor = Colors.black;
+        break;
+    }
+    return Chip(
+        labelPadding: EdgeInsets.fromLTRB(2, 0, 2, 0),
+        backgroundColor: color,
+        label: Text(
+          label,
+          style: TextStyle(color: textColor, fontSize: 12),
+        ));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +57,14 @@ class RequestCard extends StatelessWidget {
                     border: Border.all(),
                     borderRadius: BorderRadius.circular(8)),
                 padding: EdgeInsets.symmetric(
-                    vertical: MediaQuery.of(context).size.height * .05,
+                    vertical: MediaQuery.of(context).size.height * .02,
                     horizontal: MediaQuery.of(context).size.width * .05),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    SizedBox(
+                      height: 12,
+                    ),
                     Text(
                         '${this.requestModel.tent_number} numaralı çadır tarafından talep edildi'),
                     ...this
@@ -39,6 +74,11 @@ class RequestCard extends StatelessWidget {
                         .toList()
                   ],
                 )),
+          ),
+          Positioned(
+            child: getStatusChip(),
+            top: 0,
+            left: 0,
           ),
           Positioned(
             bottom: 0,
