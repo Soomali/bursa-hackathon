@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:smart_tent_city_app/constants/custom_colors.dart';
 import 'package:smart_tent_city_app/model/RequestModel.dart';
 import 'package:smart_tent_city_app/model/RequestStatus.dart';
+import 'package:smart_tent_city_app/model/user_type.dart';
+import 'package:smart_tent_city_app/notifiers/user_type_change_notifier/user_type_change_notifier.dart';
 
 class RequestCard extends StatelessWidget {
   final RequestModel requestModel;
@@ -45,6 +48,9 @@ class RequestCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final UserType userType =
+        Provider.of<UserTypeChangeNotifier>(context, listen: false).userType ??
+            UserType.victim;
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Stack(
@@ -65,8 +71,9 @@ class RequestCard extends StatelessWidget {
                     SizedBox(
                       height: 12,
                     ),
-                    Text(
-                        '${this.requestModel.tent_number} numaralı çadır tarafından talep edildi'),
+                    if (userType == UserType.executive)
+                      Text(
+                          '${this.requestModel.tent_number} numaralı çadır tarafından talep edildi'),
                     ...this
                         .requestModel
                         .products
@@ -75,6 +82,11 @@ class RequestCard extends StatelessWidget {
                   ],
                 )),
           ),
+          Positioned(
+              child: Text(getDateString(this.requestModel.date.toDate()),
+                  style: TextStyle(fontWeight: FontWeight.w300, fontSize: 12)),
+              right: 24,
+              top: 24),
           Positioned(
             child: getStatusChip(),
             top: 0,
@@ -111,5 +123,9 @@ class RequestCard extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  String getDateString(DateTime date) {
+    return '${date.year}/${('0' + date.month.toString()).substring(0, 2)}/${('0' + date.day.toString()).substring(0, 2)}';
   }
 }
