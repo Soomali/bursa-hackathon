@@ -3,7 +3,7 @@ import 'package:smart_tent_city_app/constants/error_ids.dart';
 import 'package:smart_tent_city_app/constants/error_messages.dart';
 import 'package:smart_tent_city_app/constants/firebase.dart';
 import 'package:smart_tent_city_app/model/RequestModel.dart';
-import 'package:smart_tent_city_app/pages/provider/data_change_notifier.dart';
+import 'package:smart_tent_city_app/notifiers/data_change_notifier.dart';
 
 class RequestChangeNotifier extends DataChangeNotifier<RequestModel> {
   final collection =

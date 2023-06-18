@@ -13,7 +13,7 @@ import 'package:smart_tent_city_app/notifiers/request_change_notifier/request_ch
 import 'package:smart_tent_city_app/notifiers/user_type_change_notifier/user_type_change_notifier.dart';
 import 'package:smart_tent_city_app/notifiers/victim_change_notifier.dart/victim_change_notifier.dart';
 import 'package:smart_tent_city_app/pages/background_page.dart';
-import 'package:smart_tent_city_app/pages/provider/data_change_notifier.dart';
+import 'package:smart_tent_city_app/notifiers/data_change_notifier.dart';
 import 'package:smart_tent_city_app/pages/request/request_customer_page.dart';
 import 'package:smart_tent_city_app/pages/request/request_page_type.dart';
 

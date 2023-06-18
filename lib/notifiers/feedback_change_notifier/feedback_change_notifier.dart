@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:smart_tent_city_app/constants/firebase.dart';
 import 'package:smart_tent_city_app/model/FeedBackModel.dart';
-import 'package:smart_tent_city_app/pages/provider/data_change_notifier.dart';
+import 'package:smart_tent_city_app/notifiers/data_change_notifier.dart';
 
 class FeedbackChangeNotifier extends DataChangeNotifier<FeedBackModel> {
   final collection =

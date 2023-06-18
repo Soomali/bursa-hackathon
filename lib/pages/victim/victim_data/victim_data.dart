@@ -96,13 +96,6 @@ class VictimData extends StatelessWidget {
                   const SizedBox(
                     height: 16,
                   ),
-                  // const Text(
-                  //   'Ek Bilgi',
-                  //   style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
-                  // ),
-                  // victim.additional_data != null
-                  //     ? Text("${victim.additional_data}")
-                  //     : const Text("-"),
                 ],
               ),
             ),
