@@ -64,7 +64,7 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
           color: _selectedIndex == 0 ? Colors.red : Colors.grey[800],
         ),
         title: Text(
-          userType == UserType.executive ? "Talepler" : 'Talep Oluştur',
+          userType == UserType.executive ? "Talepler" : 'Talep\nOluştur',textAlign:TextAlign.center,
           style: TextStyle(
             color: _selectedIndex == 0 ? Colors.red : Colors.grey[800],
           ),
