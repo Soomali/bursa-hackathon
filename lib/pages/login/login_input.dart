@@ -4,12 +4,14 @@ class LoginInput extends StatefulWidget {
   TextInputType keyboardType;
   int maxLength;
   String hintText;
+  String? prefixText;
   void Function(String)? onChanged;
   bool obsecureText;
 
   LoginInput(
       {Key? key,
       this.onChanged,
+      this.prefixText,
       this.obsecureText = false,
       required this.hintText,
       required this.keyboardType,
@@ -31,6 +33,7 @@ class _LoginInputState extends State<LoginInput> {
         onChanged: widget.onChanged,
         obscureText: widget.obsecureText,
         decoration: InputDecoration(
+          prefix: Text(widget.prefixText ?? ''),
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
           hintText: widget.hintText,
         ),

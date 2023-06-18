@@ -1,4 +1,4 @@
-package com.example.smart_tent_city_app
+package com.example.smart_tent_city
 
 import io.flutter.embedding.android.FlutterActivity
 

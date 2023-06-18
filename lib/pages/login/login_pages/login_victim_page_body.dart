@@ -48,6 +48,8 @@ class _LoginVictimPageBodyState extends State<LoginVictimPageBody> {
               context: context,
               builder: (context) => AlertDialog(
                     content: TextField(
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(), hintText: 'Kodu girin'),
                       maxLength: 6,
                       onChanged: (val) {
                         code = val;
@@ -114,7 +116,8 @@ class _LoginVictimPageBodyState extends State<LoginVictimPageBody> {
               ),
               LoginInput(
                   keyboardType: TextInputType.phone,
-                  maxLength: 11,
+                  maxLength: 10,
+                  prefixText: '+90',
                   onChanged: (val) {
                     setState(() {
                       this.phoneNumber = '+90${val}';
