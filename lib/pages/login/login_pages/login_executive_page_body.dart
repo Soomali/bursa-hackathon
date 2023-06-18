@@ -14,8 +14,8 @@ class LoginExecutivePageBody extends StatefulWidget {
 }
 
 class _LoginExecutivePageBodyState extends State<LoginExecutivePageBody> {
-  String email = 'mehmetaliguunaydin@gmail.com';
-  String password = '20013355149Ss';
+  String email = '';
+  String password = '';
   @override
   Widget build(BuildContext context) {
     return Column(
