@@ -1,0 +1,26 @@
+class AssetIconConstants {
+  static const List<String> icons = [
+    "bebek bezi.svg",
+    "bebek mama.svg",
+    "deterjan.svg",
+    "dezenfektan.svg",
+    "diş macunu.svg",
+    "ekmek.svg",
+    "gazlı bez.svg",
+    "gömlek.svg",
+    "mont.svg",
+    "mop.svg",
+    "names.txt",
+    "pantolon.svg",
+    "sabun.svg",
+    "su.svg",
+    "sweatshirt.svg",
+    "süt.svg",
+    "tentürdiyot.svg",
+    "tshirt.svg",
+    "yarabandı.svg",
+    "çamaşır suyu.svg",
+    "çikolata.svg",
+    "şampuan.svg",
+  ];
+}
