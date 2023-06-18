@@ -65,6 +65,7 @@ class _ComplaintBodyState extends State<ComplaintBody> {
                   Provider.of<VictimChangeNotifier>(context, listen: false)
                       .data!;
               final FeedBackModel model = FeedBackModel(
+                  tent_number: victimModel.tent_number,
                   topic: topic,
                   victimId: victimModel.id,
                   tentCityId: victimModel.tentCityId,
