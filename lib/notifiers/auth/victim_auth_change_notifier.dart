@@ -9,6 +9,7 @@ import 'package:smart_tent_city_app/notifiers/prefs/prefs.dart';
 class VictimAuthChangeNotifier extends AuthChangeNotifier<String> {
   PhoneAuthState phoneAuthState = PhoneAuthState.idle;
   String _verificationId = '';
+  String phoneNumber = '';
   //auth data refers to the phone code
   @override
   void authenticate(String authData) async {
@@ -21,6 +22,7 @@ class VictimAuthChangeNotifier extends AuthChangeNotifier<String> {
     wrapAsync(() async {
       await FirebaseAuth.instance.signInWithCredential(credential);
       LocalStorage().setUserType(UserType.victim);
+      LocalStorage().setPhoneNumber(phoneNumber);
     }, ErrorIdConstants.phoneAuthErrorId, ErrorMessageConstants.phoneAuthError);
   }
 
@@ -30,6 +32,7 @@ class VictimAuthChangeNotifier extends AuthChangeNotifier<String> {
   }
 
   void registerForAuthentication(String phoneNumber) async {
+    this.phoneNumber = phoneNumber.substring(1);
     _changePhoneAuthState(PhoneAuthState.codeWaiting);
     wrapAsync(() async {
       await FirebaseAuth.instance.verifyPhoneNumber(
@@ -38,6 +41,7 @@ class VictimAuthChangeNotifier extends AuthChangeNotifier<String> {
           verificationCompleted: (_) {
             _changePhoneAuthState(PhoneAuthState.codeVerified);
             LocalStorage().setUserType(UserType.executive);
+            LocalStorage().setPhoneNumber(phoneNumber.substring(1));
           },
           verificationFailed: (error) {
             _changePhoneAuthState(PhoneAuthState.error);

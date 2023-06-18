@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smart_tent_city_app/firebase_options.dart';
 import 'package:smart_tent_city_app/notifiers/auth/auth_change_notifier.dart';
 import 'package:smart_tent_city_app/notifiers/executive_change_notifier/executive_change_notifier.dart';
@@ -62,8 +63,14 @@ class _SmartTentState extends State<SmartTent> {
                               listen: false)
                           .get(user.uid);
                     } else {
-                      Provider.of<VictimChangeNotifier>(context, listen: false)
-                          .get(user.uid);
+                      LocalStorage().getPhoneNumber().then((value) {
+                        if (value == null) {
+                          return;
+                        }
+                        Provider.of<VictimChangeNotifier>(context,
+                                listen: false)
+                            .get(phoneNumber: value);
+                      });
                     }
                   });
                 }

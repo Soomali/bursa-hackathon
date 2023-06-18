@@ -26,8 +26,8 @@ class _LoginExecutivePageBodyState extends State<LoginExecutivePageBody> {
         Image.asset(
           'assets/logo2.png',
           fit: BoxFit.fitWidth,
-          height: MediaQuery.of(context).size.height * .27,
           width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height * .27,
         ),
         SizedBox(
           height: 25,

@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:smart_tent_city_app/constants/error_messages.dart';
 import 'package:smart_tent_city_app/notifiers/auth/auth_change_notifier.dart';
 import 'package:smart_tent_city_app/notifiers/auth/victim_auth_change_notifier.dart';
+import 'package:smart_tent_city_app/notifiers/prefs/prefs.dart';
 import 'package:smart_tent_city_app/pages/components/NavigationBar.dart';
 import 'package:smart_tent_city_app/pages/login/login_button.dart';
 import 'package:smart_tent_city_app/pages/login/login_input.dart';

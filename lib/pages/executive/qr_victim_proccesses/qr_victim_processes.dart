@@ -17,7 +17,7 @@ class QrVictimProcesses extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     VictimChangeNotifier notifier = VictimChangeNotifier();
-    notifier.get(victimId);
+    notifier.get(id: victimId);
 
     return BackgroundPage(
         child: ChangeNotifierProvider.value(

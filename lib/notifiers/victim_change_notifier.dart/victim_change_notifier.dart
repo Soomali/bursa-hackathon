@@ -41,6 +41,15 @@ class VictimChangeNotifier extends DataChangeNotifier<VictimModel> {
     await victimCollection.doc(victimModel.id).set(victimModel.toJson());
   }
 
+  Future<void> _getByPhoneNumber(String phoneNumber) async {
+    final snapshot = await victimCollection
+        .where('phoneNumber', isEqualTo: phoneNumber)
+        .get();
+    final doc = snapshot.docs.first;
+    this.data =
+        VictimModel.fromJson(doc.data() as Map<String, dynamic>, doc.id);
+  }
+
   Future<void> _delete(
       String name, String surname, String tentNumber, String tentCityId) async {
     final snapshot = await victimCollection
@@ -72,6 +81,8 @@ class VictimChangeNotifier extends DataChangeNotifier<VictimModel> {
           () => _delete(name, surname, tentNumber, tentCityId),
           ErrorIdConstants.victimDeleteErrorId,
           ErrorMessageConstants.victimDeleteError);
-  void get(String id) => wrapAsync(() => _get(id),
-      ErrorIdConstants.victimGetErrorId, ErrorMessageConstants.victimGetError);
+  void get({String? id, String? phoneNumber}) => wrapAsync(
+      () => id != null ? _get(id) : _getByPhoneNumber(phoneNumber!),
+      ErrorIdConstants.victimGetErrorId,
+      ErrorMessageConstants.victimGetError);
 }
