@@ -18,11 +18,17 @@ class AnnouncementListChangeNotifier
       return;
     }
     lastSnapshot = snapshot.docs.last;
-    this.data = snapshot.docs
-        .map((e) => e.data())
-        .cast<Map<String, dynamic>>()
-        .map(AnnouncementModel.fromJson)
-        .toList();
+    this.data = [
+      ...(this.data ?? []),
+      ...snapshot.docs
+          .map((e) => e.data())
+          .cast<Map<String, dynamic>>()
+          .map(AnnouncementModel.fromJson)
+          .where((element) =>
+              this.data?.indexWhere((saved) => saved.date == element.date) ==
+              -1)
+          .toList()
+    ];
   }
 
   void get(String tentCityId) => wrapAsync(() => _get(tentCityId),

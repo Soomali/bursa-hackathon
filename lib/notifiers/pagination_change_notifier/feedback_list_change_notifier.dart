@@ -15,11 +15,17 @@ class FeedbackListChangeNotifier extends PaginationChangeNotier {
         .where('status', isEqualTo: 'notSeen');
 
     final snapshot = await paginate(query).get();
-    final newData = snapshot.docs
-        .map((e) =>
-            FeedBackModel.fromJson(e.data() as Map<String, dynamic>, e.id))
-        .toList();
-    this.data = [...(this.data ?? []), ...newData];
+
+    this.data = this.data = [
+      ...(this.data ?? []),
+      ...snapshot.docs
+          .map((e) =>
+              FeedBackModel.fromJson(e.data() as Map<String, dynamic>, e.id))
+          .where((element) =>
+              this.data?.indexWhere((saved) => saved.id == element.id) == -1)
+          .toList()
+    ];
+
     notifyListeners();
   }
 
