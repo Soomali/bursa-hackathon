@@ -174,7 +174,6 @@ class _UpdateInventoryWidgetState extends State<_UpdateInventoryWidget> {
           isShowingCircularIndicator) {
         WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
           Navigator.of(context).pop();
-          this.widget.onSubmitted.call();
           isShowingCircularIndicator = false;
         });
       }
