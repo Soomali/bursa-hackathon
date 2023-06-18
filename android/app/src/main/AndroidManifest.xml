@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.smart_tent_city_app">
+    package="com.example.smart_tent_city">
    <application
         android:label="smart_tent_city_app"
         android:name="${applicationName}"

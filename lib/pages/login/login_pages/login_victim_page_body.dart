@@ -114,7 +114,8 @@ class _LoginVictimPageBodyState extends State<LoginVictimPageBody> {
               ),
               LoginInput(
                   keyboardType: TextInputType.phone,
-                  maxLength: 11,
+                  maxLength: 10,
+                  prefixText: '+90',
                   onChanged: (val) {
                     setState(() {
                       this.phoneNumber = '+90${val}';

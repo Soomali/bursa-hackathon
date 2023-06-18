@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "456508674488",
+    "project_id": "smarttentcity",
+    "storage_bucket": "smarttentcity.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:456508674488:android:87a64cdeaa9ae716d4bf4d",
+        "android_client_info": {
+          "package_name": "com.example.smart_tent_city"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "456508674488-lc00uhhrsgrmdm5f36ct2j6al2ma7cmj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.smart_tent_city",
+            "certificate_hash": "2774d8bb2b693477d930fafd81af142bb723cf13"
+          }
+        },
+        {
+          "client_id": "456508674488-eihn35j2rpko85lbqac1uk41115ons8d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgkSlBe-ILdhmBcMDppA1wqZsD1fh_ydQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "456508674488-eihn35j2rpko85lbqac1uk41115ons8d.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "456508674488-hqn8jemend15j88upnufihei48unp7kd.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.smartTentCity"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
