@@ -6,6 +6,7 @@ import 'package:smart_tent_city_app/firebase_options.dart';
 import 'package:smart_tent_city_app/notifiers/auth/auth_change_notifier.dart';
 import 'package:smart_tent_city_app/notifiers/executive_change_notifier/executive_change_notifier.dart';
 import 'package:smart_tent_city_app/notifiers/inventory_change_notifier/inventory_change_notifier.dart';
+import 'package:smart_tent_city_app/notifiers/pagination_change_notifier/announcement_list_change_notifier.dart';
 import 'package:smart_tent_city_app/notifiers/prefs/prefs.dart';
 import 'package:smart_tent_city_app/notifiers/tent_change_notifier/tent_change_notifier.dart';
 import 'package:smart_tent_city_app/notifiers/user_type_change_notifier/user_type_change_notifier.dart';
@@ -43,6 +44,8 @@ class _SmartTentState extends State<SmartTent> {
         ChangeNotifierProvider(create: (context) => VictimChangeNotifier()),
         ChangeNotifierProvider(create: (context) => InventoryChangeNotifier()),
         ChangeNotifierProvider(create: (context) => TentChangeNotifier()),
+        ChangeNotifierProvider(
+            create: (context) => AnnouncementListChangeNotifier()),
         ChangeNotifierProvider(
             create: (context) =>
                 UserTypeChangeNotifier(userType: widget.userType))
