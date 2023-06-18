@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_tent_city_app/constants/error_ids.dart';
 import 'package:smart_tent_city_app/model/user_type.dart';
+import 'package:smart_tent_city_app/notifiers/async_change_notifier_state.dart';
 import 'package:smart_tent_city_app/notifiers/auth/auth_change_notifier.dart';
 import 'package:smart_tent_city_app/notifiers/auth/victim_auth_change_notifier.dart';
 import 'package:smart_tent_city_app/notifiers/user_type_change_notifier/user_type_change_notifier.dart';
@@ -19,6 +20,7 @@ class LoginPage<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isLoading = false;
     return Consumer2<User?, UserTypeChangeNotifier>(
         builder: (context, user, userType, _) {
       if (user != null) {
@@ -42,6 +44,26 @@ class LoginPage<T> extends StatelessWidget {
                     child: Consumer2<AuthChangeNotifier<T>,
                             UserTypeChangeNotifier>(
                         builder: (context, notifier, userType, _) {
+                      if (notifier.state == AsyncChangeNotifierState.busy &&
+                          !isLoading) {
+                        isLoading = true;
+                        WidgetsBinding.instance
+                            .addPostFrameCallback((timeStamp) {
+                          showDialog(
+                              context: context,
+                              builder: (context) => Center(
+                                    child: CircularProgressIndicator(),
+                                  ));
+                        });
+                      }
+                      if (notifier.state == AsyncChangeNotifierState.done &&
+                          isLoading) {
+                        isLoading = false;
+                        WidgetsBinding.instance
+                            .addPostFrameCallback((timeStamp) {
+                          Navigator.of(context).pop();
+                        });
+                      }
                       if (userType.userType == UserType.victim) {
                         return LoginVictimPageBody(
                           notifier: notifier as VictimAuthChangeNotifier,
