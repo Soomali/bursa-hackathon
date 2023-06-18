@@ -10,6 +10,7 @@ import 'package:smart_tent_city_app/pages/executive/qr_scan/qr_scan_page.dart';
 import 'package:smart_tent_city_app/pages/executive/request_feedback/request_feedback.dart';
 import 'package:smart_tent_city_app/pages/executive/tent_city_requests/tent_city_requests_body.dart';
 import 'package:smart_tent_city_app/pages/executive/victim_processes/victim_processes_page.dart';
+import 'package:smart_tent_city_app/pages/onboarding/onboarding_page.dart';
 import 'package:smart_tent_city_app/pages/request/request_page.dart';
 import 'package:smart_tent_city_app/pages/request/request_page_type.dart';
 import 'package:smart_tent_city_app/pages/victim/announcements/announcements.dart';
@@ -40,6 +41,10 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
   void _onItemTapped(int index) {
     if (index == 4) {
       FirebaseAuth.instance.signOut();
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (context) => OnboardingPage()),
+          (route) => false);
+      return;
     }
     setState(() {
       _selectedIndex = index;
