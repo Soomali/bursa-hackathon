@@ -5,6 +5,7 @@ import 'package:smart_tent_city_app/model/RequestModel.dart';
 import 'package:smart_tent_city_app/model/RequestStatus.dart';
 import 'package:smart_tent_city_app/model/user_type.dart';
 import 'package:smart_tent_city_app/notifiers/user_type_change_notifier/user_type_change_notifier.dart';
+import 'package:smart_tent_city_app/util/utils.dart';
 
 class RequestCard extends StatelessWidget {
   final RequestModel requestModel;
@@ -123,9 +124,5 @@ class RequestCard extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  String getDateString(DateTime date) {
-    return '${date.year}/${('0' + date.month.toString()).substring(0, 2)}/${('0' + date.day.toString()).substring(0, 2)}';
   }
 }
