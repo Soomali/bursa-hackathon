@@ -12,6 +12,7 @@ import 'package:smart_tent_city_app/pages/executive/tent_city_requests/tent_city
 import 'package:smart_tent_city_app/pages/executive/victim_processes/victim_processes_page.dart';
 import 'package:smart_tent_city_app/pages/request/request_page.dart';
 import 'package:smart_tent_city_app/pages/request/request_page_type.dart';
+import 'package:smart_tent_city_app/pages/victim/announcements/announcements.dart';
 import 'package:smart_tent_city_app/pages/victim/my_requests/my_requests_page.dart';
 import 'package:smart_tent_city_app/pages/victim/qr_page/qr_page.dart';
 import 'package:smart_tent_city_app/pages/victim/request_choice/request_choice.dart';
@@ -124,12 +125,12 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
           width: 30, // İstediğiniz boyuta göre değiştirin
           height: 30, // İstediğiniz boyuta göre değiştirin
 
-          color: _selectedIndex == 4 ? Colors.red : Colors.grey[800],
+          color: Colors.grey[800],
         ),
         title: Text(
           "Çıkış Yap",
           style: TextStyle(
-            color: _selectedIndex == 4 ? Colors.red : Colors.grey[800],
+            color: Colors.grey[800],
           ),
         ),
         onPressed: () {
@@ -147,8 +148,22 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
         Provider.of<UserTypeChangeNotifier>(context, listen: false).userType;
     return SafeArea(
       child: Scaffold(
+        floatingActionButton:
+            _selectedIndex == 0 || _selectedIndex == _victimBodies.length
+                ? null
+                : FloatingActionButton(
+                    backgroundColor: Colors.redAccent.shade700,
+                    onPressed: () {
+                      setState(() {
+                        _selectedIndex = _victimBodies.length;
+                      });
+                    },
+                    child: Icon(Icons.notifications),
+                  ),
         body: userType == UserType.victim
-            ? this._victimBodies[_selectedIndex]
+            ? _selectedIndex == this._victimBodies.length
+                ? AnnouncementPage()
+                : this._victimBodies[_selectedIndex]
             : this._executiveBodies[_selectedIndex],
         bottomNavigationBar: BottomNavigationBar(
           items: getItems().asMap().entries.map((entry) {
